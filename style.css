@@ -1,0 +1,82 @@
+:root {
+    --responsive-font-size: clamp(14px, 0.926vw + 8px, 18px);
+    --border-radius: 10px;
+}
+
+@media screen and (min-width: 1080px) {
+    :root {
+        --responsive-font-size: clamp(18px, 1.667vw, 24px);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    :root {
+        --responsive-font-size: clamp(24px, 0.333vw + 19.2px, 32px);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: var(--responsive-font-size);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(45deg, #2e3192, #1bfffe 100%);
+    padding: .5em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+}
+
+.xtreme-icon {
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 10px;
+    display: inline-block;
+    background-image: url('/assets/xtreme.ico');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.page-heading {
+    background: linear-gradient(45deg, #09131c, #162a3d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+main {
+    background-image:
+        radial-gradient(at 0% 50%, rgba(255, 182, 193, 0.6) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(162, 210, 255, 0.5) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(184, 251, 233, 0.6) 0px, transparent 50%),
+        radial-gradient(at 20% 10%, rgba(205, 180, 219, 0.5) 0px, transparent 50%);
+    flex: 1;
+}
+
+footer {
+    background: linear-gradient(60deg, #1bfffe, #2e3192);
+    padding: 1em;
+    color: #09131c;
+}
