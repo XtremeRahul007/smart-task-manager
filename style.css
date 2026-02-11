@@ -58,7 +58,7 @@ body {
 
 .app-logo {
     border-radius: 3rem;
-    background-image: url('../assets/task-manager-light.ico');
+    background-image: url('assets/task-manager-light.ico');
     background-size: 100% 100%;
     padding: 1em;
     scale: 1.5;
@@ -97,7 +97,7 @@ body {
     border-radius: 25px;
     border-color: transparent;
     outline: none;
-    background-image: url('../assets/search.ico');
+    background-image: url('assets/search.ico');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1.25em 1.25em;
