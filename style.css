@@ -1,82 +1,134 @@
 :root {
-    --responsive-font-size: clamp(14px, 0.926vw + 8px, 18px);
-    --border-radius: 10px;
+    --box-shadow: 0px 1px 2px #808080;
 }
 
-@media screen and (min-width: 1080px) {
-    :root {
-        --responsive-font-size: clamp(18px, 1.667vw, 24px);
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    :root {
-        --responsive-font-size: clamp(24px, 0.333vw + 19.2px, 32px);
-    }
+html {
+    font-size: clamp(15px, 0.8vw + 0.5rem, 18px);
 }
 
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
-}
-
-html {
-    font-size: var(--responsive-font-size);
+    margin: 0;
 }
 
 html,
 body {
-    height: 100%;
-    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 body {
     font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
+    background-color: #d5ffff;
 }
 
-header {
-    background: linear-gradient(45deg, #2e3192, #1bfffe 100%);
+.app-task-manager {
+    display: grid;
+    grid-template-columns: 15em 1fr 100px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "logo-text search profile"
+        "sidebar task-main task-main"
+        "footer footer footer";
+    height: 100vh;
+    background-image:
+        radial-gradient(at 0% 50%, #ffb6c199 0px, transparent 50%),
+        radial-gradient(at 100% 0%, #a2d2ff80 0px, transparent 50%),
+        radial-gradient(at 80% 80%, #b8fbe999 0px, transparent 50%),
+        radial-gradient(at 20% 10%, #cdb4db80 0px, transparent 50%);
     padding: .5em;
+}
+
+.app-logo-text {
+    grid-area: logo-text;
     display: flex;
     flex-direction: row;
-    gap: 1em;
     align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    padding-left: 1em;
 }
 
-.xtreme-icon {
-    height: 2.5em;
-    width: 2.5em;
-    border-radius: 10px;
-    display: inline-block;
-    background-image: url('/assets/xtreme.ico');
-    background-size: contain;
-    background-repeat: no-repeat;
-    vertical-align: middle;
+.app-text {
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
-.page-heading {
-    background: linear-gradient(45deg, #09131c, #162a3d);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 2rem;
-    font-weight: bolder;
-}
-
-main {
-    background-image:
-        radial-gradient(at 0% 50%, rgba(255, 182, 193, 0.6) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(162, 210, 255, 0.5) 0px, transparent 50%),
-        radial-gradient(at 80% 80%, rgba(184, 251, 233, 0.6) 0px, transparent 50%),
-        radial-gradient(at 20% 10%, rgba(205, 180, 219, 0.5) 0px, transparent 50%);
-    flex: 1;
-}
-
-footer {
-    background: linear-gradient(60deg, #1bfffe, #2e3192);
+.app-logo {
+    border-radius: 3rem;
+    background-image: url('../assets/task-manager-light.ico');
+    background-size: 100% 100%;
     padding: 1em;
-    color: #09131c;
+    scale: 1.5;
+    box-shadow: var(--box-shadow);
+}
+
+.app-search-bar {
+    grid-area: search;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: .5em;
+}
+
+.search-bar {
+    padding: .9em;
+    padding-inline: 3.5em;
+    font-size: .9rem;
+    border-radius: 25px;
+    width: 90%;
+    outline: none;
+    background-color: #e9eef6;
+    border-color: transparent;
+    transition: .2s ease-in-out;
+}
+
+.search-bar:focus {
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    cursor: text;
+}
+
+.search-icon {
+    background-color: transparent;
+    padding: 1.35em;
+    border-radius: 25px;
+    border-color: transparent;
+    outline: none;
+    background-image: url('../assets/search.ico');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1.25em 1.25em;
+    position: relative;
+    right: calc(90% - .5em);
+    transition: 0.2s ease-in;
+}
+
+.search-icon:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+.app-user-profile {
+    grid-area: profile;
+}
+
+.app-sidebar {
+    grid-area: sidebar;
+}
+
+.app-task-container {
+    grid-area: task-main;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow-y: auto;
+    box-shadow: var(--box-shadow);
+    padding: 1em;
+}
+
+.app-footer {
+    grid-area: footer;
 }
