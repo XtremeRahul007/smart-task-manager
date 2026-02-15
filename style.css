@@ -1,5 +1,14 @@
 :root {
     --box-shadow: 0px 1px 2px #808080;
+    --background-color: #d5ffff;
+    --inner-bg-color: #fff;
+    --inactive-bg-color: #e9eef6;
+    --hover-bg-color: #d3d3d3;
+    --active-bg-color: #c0c0c0;
+    --radius-round: 3rem;
+    --radius-mid: 15px;
+    --common-padding: 1rem;
+    --border-margin: .5rem 0rem;
 }
 
 html {
@@ -14,31 +23,29 @@ html {
 
 html,
 body {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    height: 100%;
 }
 
 body {
     font-family: sans-serif;
-    background-color: #d5ffff;
+    background-color: var(--background-color);
+    overflow: hidden;
 }
 
 .app-task-manager {
     display: grid;
-    grid-template-columns: 15em 1fr 100px;
+    grid-template-columns: 12.5rem 1fr 12.5rem;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "logo-text search profile"
         "sidebar task-main task-main"
         "footer footer footer";
-    height: 100vh;
+    height: 100dvh;
     background-image:
         radial-gradient(at 0% 50%, #ffb6c199 0px, transparent 50%),
         radial-gradient(at 100% 0%, #a2d2ff80 0px, transparent 50%),
         radial-gradient(at 80% 80%, #b8fbe999 0px, transparent 50%),
         radial-gradient(at 20% 10%, #cdb4db80 0px, transparent 50%);
-    padding: .5em;
 }
 
 .app-logo-text {
@@ -47,8 +54,8 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 1em;
-    padding-left: 1em;
+    gap: var(--common-padding);
+    padding-left: var(--common-padding);
 }
 
 .app-text {
@@ -57,11 +64,13 @@ body {
 }
 
 .app-logo {
-    border-radius: 3rem;
+    border-radius: var(--radius-round);
     background-image: url('assets/task-manager-light.ico');
     background-size: 100% 100%;
-    padding: 1em;
-    scale: 1.5;
+    width: 2rem;
+    height: 2rem;
+    aspect-ratio: 1 / 1;
+    transform: scale(1.5);
     box-shadow: var(--box-shadow);
 }
 
@@ -70,50 +79,86 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: .5em;
+    margin: var(--border-margin);
+    position: relative;
 }
 
-.search-bar {
-    padding: .9em;
-    padding-inline: 3.5em;
-    font-size: .9rem;
-    border-radius: 25px;
-    width: 90%;
-    outline: none;
-    background-color: #e9eef6;
-    border-color: transparent;
-    transition: .2s ease-in-out;
+.search-container,
+.search-icon {
+    transition: .1s ease-in;
 }
 
-.search-bar:focus {
-    background-color: #fff;
+.search-container {
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+    background-color: var(--inactive-bg-color);
+    border-radius: var(--radius-round);
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-container:focus-within {
+    background-color: var(--inner-bg-color);
     box-shadow: var(--box-shadow);
-    cursor: text;
 }
 
 .search-icon {
-    background-color: transparent;
-    padding: 1.35em;
-    border-radius: 25px;
-    border-color: transparent;
-    outline: none;
     background-image: url('assets/search.ico');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1.25em 1.25em;
-    position: relative;
-    right: calc(90% - .5em);
-    transition: 0.2s ease-in;
+    border-radius: var(--radius-round);
+    background-size: 1rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    flex-shrink: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .search-icon:hover {
-    background-color: #d3d3d3;
-    cursor: pointer;
-    transition: 0.2s ease-out;
+    background-color: var(--hover-bg-color);
+}
+
+.search-icon:active {
+    background-color: var(--active-bg-color);
+}
+
+.search-bar {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+    padding: .6rem;
 }
 
 .app-user-profile {
     grid-area: profile;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-round);
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.app-username {
+    background-color: white;
 }
 
 .app-sidebar {
@@ -122,11 +167,11 @@ body {
 
 .app-task-container {
     grid-area: task-main;
-    background-color: #fff;
-    border-radius: 15px;
+    background-color: var(--inner-bg-color);
+    border-radius: var(--radius-mid);
     overflow-y: auto;
     box-shadow: var(--box-shadow);
-    padding: 1em;
+    padding: var(--common-padding);
 }
 
 .app-footer {
