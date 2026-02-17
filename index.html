@@ -11,9 +11,9 @@
 
 <body>
     <section class="app-task-manager">
-        <header class="app-logo-text">
-            <div class="app-logo"></div>
-            <h1 class="app-text">Smart Task Manager</h1>
+        <header class="app-logo-text-header">
+            <button class="app-logo-header" id="menuBtn"></button>
+            <h1 class="app-text-header">Smart Task Manager</h1>
         </header>
         <nav class="app-search-bar">
             <div class="search-container">
@@ -23,9 +23,14 @@
         </nav>
         <header class="app-user-profile">
             <div class="app-profile-icon">R</div>
-            <section class="app-username">Username</section>
         </header>
-        <aside class="app-sidebar">app-sidebar</aside>
+        <aside id="sideBar" class="app-sidebar">
+            <header class="app-logo-text-aside">
+                <div class="app-logo-aside"></div>
+                <h1 class="app-text-aside">Smart Task Manager</h1>
+            </header>
+            <p>sideBar</p>
+        </aside>
         <main class="app-task-container">task-container</main>
         <footer class="app-footer"></footer>
         <script src="script.js"></script>
