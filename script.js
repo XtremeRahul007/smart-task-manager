@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function closeSidebar() {
-        sidebar.style.transform = "translateX(100%)";
+        sidebar.style.transform = "translateX(-100%)";
         sideBar.classList.remove("open");
         menuBtn.classList.remove("no-bg");
         overLay.classList.remove("active");
