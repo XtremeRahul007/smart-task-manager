@@ -12,7 +12,7 @@
 <body>
     <section class="app-task-manager">
         <header class="app-logo-text-header">
-            <button class="app-logo-header" id="menuBtn"></button>
+            <button class="app-logo-header" id="asideMenuBtn"></button>
             <h1 class="app-text-header">Smart Task Manager</h1>
         </header>
         <nav class="app-search-bar">
@@ -22,7 +22,12 @@
             </div>
         </nav>
         <header class="app-user-profile">
-            <div class="app-profile-icon">R</div>
+            <button class="app-profile-icon" id="profileMenuBtn">R</button>
+            <div class="app-profile-menu" id="profileMenu">
+                <div>temp_item1</div>
+                <div>temp_item2</div>
+                <div>temp_item3</div>
+            </div>
         </header>
         <aside id="sideBar" class="app-sidebar">
             <header class="app-logo-text-aside">
@@ -34,7 +39,7 @@
         <main class="app-task-container">task-container</main>
         <footer class="app-footer"></footer>
         <div class="overLay" id="overLay"></div>
-        <script src="script.js"></script>
+        <script type="module" src="./main.js"></script>
     </section>
 </body>
 
