@@ -9,6 +9,7 @@
     --radius-mid: 15px;
     --common-padding: 1rem;
     --border-margin: .5rem 0rem;
+    --custom-transition: cubic-bezier(.25, .8, .25, 1);
 }
 
 html {
@@ -88,7 +89,7 @@ body {
 
 .search-container,
 .search-icon {
-    transition: .1s ease-in;
+    transition: background-color 1s var(--custom-transition);
 }
 
 .search-container {
@@ -141,9 +142,10 @@ body {
     grid-area: profile;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
+    padding-inline: .5rem;
+    position: relative;
 }
 
 .app-profile-icon {
@@ -153,11 +155,52 @@ body {
     height: 3rem;
     width: 3rem;
     aspect-ratio: 1 / 1;
+    border: none;
     border-radius: var(--radius-round);
     box-shadow: var(--box-shadow);
     background-color: white;
     font-size: 2rem;
     font-weight: 600;
+    cursor: pointer;
+    transition: background-color .2s var(--custom-transition);
+    user-select: none;
+    z-index: 200;
+    transition: box-shadow 1s var(--custom-transition);
+}
+
+@media screen and (min-width: 480px) {
+    .app-profile-icon:hover {
+        box-shadow: 0px 0px 10px #808080;
+    }
+}
+
+.app-profile-icon:active {
+    transform: scale(1);
+    background-color: var(--active-bg-color);
+}
+
+.app-profile-menu {
+    position: absolute;
+    display: grid;
+    border-radius: var(--radius-mid);
+    padding: var(--common-padding);
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    height: 25rem;
+    width: 25rem;
+    z-index: 200;
+    top: 100%;
+    transform-origin: top right;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-1rem) scale(0);
+    transition: 1s var(--custom-transition);
+}
+
+.app-profile-menu.open {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .app-sidebar {
@@ -182,7 +225,22 @@ body {
     grid-area: footer;
 }
 
-@media screen and (max-width:481px) {
+.overLay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s var(--custom-transition);
+    z-index: 100;
+}
+
+.overLay.active {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+@media screen and (max-width:480px) {
     .app-task-manager {
         display: grid;
         grid-template-columns: 4rem 1fr 4rem;
@@ -211,7 +269,7 @@ body {
         height: 1rem;
         width: 1rem;
         pointer-events: auto;
-        z-index: 100;
+        z-index: 1000;
     }
 
     .app-logo-header.no-bg {
@@ -228,28 +286,14 @@ body {
         width: 80dvw;
         inset: unset;
         border: none;
-        background: rgba(213, 255, 255, .9);
+        background: var(--background-color);
         transform: translateX(-100%);
-        transition: transform .3s cubic-bezier(.25, .8, .25, 1);
+        transition: transform 1s var(--custom-transition);
         will-change: transform;
+        z-index: 200;
     }
 
     .app-sidebar.open {
         transform: translateX(0%);
-        z-index: 99;
-    }
-
-    .overLay {
-        position: fixed;
-        inset: 0;
-        background-color: rgba(0, 0, 0, .5);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .3s ease;
-    }
-
-    .overLay.active {
-        pointer-events: auto;
-        opacity: 1;
     }
 }
