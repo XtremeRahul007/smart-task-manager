@@ -1,22 +1,24 @@
+import { activeState, closeState } from "./uiState.js";
+
 export function initSidebar() {
     const menuBtn = document.getElementById("asideMenuBtn");
     const sideBar = document.getElementById("sideBar");
-    const overLay = document.getElementById("overLay");
 
     if (!menuBtn || !sideBar) return;
     let isOpen = false;
-
+    let needOverlay = true;
+     
     const openSidebar = () => {
         sideBar.classList.add("open");
         menuBtn.classList.add("no-bg");
-        overLay.classList.add("active");
+        activeState("sideBar", closeSidebar, needOverlay);
         isOpen = true;
     }
 
     const closeSidebar = () => {
         sideBar.classList.remove("open");
         menuBtn.classList.remove("no-bg");
-        overLay.classList.remove("active");
+        closeState("sideBar");
         isOpen = false;
     }
 
@@ -25,12 +27,5 @@ export function initSidebar() {
         e.stopPropagation();
         isOpen ? closeSidebar() : openSidebar();
     }
-
-    const outsideClickHandler = () => {
-        closeSidebar();
-    }
-
     menuBtn.addEventListener("click", toggleSidebar);
-    overLay.addEventListener("click", outsideClickHandler);
-    document.addEventListener("keydown", keyboardEscape);
 };
