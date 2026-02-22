@@ -11,7 +11,7 @@ export function overLayToggle() {
         }
     });
 
-    overLay.addEventListener("click", (e) => {
+    overLay.addEventListener("click", () => {
         const activeComponent = getState();
         if (activeComponent) {
             activeComponent.close();
