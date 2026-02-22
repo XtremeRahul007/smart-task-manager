@@ -1,20 +1,22 @@
+import { activeState, closeState } from "./uiState.js";
+
 export function initPopupMenu() {
     const menuBtn = document.getElementById("profileMenuBtn");
     const profileMenu = document.getElementById("profileMenu");
-    const overLay = document.getElementById("overLay")
 
-    if (!menuBtn || !profileMenu || !overLay) return;
+    if (!menuBtn || !profileMenu) return;
     let isOpen = false;
+    let needOverlay = true;
 
     const openPopup = () => {
         profileMenu.classList.add("open");
-        overLay.classList.add("active")
+        activeState("popup", closePopup, needOverlay);
         isOpen = true;
     }
 
     const closePopup = () => {
         profileMenu.classList.remove("open");
-        overLay.classList.remove("active")
+        closeState("popup");
         isOpen = false;
     }
 
@@ -23,10 +25,5 @@ export function initPopupMenu() {
         e.stopPropagation();
         isOpen ? closePopup() : openPopup();
     }
-
-    const outsideClickHandler = () => {
-        closePopup();
-    }
     menuBtn.addEventListener("click", togglePopup);
-    overLay.addEventListener("click", outsideClickHandler);
 }
