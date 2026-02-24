@@ -1,0 +1,300 @@
+:root {
+  --box-shadow: 0px 1px 2px #808080;
+  --background-color: #f3f3f3;
+  --background-gradient:
+      radial-gradient(at 0% 0%, #d5ffff 0px, transparent 100%),
+      radial-gradient(at 100% 0%, #74ebd5 0px, transparent 100%),
+      radial-gradient(at 0% 100%, #f9d5ff 0px, transparent 100%),
+      radial-gradient(at 100% 100%, #d5ffeb 0px, transparent 100%);
+  --inner-bg-color: #fff;
+  --inactive-bg-color: #e9eef6;
+  --hover-bg-color: #d3d3d3;
+  --active-bg-color: #c0c0c0;
+  --radius-round: 3rem;
+  --radius-mid: 15px;
+  --common-padding: 1rem;
+  --border-margin: .5rem 0rem;
+  --custom-transition: cubic-bezier(.25, .8, .25, 1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: clamp(15px, 0.8vw + 8px, 18px);
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+.app-task-manager {
+  display: grid;
+  grid-template-columns: 17.5rem 1fr 12.5rem;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "logo-text search profile" "sidebar task-main task-main" "footer footer footer";
+  height: 100dvh;
+  background-image: var(--background-gradient);
+}
+
+@media screen and (max-width: 480px) {
+  .app-task-manager {
+    display: grid;
+    grid-template-columns: 4rem 1fr 4rem;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "logo-text search profile" "task-main task-main task-main" "footer footer footer";
+  }
+}
+.app-logo-text-header {
+  grid-area: logo-text;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--common-padding);
+  padding-left: var(--common-padding);
+}
+
+.app-text-header {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.app-logo-header {
+  border-radius: var(--radius-round);
+  background-image: url("../assets/task-manager-light.ico");
+  background-size: 100% 100%;
+  width: 2rem;
+  height: 2rem;
+  aspect-ratio: 1/1;
+  transform: scale(1.5);
+  box-shadow: var(--box-shadow);
+  border: none;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 480px) {
+  .app-logo-header {
+    background-image: url("../assets/menu.ico");
+    border-radius: 0px;
+    background-color: transparent;
+    box-shadow: none;
+    height: 1rem;
+    width: 1rem;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+  .app-logo-header.no-bg {
+    background-image: none !important;
+  }
+  .app-text-header {
+    display: none;
+  }
+}
+.app-text-aside {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.app-logo-aside {
+  border-radius: var(--radius-round);
+  background-image: url("assets/task-manager-light.ico");
+  background-size: 100% 100%;
+  width: 2rem;
+  height: 2rem;
+  aspect-ratio: 1/1;
+  transform: scale(1.5);
+  box-shadow: var(--box-shadow);
+  border: none;
+  pointer-events: none;
+}
+
+.app-logo-text-aside {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .app-logo-text-aside {
+    grid-area: logo-text;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--common-padding);
+    padding: var(--common-padding);
+  }
+}
+.app-task-container {
+  grid-area: task-main;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-mid);
+  overflow-y: auto;
+  box-shadow: var(--box-shadow);
+  padding: var(--common-padding);
+}
+
+.app-footer {
+  grid-area: footer;
+}
+
+.app-sidebar {
+  grid-area: sidebar;
+  position: static;
+}
+
+@media screen and (max-width: 480px) {
+  .app-sidebar {
+    position: fixed;
+    height: 100dvh;
+    width: 80dvw;
+    inset: unset;
+    border: none;
+    background-image: var(--background-gradient);
+    transform: translateX(-100%);
+    transition: transform 1s var(--custom-transition);
+    will-change: transform;
+    z-index: 200;
+  }
+  .app-sidebar.open {
+    transform: translateX(0%);
+  }
+}
+.app-search-bar {
+  grid-area: search;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: var(--border-margin);
+}
+
+.search-bar {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: transparent;
+  padding: 0.6rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: var(--inactive-bg-color);
+  border-radius: var(--radius-round);
+  width: 100%;
+  max-width: 800px;
+  transition: background-color 1s var(--custom-transition);
+}
+.search-container:focus-within {
+  background-color: var(--inner-bg-color);
+  box-shadow: var(--box-shadow);
+}
+
+.search-icon {
+  background-image: url("../assets/search.ico");
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-round);
+  background-size: 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 1s var(--custom-transition);
+}
+.search-icon:hover {
+  background-color: var(--hover-bg-color);
+}
+.search-icon:active {
+  background-color: var(--active-bg-color);
+}
+
+.app-profile-menu {
+  position: absolute;
+  display: grid;
+  border-radius: var(--radius-mid);
+  padding: var(--common-padding);
+  background-image: var(--background-gradient);
+  height: 25rem;
+  width: 25rem;
+  z-index: 200;
+  top: 100%;
+  transform-origin: top right;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-1rem) scale(0);
+  transition: 1s var(--custom-transition);
+}
+.app-profile-menu.open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.app-user-profile {
+  grid-area: profile;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-inline: 0.5rem;
+  position: relative;
+}
+
+.app-profile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  border: none;
+  border-radius: var(--radius-round);
+  box-shadow: var(--box-shadow);
+  background-color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s var(--custom-transition);
+  user-select: none;
+  z-index: 200;
+  transition: box-shadow 1s var(--custom-transition);
+}
+.app-profile-icon:active {
+  transform: scale(1);
+  background-color: var(--active-bg-color);
+}
+
+@media screen and (min-width: 480px) {
+  .app-profile-icon:hover {
+    box-shadow: 0px 0px 10px #808080;
+  }
+}
+.overLay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s var(--custom-transition);
+  z-index: 100;
+}
+.overLay.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=main.css.map */

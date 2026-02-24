@@ -1,0 +1,33 @@
+.app-text-aside {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.app-logo-aside {
+    border-radius: var(--radius-round);
+    background-image: url('assets/task-manager-light.ico');
+    background-size: 100% 100%;
+    width: 2rem;
+    height: 2rem;
+    aspect-ratio: 1 / 1;
+    transform: scale(1.5);
+    box-shadow: var(--box-shadow);
+    border: none;
+    pointer-events: none;
+}
+
+.app-logo-text-aside {
+    display: none;
+}
+
+@media screen and (max-width:480px) {
+    .app-logo-text-aside {
+        grid-area: logo-text;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--common-padding);
+        padding: var(--common-padding);
+    }
+}
