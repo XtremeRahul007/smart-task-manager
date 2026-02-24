@@ -1,0 +1,23 @@
+.app-task-manager {
+    display: grid;
+    grid-template-columns: 17.5rem 1fr 12.5rem;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "logo-text search profile"
+        "sidebar task-main task-main"
+        "footer footer footer";
+    height: 100dvh;
+    background-image: var(--background-gradient);
+}
+
+@media screen and (max-width:480px) {
+    .app-task-manager {
+        display: grid;
+        grid-template-columns: 4rem 1fr 4rem;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "logo-text search profile"
+            "task-main task-main task-main"
+            "footer footer footer";
+    }
+}

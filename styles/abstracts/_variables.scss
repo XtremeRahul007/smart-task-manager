@@ -1,0 +1,18 @@
+:root {
+    --box-shadow: 0px 1px 2px #808080;
+    --background-color: #f3f3f3;
+    --background-gradient:
+        radial-gradient(at 0% 0%, #d5ffff 0px, transparent 100%),
+        radial-gradient(at 100% 0%, #74ebd5 0px, transparent 100%),
+        radial-gradient(at 0% 100%, #f9d5ff 0px, transparent 100%),
+        radial-gradient(at 100% 100%, #d5ffeb 0px, transparent 100%);
+    --inner-bg-color: #fff;
+    --inactive-bg-color: #e9eef6;
+    --hover-bg-color: #d3d3d3;
+    --active-bg-color: #c0c0c0;
+    --radius-round: 3rem;
+    --radius-mid: 15px;
+    --common-padding: 1rem;
+    --border-margin: .5rem 0rem;
+    --custom-transition: cubic-bezier(.25, .8, .25, 1);
+}

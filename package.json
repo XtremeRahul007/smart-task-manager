@@ -1,0 +1,24 @@
+{
+  "name": "smart-task-manager",
+  "version": "1.0.0",
+  "description": "A modern, offline-first smart task manager built using pure web technologies, designed with strong architecture, performance, and scalability in mind.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XtremeRahul007/smart-task-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/XtremeRahul007/smart-task-manager/issues"
+  },
+  "homepage": "https://github.com/XtremeRahul007/smart-task-manager#readme",
+  "devDependencies": {
+    "sass": "^1.97.3"
+  }
+}
