@@ -1,4 +1,4 @@
-import { subscribe, getState } from "./uiState.js";
+import { subscribe, getState } from "../state/uiState.js";
 
 export function overLayToggle() {
     const overLay = document.getElementById("overLay")

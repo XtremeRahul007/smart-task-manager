@@ -1,4 +1,4 @@
-import { activeState, closeState } from "./uiState.js";
+import { activeState, closeState } from "../state/uiState.js";
 
 export function initSidebar() {
     const menuBtn = document.getElementById("asideMenuBtn");

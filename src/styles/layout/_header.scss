@@ -15,7 +15,7 @@
 
 .app-logo-header {
     border-radius: var(--radius-round);
-    background-image: url('../assets/task-manager-light.ico');
+    background-image: url('assets/task-manager-light.ico');
     background-size: 100% 100%;
     width: 2rem;
     height: 2rem;
@@ -28,7 +28,7 @@
 
 @media screen and (max-width:480px) {
     .app-logo-header {
-        background-image: url('../assets/menu.ico');
+        background-image: url('assets/menu.ico');
         border-radius: 0px;
         background-color: transparent;
         box-shadow: none;
