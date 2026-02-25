@@ -1,4 +1,4 @@
-import { activeState, closeState } from "./uiState.js";
+import { activeState, closeState } from "../state/uiState.js";
 
 export function initPopupMenu() {
     const menuBtn = document.getElementById("profileMenuBtn");

@@ -1,7 +1,7 @@
-import { overLayToggle } from "./modules/overLay.js";
-import { initPopupMenu } from "./modules/popupMenu.js";
-import { initSidebar } from "./modules/sideBar.js";
-import { activeState, closeState } from "./modules/uiState.js";
+import { overLayToggle } from "./components/overLay.js";
+import { initPopupMenu } from "./components/popupMenu.js";
+import { initSidebar } from "./components/sideBar.js";
+import { activeState, closeState } from "./state/uiState.js";
 
 const modules = [
     initPopupMenu,
