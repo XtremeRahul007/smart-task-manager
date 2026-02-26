@@ -1,0 +1,39 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-gradient:
+            radial-gradient(120% 40% at 50% 75%, #ffd28c26 0px, transparent 60%),
+            radial-gradient(300% 50% at 50% 100%, #31392d80 50px, transparent 50%),
+            radial-gradient(200% 50% at 100% 60%, #e3a957be 0px, transparent 50%),
+            radial-gradient(at 100% 0%, #915d7980 20px, transparent 30%),
+            radial-gradient(circle farthest-corner at 0% 60%, #f3e3c4 5px, transparent 50%),
+            linear-gradient(180deg, #474788 5%, #7b98b8 50%, #f5d7a2 70%, #c3ab5b 100%);
+
+        --background-color: #7b98b8;
+        --inner-bg-color: #ffffff;
+        --surface-1: linear-gradient(45deg,#ff9b9c, #ff393a);
+        --surface-2: linear-gradient(45deg, #587137, #b6ed92);
+
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --text-tertiary: #64748b;
+        --text-disabled: #94a3b8;
+
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --primary-active: #1d4ed8;
+
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+
+        --hover-bg-color: #e2e8f0;
+        --active-bg-color: #cbd5e1;
+        --inactive-bg-color: #f1f5f9;
+
+        --box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+        --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+        --box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        --overlay-color: rgba(15, 23, 42, 0.58);
+    }
+}

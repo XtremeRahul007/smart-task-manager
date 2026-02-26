@@ -1,7 +1,7 @@
 .overLay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, .6);
+    background-color: var(--overlay-color);
     opacity: 0;
     pointer-events: none;
     transition: opacity 1s var(--custom-transition);

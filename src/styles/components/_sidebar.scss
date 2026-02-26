@@ -10,7 +10,7 @@
         width: 80dvw;
         inset: unset;
         border: none;
-        background-image: var(--background-gradient);
+        background: var(--surface-2);
         transform: translateX(-100%);
         transition: transform 1s var(--custom-transition);
         will-change: transform;
