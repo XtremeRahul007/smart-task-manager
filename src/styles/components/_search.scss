@@ -24,6 +24,7 @@
     width: 100%;
     max-width: 800px;
     transition: background-color 1s var(--custom-transition);
+    border: 2px solid #371b32;
 
     &:focus-within {
         background-color: var(--inner-bg-color);

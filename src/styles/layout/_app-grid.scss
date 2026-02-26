@@ -8,6 +8,7 @@
         "footer footer footer";
     height: 100dvh;
     background-image: var(--background-gradient);
+    transition: background-color 1s var(--custom-transition);
 }
 
 @media screen and (max-width:480px) {
