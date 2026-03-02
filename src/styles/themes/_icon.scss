@@ -1,0 +1,34 @@
+$icons: search, menu, dark-mode, light-mode;
+
+@each $icon in $icons {
+    .icon-#{$icon} {
+        mask-image: url("assets/icons/#{$icon}.svg");
+        -webkit-mask-image: url("assets/icons/#{$icon}.svg");
+    }
+}
+
+$icon-sizes: (
+    sm: 1.5rem,
+    md: 2.5rem,
+    lg: 3rem
+);
+
+@each $name, $size in $icon-sizes {
+    .icon-#{$name} {
+        --icon-size: #{$size};
+    }
+}
+
+.icon {
+    display: inline-block;
+    height: var(--icon-size, 24px);
+    width: var(--icon-size, 24px);
+    background-color: currentColor;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    flex-shrink: 0;
+}

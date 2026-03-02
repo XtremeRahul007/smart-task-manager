@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -17,11 +17,16 @@
         </header>
         <nav class="app-search-bar">
             <div class="search-container">
-                <button class="search-icon"></button>
+                <button class="search-btn">
+                    <div class="search-icon icon icon-search icon-sm"></div>
+                </button>
                 <input class="search-bar" type="search" placeholder="Search">
             </div>
         </nav>
         <header class="app-user-profile">
+            <button class="theme-toggle-btn" id="theme-toggle-btn">
+                <div class="theme-toggle-icon icon icon-light-mode icon-sm" id="theme-toggle-icon"></div>
+            </button>
             <button class="app-profile-icon" id="profileMenuBtn">R</button>
             <div class="app-profile-menu" id="profileMenu">
                 <div>temp_item1</div>

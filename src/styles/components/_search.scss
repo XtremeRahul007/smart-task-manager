@@ -3,7 +3,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: var(--border-margin);
+    padding: var(--border-margin);
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
 }
 
 .search-bar {
@@ -13,44 +15,69 @@
     font-size: 1rem;
     background-color: transparent;
     padding: .6rem;
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+        color: var(--color-on-primary);
+    }
+
+    &:focus-within {
+
+        &::placeholder,
+        &::-webkit-input-placeholder {
+            color: var(--color-primary);
+        }
+    }
 }
 
 .search-container {
     display: flex;
     align-items: center;
     padding: .25rem;
-    background-color: var(--inactive-bg-color);
     border-radius: var(--radius-round);
     width: 100%;
     max-width: 800px;
-    transition: background-color 1s var(--custom-transition);
-    border: 2px solid #371b32;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    transition: background-color .5s var(--custom-transition);
 
     &:focus-within {
-        background-color: var(--inner-bg-color);
-        box-shadow: var(--box-shadow);
+        background-color: var(--color-on-primary);
+        color: var(--color-primary);
+        //box-shadow: var(--box-shadow);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search-container {
+        width: 85%;
+    }
+}
+
+.search-btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-on-primary);
+    border-radius: var(--radius-round);
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s var(--custom-transition), background-color .2s var(--custom-transition);
+
+
+    &:active {
+        background-color: var(--color-primary);
     }
 }
 
 .search-icon {
-    background-image: url('assets/search.ico');
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: var(--radius-round);
-    background-size: 1rem;
-    height: 2.5rem;
-    width: 2.5rem;
-    flex-shrink: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    transition: background-color 1s var(--custom-transition);
+    color: var(--color-primary);
 
-    &:hover {
-        background-color: var(--hover-bg-color);
-    }
 
     &:active {
-        background-color: var(--active-bg-color);
+        color: var(--color-on-primary);
     }
 }
