@@ -3,9 +3,8 @@
     display: grid;
     border-radius: var(--radius-mid);
     padding: var(--common-padding);
-    background: var(--surface-1);
-    height: 25rem;
-    width: 25rem;
+    height: 20rem;
+    width: 20rem;
     z-index: 200;
     top: 100%;
     transform-origin: top right;
@@ -13,6 +12,8 @@
     opacity: 0;
     transform: translateY(-1rem) scale(0);
     transition: 1s var(--custom-transition);
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
 
     &.open {
         pointer-events: auto;
@@ -29,6 +30,9 @@
     align-items: center;
     padding-inline: .5rem;
     position: relative;
+    gap: .5rem;
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
 }
 
 .app-profile-icon {
@@ -40,25 +44,44 @@
     aspect-ratio: 1 / 1;
     border: none;
     border-radius: var(--radius-round);
-    box-shadow: var(--box-shadow-sm);
+
     background-color: var(--inner-bg-color);
     font-size: 2rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color .2s var(--custom-transition);
+    transition: .2s var(--custom-transition);
     user-select: none;
     z-index: 200;
-    transition: box-shadow 1s var(--custom-transition);
-
+    background-color: var(--color-on-primary-container);
+    color: var(--color-primary-container);
+    //transition: box-shadow 1s var(--custom-transition);
+    //box-shadow: var(--box-shadow);
 
     &:active {
-        transform: scale(1);
-        background-color: var(--active-bg-color);
+        background-color: var(--color-primary-container);
+        color: var(--color-on-primary-container);
     }
 }
 
+/*
 @media screen and (min-width: 480px) {
     .app-profile-icon:hover {
         box-shadow: var(--box-shadow);
     }
+}
+*/
+.theme-toggle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.5rem;
+    aspect-ratio: 1 / 1;
+    border: none;
+    background-color: var(--color-tertiary-container);
+}
+
+.theme-toggle-icon {
+    color: var(--color-on-tertiary-container);
 }

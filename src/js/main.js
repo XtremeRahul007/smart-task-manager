@@ -2,13 +2,15 @@ import { overLayToggle } from "./components/overLay.js";
 import { initPopupMenu } from "./components/popupMenu.js";
 import { initSidebar } from "./components/sideBar.js";
 import { activeState, closeState } from "./state/uiState.js";
+import { themeToggle } from "./components/themeToggle.js";
 
 const modules = [
     initPopupMenu,
     initSidebar,
     activeState,
     closeState,
-    overLayToggle
+    overLayToggle,
+    themeToggle
 ]
 function startApp() {
     modules.forEach(fn => {
