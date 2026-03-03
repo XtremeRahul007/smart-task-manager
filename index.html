@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="dist/main.css">
     <link rel="icon" href="dist/assets/xtreme.ico" type="image/xtreme-icon">
     <title>Smart Task Manager</title>
+    <script>
+        (function () {
+            const saved = localStorage.getItem("theme");
+
+            if (saved) {
+                document.documentElement.dataset.theme = saved;
+                return;
+            }
+            const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.dataset.theme = systemDark ? "dark" : "light";
+        });
+    </script>
 </head>
 
 <body>
@@ -24,8 +36,8 @@
             </div>
         </nav>
         <header class="app-user-profile">
-            <button class="theme-toggle-btn" id="theme-toggle-btn">
-                <div class="theme-toggle-icon icon icon-light-mode icon-sm" id="theme-toggle-icon"></div>
+            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn">
+                <span class="theme-toggle-icon icon icon-light-mode icon-sm" id="theme-toggle-icon"></span>
             </button>
             <button class="app-profile-icon" id="profileMenuBtn">R</button>
             <div class="app-profile-menu" id="profileMenu">

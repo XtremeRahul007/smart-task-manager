@@ -2,7 +2,9 @@ import { overLayToggle } from "./components/overLay.js";
 import { initPopupMenu } from "./components/popupMenu.js";
 import { initSidebar } from "./components/sideBar.js";
 import { activeState, closeState } from "./state/uiState.js";
-import { themeToggle } from "./components/themeToggle.js";
+import { initTheme } from "./theme/themeManager.js";
+import { setupThemeToggle } from "./theme/themeToggle.js";
+import { updateThemeIcon } from "./theme/themeManager.js";
 
 const modules = [
     initPopupMenu,
@@ -10,7 +12,9 @@ const modules = [
     activeState,
     closeState,
     overLayToggle,
-    themeToggle
+    initTheme,
+    setupThemeToggle,
+    updateThemeIcon
 ]
 function startApp() {
     modules.forEach(fn => {
