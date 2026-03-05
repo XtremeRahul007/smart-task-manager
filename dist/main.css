@@ -51,8 +51,16 @@
   -webkit-mask-size: contain;
   flex-shrink: 0;
 }
+[data-theme=dark] .icon {
+  mask-image: url("assets/icons/dark-mode.svg");
+  -webkit-mask-image: url("assets/icons/dark-mode.svg");
+}
+[data-theme=light] .icon {
+  mask-image: url("assets/icons/light-mode.svg");
+  -webkit-mask-image: url("assets/icons/light-mode.svg");
+}
 
-:root {
+:root[data-theme=light] {
   --color-background: #dee1ff;
   --color-on-background: #1b1b21;
   --color-surface: #fbf8ff;

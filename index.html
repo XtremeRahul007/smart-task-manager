@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="">
 
 <head>
     <meta charset="UTF-8">
@@ -9,15 +9,14 @@
     <title>Smart Task Manager</title>
     <script>
         (function () {
-            const saved = localStorage.getItem("theme");
-
-            if (saved) {
-                document.documentElement.dataset.theme = saved;
+            savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.dataset.theme = savedTheme;
                 return;
             }
-            const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            document.documentElement.dataset.theme = systemDark ? "dark" : "light";
-        });
+            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.dataset.theme = systemTheme ? "dark" : "light";
+        })();
     </script>
 </head>
 
@@ -37,7 +36,7 @@
         </nav>
         <header class="app-user-profile">
             <button type="button" class="theme-toggle-btn" id="theme-toggle-btn">
-                <span class="theme-toggle-icon icon icon-light-mode icon-sm" id="theme-toggle-icon"></span>
+                <span class="theme-toggle-icon icon icon-sm" id="theme-toggle-icon"></span>
             </button>
             <button class="app-profile-icon" id="profileMenuBtn">R</button>
             <div class="app-profile-menu" id="profileMenu">

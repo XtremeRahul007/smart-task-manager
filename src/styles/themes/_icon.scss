@@ -31,4 +31,14 @@ $icon-sizes: (
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: contain;
     flex-shrink: 0;
+
+    [data-theme="dark"] & {
+        mask-image: url("assets/icons/dark-mode.svg");
+        -webkit-mask-image: url("assets/icons/dark-mode.svg");
+    }
+
+    [data-theme="light"] & {
+        mask-image: url("assets/icons/light-mode.svg");
+        -webkit-mask-image: url("assets/icons/light-mode.svg");
+    }
 }
