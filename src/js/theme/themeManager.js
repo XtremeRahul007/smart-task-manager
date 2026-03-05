@@ -4,36 +4,30 @@ export function initTheme() {
     const savedTheme = localStorage.getItem(STORAGE_KEY);
 
     if (savedTheme) {
-        applyTheme(savedTheme);
-        return;
+        return applyTheme(savedTheme);
     }
-
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    applyTheme(systemDark ? "dark" : "light");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(systemTheme ? "dark" : "light");
 }
 
 export function toggleTheme() {
-    const current = getCurrentTheme();
-    let next;
-    if (current === "dark") {
-        next = "light";
-    } else {
-        next = "dark";
-    }
+    const currentTheme = getCurrentTheme() || "light";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
 
-    document.documentElement.dataset.theme = next;
-
-    updateThemeIcon(next);
-    applyTheme(next);
-    saveTheme(next);
+    updateThemeIcon(nextTheme);
+    applyTheme(nextTheme);
+    saveTheme(nextTheme);
 }
 
-export function updateThemeIcon(theme) {
-    const toggleBtnIco = document.getElementById("theme-toggle-icon");
+function updateThemeIcon(theme) {
+    const themeIco = document.getElementById("theme-toggle-icon");
 
-    toggleBtnIco.classList.toggle("icon-dark-mode", theme === "dark");
-    toggleBtnIco.classList.toggle("icon-light-mode", theme === "light");
+    themeIco.classList.toggle("icon-dark-mode", theme === "dark");
+    themeIco.classList.toggle("icon-light-mode", theme === "light");
+}
+
+function getCurrentTheme() {
+    return document.documentElement.dataset.theme;
 }
 
 function applyTheme(theme) {
@@ -42,8 +36,4 @@ function applyTheme(theme) {
 
 function saveTheme(theme) {
     localStorage.setItem(STORAGE_KEY, theme);
-}
-
-function getCurrentTheme() {
-    return document.documentElement.dataset.theme;
 }
