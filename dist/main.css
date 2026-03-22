@@ -26,6 +26,16 @@
   -webkit-mask-image: url("assets/icons/light-mode.svg");
 }
 
+.icon-visible {
+  mask-image: url("assets/icons/visible.svg");
+  -webkit-mask-image: url("assets/icons/visible.svg");
+}
+
+.icon-invisible {
+  mask-image: url("assets/icons/invisible.svg");
+  -webkit-mask-image: url("assets/icons/invisible.svg");
+}
+
 .icon-sm {
   --icon-size: 1.5rem;
 }
@@ -51,11 +61,12 @@
   -webkit-mask-size: contain;
   flex-shrink: 0;
 }
-[data-theme=dark] .icon {
+
+[data-theme=dark] .theme-icon-switch {
   mask-image: url("assets/icons/dark-mode.svg");
   -webkit-mask-image: url("assets/icons/dark-mode.svg");
 }
-[data-theme=light] .icon {
+[data-theme=light] .theme-icon-switch {
   mask-image: url("assets/icons/light-mode.svg");
   -webkit-mask-image: url("assets/icons/light-mode.svg");
 }
@@ -112,7 +123,7 @@
   --color-error: #ffb4ab;
   --color-on-error: #690005;
   --color-primary-fixed-dim: #384379;
-  --box-shadow: 0 4px 6px #808080;
+  --box-shadow: 0 4px 6px #80808080;
   --overlay-color: #6d769ebe;
 }
 
@@ -138,6 +149,205 @@ body {
   overflow: hidden;
 }
 
+.userServiceFormContainer {
+  position: fixed;
+  inset: 0;
+  width: 800px;
+  height: 500px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-container);
+  border-radius: var(--radius-mid);
+  margin: auto;
+  z-index: 999;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: "title-logo heading-area" "title-logo form";
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s var(--custom-transition), transform 0.5s var(--custom-transition);
+}
+.userServiceFormContainer.open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-theme=dark] .userServiceFormContainer {
+  background-color: var(--color-on-secondary-container);
+}
+
+.userServiceTitleLogo {
+  grid-area: title-logo;
+  background-color: var(--color-on-secondary-container);
+  color: var(--color-secondary-container);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--common-padding);
+  padding: var(--common-padding);
+  align-self: stretch;
+}
+
+[data-theme=dark] .userServiceTitleLogo {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.userServicelogo {
+  grid-area: logo;
+  background: url("assets/task-manager-light.ico") center/contain no-repeat;
+  height: 5rem;
+  width: 5rem;
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-round);
+}
+
+.userServiceHeadingArea {
+  grid-area: heading-area;
+  padding: var(--common-padding);
+  color: var(--color-on-secondary-container);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--common-padding);
+}
+
+[data-theme=dark] .userServiceHeadingArea {
+  color: var(--color-secondary-container);
+}
+
+.userServiceHeading {
+  font-size: 2rem;
+}
+
+.userServiceSubHeading {
+  font-size: 0.9rem;
+}
+
+.userServiceForm {
+  padding: var(--common-padding);
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--common-padding);
+}
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.35rem;
+}
+
+.displayNameLabel,
+.passwordLabel {
+  font-size: 1rem;
+  color: var(--color-no-secondary-container);
+}
+
+[data-theme=dark] .displayNameLabel,
+[data-theme=dark] .passwordLabel {
+  color: var(--color-secondary-container);
+}
+
+.displayNameInput {
+  font-size: 0.9rem;
+  outline: none;
+  border: 1px solid transparent;
+  padding: 0.4rem;
+  border-radius: 5px;
+  width: 100%;
+  transition: transform 0.5s var(--custom-transition), scale 0.5s var(--custom-transition), box-shadow 0.5s var(--custom-transition);
+}
+.displayNameInput:focus-within {
+  border: 1px solid #000;
+  transform: translateY(-2px);
+  scale: 1.01;
+  box-shadow: var(--box-shadow);
+}
+
+.passwordInput {
+  font-size: 0.9rem;
+  outline: none;
+  border: none;
+  flex: 1;
+}
+
+.password-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.15rem 0.4rem;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: transform 0.5s var(--custom-transition), scale 0.5s var(--custom-transition), box-shadow 0.5s var(--custom-transition);
+}
+.password-container:focus-within {
+  border: 1px solid #000;
+  transform: translateY(-2px);
+  scale: 1.01;
+  box-shadow: var(--box-shadow);
+}
+
+.toggle-visibility {
+  background-color: #000;
+  left: 93.5%;
+  cursor: pointer;
+}
+
+.submitBtn {
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+  border-radius: var(--radius-mid);
+  border: none;
+  background-color: var(--color-on-tertiary-container);
+  color: var(--color-tertiary-container);
+  font-weight: 400;
+  border: 2px solid transparent;
+  transition: border 0.5s var(--custom-transition), scale 0.5s var(--custom-transition);
+}
+.submitBtn:active {
+  border: 2px solid var(--color-tertiary-container);
+  scale: 0.98;
+}
+
+[data-theme=light] .submitBtn {
+  background-color: var(--color-tertiary-container);
+  color: var(--color-on-tertiary-container);
+}
+[data-theme=light] .submitBtn:active {
+  border: 2px solid var(--color-on-tertiary-container);
+}
+
+@media screen and (max-width: 480px) {
+  .userServiceFormContainer {
+    width: 95%;
+    height: 60%;
+    bottom: 35%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 5fr;
+    grid-template-areas: "title-logo" "heading-area" "form";
+  }
+}
+/*
+.test_trigger {
+    position: fixed;
+    padding: 1rem;
+}
+*/
 .app-task-manager {
   display: grid;
   grid-template-columns: 17.5rem 1fr 12.5rem;
@@ -150,7 +360,7 @@ body {
 @media screen and (max-width: 480px) {
   .app-task-manager {
     display: grid;
-    grid-template-columns: 4rem 1fr 4rem;
+    grid-template-columns: 4rem 1fr 7rem;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: "logo-text search profile" "task-main task-main task-main" "footer footer footer";
   }
@@ -200,7 +410,7 @@ body {
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: contain;
     pointer-events: auto;
-    z-index: 1000;
+    z-index: 300;
   }
   .app-logo-header.no-bg {
     background-color: transparent !important;
@@ -320,11 +530,6 @@ body {
   color: var(--color-primary);
 }
 
-@media screen and (max-width: 480px) {
-  .search-container {
-    width: 85%;
-  }
-}
 .search-btn {
   height: 2.5rem;
   width: 2.5rem;

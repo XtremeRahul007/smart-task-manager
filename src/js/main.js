@@ -4,6 +4,8 @@ import { initSidebar } from "./components/sideBar.js";
 import { activeState, closeState } from "./state/uiState.js";
 import { initTheme } from "./theme/themeManager.js";
 import { setupThemeToggle } from "./theme/themeToggle.js";
+import { initDataBase } from "./db/db.js";
+import { initUserServiceForm } from "./components/userServiceForm.js";
 
 const modules = [
     initPopupMenu,
@@ -12,8 +14,11 @@ const modules = [
     closeState,
     overLayToggle,
     initTheme,
-    setupThemeToggle
+    setupThemeToggle,
+    initDataBase,
+    initUserServiceForm
 ]
+
 function startApp() {
     modules.forEach(fn => {
         try {

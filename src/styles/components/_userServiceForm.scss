@@ -1,0 +1,224 @@
+.userServiceFormContainer {
+    position: fixed;
+    inset: 0;
+    width: 800px;
+    height: 500px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-secondary-container);
+    border-radius: var(--radius-mid);
+    margin: auto;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+        "title-logo heading-area"
+        "title-logo form";
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(.5);
+    transition:
+        opacity .5s var(--custom-transition),
+        transform .5s var(--custom-transition);
+
+    &.open {
+        pointer-events: auto;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+[data-theme="dark"] .userServiceFormContainer {
+    background-color: var(--color-on-secondary-container);
+
+}
+
+.userServiceTitleLogo {
+    grid-area: title-logo;
+    background-color: var(--color-on-secondary-container);
+    color: var(--color-secondary-container);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--common-padding);
+    padding: var(--common-padding);
+    align-self: stretch;
+}
+
+[data-theme="dark"] .userServiceTitleLogo {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+}
+
+.userServicelogo {
+    grid-area: logo;
+    background: url('assets/task-manager-light.ico') center / contain no-repeat;
+    height: 5rem;
+    width: 5rem;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-round);
+
+}
+
+.userServiceHeadingArea {
+    grid-area: heading-area;
+    padding: var(--common-padding);
+    color: var(--color-on-secondary-container);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--common-padding);
+}
+
+[data-theme="dark"] .userServiceHeadingArea {
+    color: var(--color-secondary-container);
+}
+
+.userServiceHeading {
+    font-size: 2rem;
+}
+
+.userServiceSubHeading {
+    font-size: .9rem;
+}
+
+.userServiceForm {
+    padding: var(--common-padding);
+    grid-area: form;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--common-padding);
+
+}
+
+.field-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .35rem;
+}
+
+.displayNameLabel,
+.passwordLabel {
+    font-size: 1rem;
+    color: var(--color-no-secondary-container);
+}
+
+[data-theme="dark"] .displayNameLabel,
+[data-theme="dark"] .passwordLabel {
+    color: var(--color-secondary-container);
+}
+
+.displayNameInput {
+    font-size: .9rem;
+    outline: none;
+    border: 1px solid transparent;
+    padding: .4rem;
+    border-radius: 5px;
+    width: 100%;
+    transition:
+        transform .5s var(--custom-transition),
+        scale .5s var(--custom-transition),
+        box-shadow .5s var(--custom-transition);
+
+    &:focus-within {
+        border: 1px solid #000;
+        transform: translateY(-2px);
+        scale: 1.01;
+        box-shadow: var(--box-shadow);
+    }
+}
+
+.passwordInput {
+    font-size: .9rem;
+    outline: none;
+    border: none;
+    flex: 1;
+}
+
+.password-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .15rem .4rem;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition:
+        transform .5s var(--custom-transition),
+        scale .5s var(--custom-transition),
+        box-shadow .5s var(--custom-transition);
+
+    &:focus-within {
+        border: 1px solid #000;
+        transform: translateY(-2px);
+        scale: 1.01;
+        box-shadow: var(--box-shadow);
+    }
+}
+
+.toggle-visibility {
+    background-color: #000;
+    left: 93.5%;
+    cursor: pointer;
+}
+
+.submitBtn {
+    font-size: 1rem;
+    padding: .5rem 2rem;
+    border-radius: var(--radius-mid);
+    border: none;
+    background-color: var(--color-on-tertiary-container);
+    color: var(--color-tertiary-container);
+    font-weight: 400;
+    border: 2px solid transparent;
+    transition:
+        border .5s var(--custom-transition),
+        scale .5s var(--custom-transition);
+
+    &:active {
+        border: 2px solid var(--color-tertiary-container);
+        scale: .98;
+    }
+}
+
+[data-theme="light"] .submitBtn {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+
+    &:active {
+        border: 2px solid var(--color-on-tertiary-container);
+    }
+}
+
+@media screen and (max-width:480px) {
+    .userServiceFormContainer {
+        width: 95%;
+        height: 60%;
+        bottom: 35%;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 5fr;
+        grid-template-areas:
+            "title-logo"
+            "heading-area"
+            "form";
+    }
+}
+
+/*
+.test_trigger {
+    position: fixed;
+    padding: 1rem;
+}
+*/

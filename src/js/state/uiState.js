@@ -7,7 +7,7 @@ function notify() {
         listener(activeComponent);
     }
 }
-export function activeState(name, closeFunction, needOverlay) {
+export function activeState(name, closeFunction, needOverlay, dismissibleOverlay) {
     if (activeComponent && activeComponent.name !== name) {
         activeComponent.close();
     }
@@ -15,7 +15,8 @@ export function activeState(name, closeFunction, needOverlay) {
     activeComponent = {
         name,
         close: closeFunction,
-        needOverlay
+        needOverlay,
+        dismissibleOverlay
     }
 
     notify();

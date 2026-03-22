@@ -7,10 +7,11 @@ export function initPopupMenu() {
     if (!menuBtn || !profileMenu) return;
     let isOpen = false;
     let needOverlay = true;
+    let dismissibleOverlay = true;
 
     const openPopup = () => {
         profileMenu.classList.add("open");
-        activeState("popup", closePopup, needOverlay);
+        activeState("popup", closePopup, needOverlay, dismissibleOverlay);
         isOpen = true;
     }
 

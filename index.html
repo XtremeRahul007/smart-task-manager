@@ -36,7 +36,7 @@
         </nav>
         <header class="app-user-profile">
             <button type="button" class="theme-toggle-btn" id="theme-toggle-btn">
-                <span class="theme-toggle-icon icon icon-sm" id="theme-toggle-icon"></span>
+                <span class="theme-toggle-icon icon icon-sm theme-icon-switch" id="theme-toggle-icon"></span>
             </button>
             <button class="app-profile-icon" id="profileMenuBtn">R</button>
             <div class="app-profile-menu" id="profileMenu">
@@ -53,6 +53,35 @@
             <p>sideBar</p>
         </aside>
         <main class="app-task-container">task-container</main>
+        <section class="userServiceFormContainer" id="userServiceForm">
+            <div class="userServiceTitleLogo">
+                <div class="userServicelogo"></div>
+                <h2 class="userServiceTitle">Smart Task Manager</h2>
+            </div>
+            <div class="userServiceHeadingArea">
+                <h3 class="userServiceHeading">Create your local profile</h3>
+                <p class="userServiceSubHeading">Your data stays only on this device. nothing is sent to any server.
+                    Perfect for private notes, todos, settings, or offline use.</p>
+            </div>
+            <form id="userServiceForm" class="userServiceForm" autocomplete="on">
+                <div class="field-wrapper">
+                    <label for="displayName" class="displayNameLabel">Choose a username</label>
+                    <input type="text" class="displayNameInput" name="displayName" id="displayName"
+                        placeholder="Abc_123" autocomplete="name" required autofocus>
+                </div>
+                <div class="field-wrapper">
+                    <label for="password" class="passwordLabel">Choose a password</label>
+                    <div class="password-container">
+                        <input type="text" class="passwordInput" name="password" id="password" placeholder="******"
+                            autocomplete="new-password" required minlength="6">
+                        <button type="button" class="icon icon-visible icon-sm toggle-visibility"
+                            aria-label="Toggle password visibility"></button>
+                    </div>
+                </div>
+                <button type="submit" class="submitBtn">Create my local profile</button>
+            </form>
+        </section>
+        <!--<button type="button" class="test_trigger" id="test_trigger"></button>-->
         <footer class="app-footer"></footer>
         <div class="overLay" id="overLay"></div>
         <script type="module" src="./src/js/main.js"></script>

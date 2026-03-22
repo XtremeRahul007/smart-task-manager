@@ -1,4 +1,4 @@
-$icons: search, menu, dark-mode, light-mode;
+$icons: search, menu, dark-mode, light-mode, visible, invisible;
 
 @each $icon in $icons {
     .icon-#{$icon} {
@@ -31,7 +31,9 @@ $icon-sizes: (
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: contain;
     flex-shrink: 0;
+}
 
+.theme-icon-switch {
     [data-theme="dark"] & {
         mask-image: url("assets/icons/dark-mode.svg");
         -webkit-mask-image: url("assets/icons/dark-mode.svg");

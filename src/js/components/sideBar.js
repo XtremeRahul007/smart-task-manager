@@ -7,11 +7,12 @@ export function initSidebar() {
     if (!menuBtn || !sideBar) return;
     let isOpen = false;
     let needOverlay = true;
-     
+    let dismissibleOverlay = true;
+
     const openSidebar = () => {
         sideBar.classList.add("open");
         menuBtn.classList.add("no-bg");
-        activeState("sideBar", closeSidebar, needOverlay);
+        activeState("sideBar", closeSidebar, needOverlay, dismissibleOverlay);
         isOpen = true;
     }
 

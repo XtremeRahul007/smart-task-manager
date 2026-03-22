@@ -44,7 +44,7 @@
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-size: contain;
         pointer-events: auto;
-        z-index: 1000;
+        z-index: 300;
 
         &.no-bg {
             background-color: transparent !important;
