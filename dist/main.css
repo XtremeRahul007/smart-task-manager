@@ -149,6 +149,12 @@ body {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
 .userServiceFormContainer {
   position: fixed;
   inset: 0;
@@ -332,6 +338,20 @@ body {
   border: 2px solid var(--color-on-tertiary-container);
 }
 
+.modeSwitchContainer {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.toggle-mode {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #0000FF;
+  font-size: 1rem;
+}
+
 @media screen and (max-width: 480px) {
   .userServiceFormContainer {
     width: 95%;
@@ -340,6 +360,14 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 5fr;
     grid-template-areas: "title-logo" "heading-area" "form";
+  }
+}
+@media screen and (min-width: 480px) {
+  .toggle-mode {
+    cursor: pointer;
+  }
+  .submitBtn {
+    cursor: pointer;
   }
 }
 /*

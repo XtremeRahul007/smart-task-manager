@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/main.css">
     <link rel="icon" href="dist/assets/xtreme.ico" type="image/xtreme-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <title>Smart Task Manager</title>
     <script>
         (function () {
@@ -72,11 +77,15 @@
                 <div class="field-wrapper">
                     <label for="password" class="passwordLabel">Choose a password</label>
                     <div class="password-container">
-                        <input type="text" class="passwordInput" name="password" id="password" placeholder="******"
+                        <input type="password" class="passwordInput" name="password" id="password" placeholder="******"
                             autocomplete="new-password" required minlength="6">
                         <button type="button" class="icon icon-visible icon-sm toggle-visibility"
                             aria-label="Toggle password visibility"></button>
                     </div>
+                </div>
+                <div class="modeSwitchContainer">
+                    <p class="modeSwitchText">Already have an account?</p>
+                    <button type="button" class="toggle-mode" id="modeSwitchBtn">Sign in</button>
                 </div>
                 <button type="submit" class="submitBtn">Create my local profile</button>
             </form>
@@ -84,7 +93,7 @@
         <!--<button type="button" class="test_trigger" id="test_trigger"></button>-->
         <footer class="app-footer"></footer>
         <div class="overLay" id="overLay"></div>
-        <script type="module" src="./src/js/main.js"></script>
+        <script type="module" src="./dist/main.js"></script>
     </section>
 </body>
 

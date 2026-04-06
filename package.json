@@ -13,12 +13,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/XtremeRahul007/smart-task-manager/issues"
   },
   "homepage": "https://github.com/XtremeRahul007/smart-task-manager#readme",
   "devDependencies": {
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "typescript": "^6.0.2"
   }
 }

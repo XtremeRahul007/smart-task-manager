@@ -201,6 +201,22 @@
     }
 }
 
+.modeSwitchContainer {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.toggle-mode {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #0000FF;
+    font-size: 1rem;
+}
+
+
+
 @media screen and (max-width:480px) {
     .userServiceFormContainer {
         width: 95%;
@@ -216,6 +232,15 @@
     }
 }
 
+@media screen and (min-width:480px) {
+    .toggle-mode {
+        cursor: pointer;
+    }
+
+    .submitBtn {
+        cursor: pointer;
+    }
+}
 /*
 .test_trigger {
     position: fixed;
