@@ -1,6 +1,8 @@
 .app-profile-menu {
     position: absolute;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     border-radius: var(--radius-mid);
     padding: var(--common-padding);
     height: 20rem;
@@ -13,7 +15,7 @@
     transform: translateY(-1rem) scale(0);
     transition: 1s var(--custom-transition);
     background-color: var(--color-tertiary-container);
-    color: var(--color-on-tertiary-container);
+    overflow: auto;
 
     &.open {
         pointer-events: auto;
@@ -21,6 +23,28 @@
         transform: translateY(0) scale(1);
     }
 }
+
+.profile-menu-item {
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: var(--color-tertiary-container);
+    background-color: var(--color-on-tertiary-container);
+    border: 2px solid var(--color-tertiary-container);
+    padding: .5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 50ms ease;
+
+    &:active {
+        color: var(--color-on-tertiary-container);
+        background-color: var(--color-tertiary-container);
+        border: 2px solid var(--color-on-tertiary-container);
+    }
+}
+
 
 .app-user-profile {
     grid-area: profile;
@@ -84,4 +108,18 @@
 
 .theme-toggle-icon {
     color: var(--color-on-tertiary-container);
+
+    &.animate-once {
+        animation: spinOnce 500ms ease-in-out forwards;
+    }
+}
+
+@keyframes spinOnce {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

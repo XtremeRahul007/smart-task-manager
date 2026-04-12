@@ -96,7 +96,6 @@
     justify-content: flex-start;
     align-items: center;
     gap: var(--common-padding);
-
 }
 
 .field-wrapper {
@@ -109,7 +108,7 @@
 .displayNameLabel,
 .passwordLabel {
     font-size: 1rem;
-    color: var(--color-no-secondary-container);
+    color: var(--color-on-secondary-container);
 }
 
 [data-theme="dark"] .displayNameLabel,
@@ -125,15 +124,10 @@
     border-radius: 5px;
     width: 100%;
     transition:
-        transform .5s var(--custom-transition),
-        scale .5s var(--custom-transition),
-        box-shadow .5s var(--custom-transition);
+        border .5s var(--custom-transition);
 
     &:focus-within {
         border: 1px solid #000;
-        transform: translateY(-2px);
-        scale: 1.01;
-        box-shadow: var(--box-shadow);
     }
 }
 
@@ -150,27 +144,25 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: .15rem .4rem;
+    padding: .3rem .4rem;
     background-color: #fff;
     border-radius: 5px;
     border: 1px solid transparent;
     transition:
-        transform .5s var(--custom-transition),
-        scale .5s var(--custom-transition),
-        box-shadow .5s var(--custom-transition);
+        border .5s var(--custom-transition);
 
     &:focus-within {
         border: 1px solid #000;
-        transform: translateY(-2px);
-        scale: 1.01;
-        box-shadow: var(--box-shadow);
     }
 }
 
 .toggle-visibility {
-    background-color: #000;
-    left: 93.5%;
+    background-color: var(--color-on-secondary-container);
     cursor: pointer;
+}
+
+[data-theme="dark"] .toggle-visibility {
+    background-color: var(--color-secondary-container);
 }
 
 .submitBtn {
@@ -241,6 +233,7 @@
         cursor: pointer;
     }
 }
+
 /*
 .test_trigger {
     position: fixed;

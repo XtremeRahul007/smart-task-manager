@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/main.css">
     <link rel="icon" href="dist/assets/xtreme.ico" type="image/xtreme-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
     <title>Smart Task Manager</title>
     <script>
         (function () {
@@ -34,9 +29,9 @@
         <nav class="app-search-bar">
             <div class="search-container">
                 <button class="search-btn">
-                    <div class="search-icon icon icon-search icon-sm"></div>
+                    <div class="search-icon icon icon-search icon-sm" id="searchBth"></div>
                 </button>
-                <input class="search-bar" type="search" placeholder="Search">
+                <input class="search-bar" id="searchBar" type="search" placeholder="Search">
             </div>
         </nav>
         <header class="app-user-profile">
@@ -45,9 +40,14 @@
             </button>
             <button class="app-profile-icon" id="profileMenuBtn">R</button>
             <div class="app-profile-menu" id="profileMenu">
-                <div>temp_item1</div>
-                <div>temp_item2</div>
-                <div>temp_item3</div>
+                <button type="button" id="logoutBth" class="profile-menu-item">Logout</button>
+                <button class="profile-menu-item">temp_item1</button>
+                <button class="profile-menu-item">temp_item2</button>
+                <button class="profile-menu-item">temp_item3</button>
+                <button class="profile-menu-item">temp_item4</button>
+                <button class="profile-menu-item">temp_item5</button>
+                <button class="profile-menu-item">temp_item6</button>
+                <button class="profile-menu-item">temp_item7</button>
             </div>
         </header>
         <aside id="sideBar" class="app-sidebar">
@@ -58,7 +58,7 @@
             <p>sideBar</p>
         </aside>
         <main class="app-task-container">task-container</main>
-        <section class="userServiceFormContainer" id="userServiceForm">
+        <section class="userServiceFormContainer" id="userServiceFormContainer">
             <div class="userServiceTitleLogo">
                 <div class="userServicelogo"></div>
                 <h2 class="userServiceTitle">Smart Task Manager</h2>
@@ -68,7 +68,7 @@
                 <p class="userServiceSubHeading">Your data stays only on this device. nothing is sent to any server.
                     Perfect for private notes, todos, settings, or offline use.</p>
             </div>
-            <form id="userServiceForm" class="userServiceForm" autocomplete="on">
+            <form class="userServiceForm" id="userServiceForm" autocomplete="on">
                 <div class="field-wrapper">
                     <label for="displayName" class="displayNameLabel">Choose a username</label>
                     <input type="text" class="displayNameInput" name="displayName" id="displayName"
@@ -79,7 +79,7 @@
                     <div class="password-container">
                         <input type="password" class="passwordInput" name="password" id="password" placeholder="******"
                             autocomplete="new-password" required minlength="6">
-                        <button type="button" class="icon icon-visible icon-sm toggle-visibility"
+                        <button type="button" id="toggleVisibility" class="icon icon-visible icon-sm toggle-visibility"
                             aria-label="Toggle password visibility"></button>
                     </div>
                 </div>
@@ -87,11 +87,12 @@
                     <p class="modeSwitchText">Already have an account?</p>
                     <button type="button" class="toggle-mode" id="modeSwitchBtn">Sign in</button>
                 </div>
-                <button type="submit" class="submitBtn">Create my local profile</button>
+                <button type="submit" class="submitBtn">Create an account</button>
             </form>
         </section>
         <!--<button type="button" class="test_trigger" id="test_trigger"></button>-->
         <footer class="app-footer"></footer>
+        <div class="toast-container" id="toastContainer"></div>
         <div class="overLay" id="overLay"></div>
         <script type="module" src="./dist/main.js"></script>
     </section>

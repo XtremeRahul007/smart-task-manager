@@ -1,31 +1,29 @@
-export function initDataBase(): void {
+import { showToast } from "../services/toastService.js";
 
-    const dbName = "smartTaskManager";
-    const dbVersion = 1;
+const DB_NAME: string = "smartTaskManagerDB";
+const DB_VERSION: number = 1;
 
-    let db;
 
-    const request = indexedDB.open(dbName, dbVersion);
+export function openDB(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+        const request: IDBOpenDBRequest = indexedDB.open(DB_NAME, DB_VERSION);
 
-    request.onupgradeneeded = () => {
-        db = request.result;
+        request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
+            const db = (event.target as IDBOpenDBRequest).result;
 
-        if (!db.objectStoreNames.contains("users")) {
-            const storeUsers = db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
-            storeUsers.createIndex("usernameIndex", "username", { unique: true });
+            if (!db.objectStoreNames.contains("users")) {
+                const store = db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
+                store.createIndex("name", "name", { unique: true });
+            }
         }
-        
-        if (!db.objectStoreNames.contains("tasks")) {
-            const storeTasks = db.createObjectStore("tasks", { keyPath: "id", autoIncrement: true });
-            storeTasks.createIndex("taskIndex", "task");
+
+        request.onsuccess = (event: Event) => {
+            resolve(request.result);
         }
-    };
 
-    request.onsuccess = () => {
-        db = request.result;
-    };
-
-    request.onerror = () => {
-        console.warn("DataBase initialization failed.")
-    };
-}
+        request.onerror = (event: Event) => {
+            reject(request.error);
+        }
+        // showToast("Database running", "info");
+    });
+};

@@ -1,16 +1,23 @@
 import { closeState, activeState } from "../state/uiState.js";
+import { signUpUser, loginUser } from "../services/authService.js";
+import { showToast } from "../services/toastService.js";
+let mode = "signup";
+const submitBtn = document.querySelector(".submitBtn");
+let closeFormRef = null;
 export function initUserServiceForm() {
-    const form = document.getElementById("userServiceForm");
+    const form = document.getElementById("userServiceFormContainer");
     const heading = document.querySelector(".userServiceHeading");
-    const submitBtn = document.querySelector(".submitBtn");
     const switchText = document.querySelector(".modeSwitchText");
     const modeSwitchBtn = document.getElementById("modeSwitchBtn");
+    const nameLabel = document.querySelector(".displayNameLabel");
+    const passLabel = document.querySelector(".passwordLabel");
     /*const btn = document.getElementById("test_trigger");*/
     if (!form)
-        return;
+        return {
+            openForm: () => { }
+        };
     let isOpen = false;
     let needOverlay = true;
-    let mode = "signup";
     let dismissibleOverlay = false;
     const openForm = () => {
         form.classList.add("open");
@@ -22,11 +29,7 @@ export function initUserServiceForm() {
         closeState("userServiceForm");
         isOpen = false;
     };
-    const toggleForm = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        isOpen ? closeForm : openForm();
-    };
+    closeFormRef = closeForm;
     const switchMode = () => {
         if (mode === "signup") {
             mode = "signin";
@@ -34,6 +37,8 @@ export function initUserServiceForm() {
             submitBtn.textContent = "Sign in";
             switchText.textContent = "Don't have an account?";
             modeSwitchBtn.textContent = "Sign up";
+            nameLabel.textContent = "Enter your username";
+            passLabel.textContent = "Enter your password";
         }
         else {
             mode = "signup";
@@ -41,9 +46,56 @@ export function initUserServiceForm() {
             submitBtn.textContent = "Create an account";
             switchText.textContent = "Already have an account?";
             modeSwitchBtn.textContent = "Sign in";
+            nameLabel.textContent = "Choose a username";
+            passLabel.textContent = "Choose a password";
         }
     };
     modeSwitchBtn?.addEventListener("click", switchMode);
     /*btn.addEventListener("click", toggleForm);*/
+    return { openForm };
+}
+function saveSession(user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+}
+export function getCurrentUser() {
+    const data = localStorage.getItem("currentUser");
+    return data ? JSON.parse(data) : null;
+}
+export function logoutUser() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+export function initAuthController() {
+    const form = document.getElementById("userServiceForm");
+    if (!form)
+        return;
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        // showToast("Form Submitted", "info")
+        const name = document.getElementById("displayName").value;
+        const password = document.getElementById("password").value;
+        const user = { name, password };
+        try {
+            let message = "";
+            if (mode === "signup") {
+                message = await signUpUser(user);
+                showToast(message, "success");
+                closeFormRef?.();
+                console.log("closeFormRef:", closeFormRef);
+                saveSession(user);
+            }
+            else {
+                message = await loginUser(user);
+                showToast(message, "success");
+                closeFormRef?.();
+                console.log("closeFormRef:", closeFormRef);
+                saveSession(user);
+            }
+            console.log(message);
+        }
+        catch (err) {
+            showToast(err, "error");
+        }
+    });
 }
 //# sourceMappingURL=authForm.js.map

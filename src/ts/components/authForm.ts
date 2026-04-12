@@ -1,19 +1,28 @@
 import { closeState, activeState } from "../state/uiState.js";
+import { signUpUser, loginUser } from "../services/authService.js";
+import { showToast } from "../services/toastService.js";
+
+let mode = "signup";
+const submitBtn = document.querySelector<HTMLButtonElement>(".submitBtn");
+let closeFormRef: (() => void) | null = null;
 
 export function initUserServiceForm() {
-    const form = document.getElementById("userServiceForm");
-    const heading = document.querySelector(".userServiceHeading");
-    const submitBtn = document.querySelector(".submitBtn");
-    const switchText = document.querySelector(".modeSwitchText");
-    const modeSwitchBtn = document.getElementById("modeSwitchBtn");
+    const form = document.getElementById("userServiceFormContainer") as HTMLFormElement;
+    const heading = document.querySelector<HTMLHeadingElement>(".userServiceHeading");
+    const switchText = document.querySelector<HTMLParagraphElement>(".modeSwitchText");
+    const modeSwitchBtn = document.getElementById("modeSwitchBtn") as HTMLButtonElement;
+    const nameLabel = document.querySelector<HTMLLabelElement>(".displayNameLabel");
+    const passLabel = document.querySelector<HTMLLabelElement>(".passwordLabel");
+
 
     /*const btn = document.getElementById("test_trigger");*/
 
-    if (!form) return;
+    if (!form) return {
+        openForm: () => { }
+    };
 
     let isOpen = false;
     let needOverlay = true;
-    let mode = "signup";
     let dismissibleOverlay = false;
 
     const openForm = () => {
@@ -28,11 +37,7 @@ export function initUserServiceForm() {
         isOpen = false;
     }
 
-    const toggleForm = (e: Event) => {
-        e.preventDefault();
-        e.stopPropagation();
-        isOpen ? closeForm : openForm();
-    }
+    closeFormRef = closeForm;
 
     const switchMode = () => {
         if (mode === "signup") {
@@ -42,6 +47,8 @@ export function initUserServiceForm() {
             submitBtn!.textContent = "Sign in";
             switchText!.textContent = "Don't have an account?";
             modeSwitchBtn!.textContent = "Sign up";
+            nameLabel!.textContent = "Enter your username";
+            passLabel!.textContent = "Enter your password";
         }
         else {
             mode = "signup";
@@ -50,9 +57,65 @@ export function initUserServiceForm() {
             submitBtn!.textContent = "Create an account";
             switchText!.textContent = "Already have an account?";
             modeSwitchBtn!.textContent = "Sign in";
+            nameLabel!.textContent = "Choose a username";
+            passLabel!.textContent = "Choose a password";
         }
     };
 
     modeSwitchBtn?.addEventListener("click", switchMode);
     /*btn.addEventListener("click", toggleForm);*/
+    return { openForm };
+}
+
+function saveSession(user: any) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+}
+
+export function getCurrentUser() {
+    const data: any = localStorage.getItem("currentUser");
+    return data ? JSON.parse(data) : null;
+}
+
+export function logoutUser() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+
+export function initAuthController() {
+    const form = document.getElementById("userServiceForm") as HTMLFormElement;
+
+    if (!form) return;
+
+    form!.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        // showToast("Form Submitted", "info")
+        const name = (document.getElementById("displayName") as HTMLInputElement).value;
+        const password = (document.getElementById("password") as HTMLInputElement).value;
+
+        const user = { name, password };
+
+        try {
+            let message = "";
+
+
+            if (mode === "signup") {
+                message = await signUpUser(user);
+                showToast(message, "success");
+                closeFormRef?.();
+                console.log("closeFormRef:", closeFormRef);
+                saveSession(user)
+            } else {
+                message = await loginUser(user);
+                showToast(message, "success");
+                closeFormRef?.();
+                console.log("closeFormRef:", closeFormRef);
+                saveSession(user);
+            }
+
+            console.log(message);
+        }
+        catch (err) {
+            showToast(err as string, "error");
+        }
+    });
 }
