@@ -9,6 +9,7 @@ export async function signUpUser(user) {
             const error = request.error;
             if (error?.name === "ConstraintError") {
                 reject("Username already exists");
+                reject("Try to sign in.");
             }
             else {
                 reject("Something went wrong");

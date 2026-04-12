@@ -211,16 +211,27 @@
 
 @media screen and (max-width:480px) {
     .userServiceFormContainer {
-        width: 95%;
-        height: 60%;
-        bottom: 35%;
+        width: 100%;
+        top: auto;
+        height: auto;
+        max-height: 80dvh;
+        overflow-y: auto;
+        border-radius: 48px 48px 0 0;
+        opacity: 1;
+        transform: scale(1);
+        transform: translateY(100%);
 
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 5fr;
+        grid-template-rows: 3fr 1fr 5fr;
         grid-template-areas:
             "title-logo"
             "heading-area"
             "form";
+
+        &.open {
+            pointer-events: auto;
+            transform: translateY(0%);
+        }
     }
 }
 

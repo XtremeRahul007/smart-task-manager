@@ -6,10 +6,10 @@ export function initAuthGuard(openForm: () => void) {
     const user = getCurrentUser();
 
     if (!user) {
-        showToast("No user -> opening auth popup.", "info");
+        showToast("Welcome to Xtreme Task Manager", "info");
         openForm();
     } else {
-        showToast(`User already logged in: ${user.name}`, "info");
+        showToast(`Welcome Back: ${user.name}`, "info");
     }
 }
 

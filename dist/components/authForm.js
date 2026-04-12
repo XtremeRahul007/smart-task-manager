@@ -1,6 +1,7 @@
 import { closeState, activeState } from "../state/uiState.js";
 import { signUpUser, loginUser } from "../services/authService.js";
 import { showToast } from "../services/toastService.js";
+import { initProfileIcon } from "./profileIcon.js";
 let mode = "signup";
 const submitBtn = document.querySelector(".submitBtn");
 let closeFormRef = null;
@@ -83,6 +84,7 @@ export function initAuthController() {
                 closeFormRef?.();
                 console.log("closeFormRef:", closeFormRef);
                 saveSession(user);
+                initProfileIcon(user.name);
             }
             else {
                 message = await loginUser(user);
@@ -90,6 +92,7 @@ export function initAuthController() {
                 closeFormRef?.();
                 console.log("closeFormRef:", closeFormRef);
                 saveSession(user);
+                initProfileIcon(user.name);
             }
             console.log(message);
         }

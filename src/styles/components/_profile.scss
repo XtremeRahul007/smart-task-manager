@@ -15,7 +15,7 @@
     transform: translateY(-1rem) scale(0);
     transition: 1s var(--custom-transition);
     background-color: var(--color-tertiary-container);
-    overflow: auto;
+    overflow-y: auto;
 
     &.open {
         pointer-events: auto;
@@ -30,18 +30,18 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    color: var(--color-tertiary-container);
-    background-color: var(--color-on-tertiary-container);
-    border: 2px solid var(--color-tertiary-container);
-    padding: .5rem;
-    border-radius: 8px;
+    color: var(--color-on-tertiary-container);
+    background-color: var(--color-tertiary-container);
+    border: 2px solid var(--color-on-tertiary-container);
+    padding: .5rem 1rem;
+    border-radius: 16px;
     cursor: pointer;
     transition: 50ms ease;
 
     &:active {
-        color: var(--color-on-tertiary-container);
-        background-color: var(--color-tertiary-container);
-        border: 2px solid var(--color-on-tertiary-container);
+        color: var(--color-tertiary-container);
+        background-color: var(--color-on-tertiary-container);
+        border: 2px solid var(--color-tertiary-container);
     }
 }
 
@@ -72,6 +72,7 @@
     background-color: var(--inner-bg-color);
     font-size: 2rem;
     font-weight: 600;
+    font-display: swap;
     cursor: pointer;
     transition: .2s var(--custom-transition);
     user-select: none;

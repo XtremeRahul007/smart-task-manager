@@ -10,6 +10,7 @@ import { openDB } from "./db/indexedDB.js";
 import { togglePasswordVisibility } from "./services/authGuard.js";
 import { searchBarFocus } from "./components/searchBar.js";
 import { addClickAnimation } from "./animations/clickAnimation.js";
+import { initProfileIcon } from "./components/profileIcon.js";
 const modules = [
     initPopupMenu,
     initSidebar,
@@ -21,7 +22,8 @@ const modules = [
     openDB,
     togglePasswordVisibility,
     searchBarFocus,
-    addClickAnimation
+    addClickAnimation,
+    initProfileIcon
 ];
 function startApp() {
     const { openForm } = initUserServiceForm();
