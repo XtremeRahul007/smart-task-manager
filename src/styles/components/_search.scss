@@ -48,6 +48,11 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .search-container {
+        max-width: 15rem;
+    }
+}
 .search-btn {
     height: 2.5rem;
     width: 2.5rem;

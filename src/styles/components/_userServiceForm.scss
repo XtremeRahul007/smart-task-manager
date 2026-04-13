@@ -19,7 +19,7 @@
     overflow: hidden;
     pointer-events: none;
     opacity: 0;
-    transform: scale(.5);
+    transform: scale(0);
     transition:
         opacity .5s var(--custom-transition),
         transform .5s var(--custom-transition);
@@ -214,8 +214,7 @@
         width: 100%;
         top: auto;
         height: auto;
-        max-height: 80dvh;
-        overflow-y: auto;
+        height: 80svh;
         border-radius: 48px 48px 0 0;
         opacity: 1;
         transform: scale(1);
@@ -231,6 +230,7 @@
         &.open {
             pointer-events: auto;
             transform: translateY(0%);
+            overflow-y: auto;
         }
     }
 }

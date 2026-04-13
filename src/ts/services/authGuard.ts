@@ -1,6 +1,7 @@
 import { getCurrentUser } from "../components/authForm.js";
 import { logoutUser } from "../components/authForm.js";
 import { showToast } from "./toastService.js";
+import { clearAllStores } from "../db/dbUtils.js";
 
 export function initAuthGuard(openForm: () => void) {
     const user = getCurrentUser();
@@ -35,5 +36,14 @@ export function togglePasswordVisibility() {
             togglebth.classList.add("icon-visible");
             togglebth.classList.remove("icon-invisible");
         }
+    });
+}
+
+export function resetDatabase() {
+    const btn = document.getElementById("resetDbBtn") as HTMLButtonElement;
+
+    btn?.addEventListener("click", () => {
+        clearAllStores("smartTaskManagerDB");
+        logoutUser();
     });
 }

@@ -11,6 +11,7 @@ import { togglePasswordVisibility } from "./services/authGuard.js";
 import { searchBarFocus } from "./components/searchBar.js";
 import { addClickAnimation } from "./animations/clickAnimation.js";
 import { initProfileIcon } from "./components/profileIcon.js";
+import { resetDatabase } from "./services/authGuard.js";
 
 const modules: Array<() => void> = [
     initPopupMenu,
@@ -24,7 +25,8 @@ const modules: Array<() => void> = [
     togglePasswordVisibility,
     searchBarFocus,
     addClickAnimation,
-    initProfileIcon
+    initProfileIcon,
+    resetDatabase
 ]
 
 function startApp() {

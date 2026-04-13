@@ -38,4 +38,13 @@ export function showToast(message: string, type: "success" | "error" | "info") {
             toast.remove();
         }, 300);
     }
+
+    toast.addEventListener("click", () => {
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+            progress.remove();
+            toast.remove();
+        }, 500);
+    });
 }

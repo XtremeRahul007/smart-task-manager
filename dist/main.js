@@ -11,6 +11,7 @@ import { togglePasswordVisibility } from "./services/authGuard.js";
 import { searchBarFocus } from "./components/searchBar.js";
 import { addClickAnimation } from "./animations/clickAnimation.js";
 import { initProfileIcon } from "./components/profileIcon.js";
+import { resetDatabase } from "./services/authGuard.js";
 const modules = [
     initPopupMenu,
     initSidebar,
@@ -23,7 +24,8 @@ const modules = [
     togglePasswordVisibility,
     searchBarFocus,
     addClickAnimation,
-    initProfileIcon
+    initProfileIcon,
+    resetDatabase
 ];
 function startApp() {
     const { openForm } = initUserServiceForm();

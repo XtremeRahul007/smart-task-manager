@@ -1,7 +1,7 @@
 import { activeState, closeState } from "../state/uiState.js";
 
 export function initPopupMenu() {
-    const menuBtn = document.getElementById("profileMenuBtn");
+    const menuBtn = document.getElementById("profileMenuIcon");
     const profileMenu = document.getElementById("profileMenu");
 
     if (!menuBtn || !profileMenu) return;

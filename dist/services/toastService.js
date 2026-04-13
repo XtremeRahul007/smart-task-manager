@@ -29,5 +29,12 @@ export function showToast(message, type) {
             toast.remove();
         }, 300);
     };
+    toast.addEventListener("click", () => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+            progress.remove();
+            toast.remove();
+        }, 500);
+    });
 }
 //# sourceMappingURL=toastService.js.map
