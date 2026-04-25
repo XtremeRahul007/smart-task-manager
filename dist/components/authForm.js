@@ -21,12 +21,20 @@ export function initUserServiceForm() {
     let needOverlay = true;
     let dismissibleOverlay = false;
     const openForm = () => {
-        form.classList.add("open");
+        form.style.display = "grid";
+        requestAnimationFrame(() => {
+            form.classList.add("open");
+        });
         activeState("userServiceForm", closeForm, needOverlay, dismissibleOverlay);
         isOpen = true;
     };
     const closeForm = () => {
         form.classList.remove("open");
+        const handleTransitionEnd = () => {
+            form.style.display = "none";
+            form.removeEventListener("transitionend", handleTransitionEnd);
+        };
+        form.addEventListener("transitionend", handleTransitionEnd);
         closeState("userServiceForm");
         isOpen = false;
     };

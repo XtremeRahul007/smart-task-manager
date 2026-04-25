@@ -1,4 +1,6 @@
 import { activeState, closeState } from "../state/uiState.js";
+import { setView } from "../state/viewState.js";
+let closeSidebarRef = null;
 export function initSidebar() {
     const menuBtn = document.getElementById("asideMenuBtn");
     const sideBar = document.getElementById("sideBar");
@@ -19,6 +21,7 @@ export function initSidebar() {
         closeState("sideBar");
         isOpen = false;
     };
+    closeSidebarRef = closeSidebar;
     const toggleSidebar = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -27,4 +30,14 @@ export function initSidebar() {
     menuBtn.addEventListener("click", toggleSidebar);
 }
 ;
+export function viewMenuController() {
+    const radioBtns = document.querySelectorAll('[name="viewRender"]');
+    radioBtns.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+            const value = e.target.value;
+            setView(value);
+            closeSidebarRef?.();
+        });
+    });
+}
 //# sourceMappingURL=sideBar.js.map

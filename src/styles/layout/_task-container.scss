@@ -2,8 +2,7 @@
     grid-area: task-main;
     border-radius: var(--radius-mid);
     overflow-y: auto;
-    padding: var(--common-padding);
+    padding: .5rem;
     margin: .5rem;
-    color: var(--color-on-surface);
     background-color: var(--color-surface);
 }

@@ -1,0 +1,181 @@
+.create-task-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: .5rem;
+}
+
+.create-task-form,
+.edit-task-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: .5rem;
+}
+
+.task-heading-container {
+    padding: .5rem;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.task-entry-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.title-entry {
+    position: relative;
+}
+
+.title-text-counter {
+    position: absolute;
+    font-size: .75rem;
+    bottom: 0rem;
+    right: 0.1rem;
+}
+
+.task-entry {
+    padding: 0 .5rem .5rem .5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-on-secondary-container);
+    width: 33%;
+
+    input {
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        background: none;
+        color: var(--color-on-surface);
+        width: 100%;
+    }
+
+    legend {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+}
+
+.input-radio {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0 1rem .5rem 1rem;
+}
+
+.radio-btn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    input[type="radio"] {
+        accent-color: var(--color-secondary-container);
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+.task-description-container {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    padding: 1rem;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+}
+
+.task-description {
+    padding: 0 .5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-on-secondary-container);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    legend {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+}
+
+.desc-text-counter {
+    position: absolute;
+    font-size: .75rem;
+    bottom: 1.25rem;
+    right: 1.35rem;
+}
+
+.description-textarea {
+    width: 100%;
+    background: none;
+    color: var(--color-on-surface);
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: .5rem;
+    border-radius: 8px;
+    margin-bottom: .5rem;
+    flex: 1;
+}
+
+textarea {
+    resize: none;
+    overflow-y: auto;
+}
+
+.task-action-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: var(--color-secondary-container);
+    padding: .5rem;
+    gap: 1rem;
+    border-radius: 10px;
+}
+
+.action-btn {
+    padding: .5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: 2px solid var(--color-on-primary);
+    font-weight: 600;
+    transition:
+        background-color 50ms ease-in-out,
+        color 50ms ease-in-out,
+        border 50ms ease-in-out,
+    ;
+
+    &:active {
+        background-color: var(--color-on-primary);
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .task-entry-container {
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    .task-entry {
+        width: 100%;
+    }
+}

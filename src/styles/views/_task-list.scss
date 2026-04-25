@@ -1,0 +1,88 @@
+.task-list-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 100%;
+    gap: 1rem;
+}
+
+.task-list-header {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    width: 100%;
+    padding: .5rem 1rem;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.task-card {
+    display: grid;
+    grid-template-areas:
+        "title duedate priority editbtn"
+        "description description description editbtn";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    padding: .5rem;
+
+    & .low {
+        border-left: 4px solid var(--low-priority-border);
+    }
+}
+
+.task-card-title {
+    grid-area: title;
+    font-size: 1.2rem;
+}
+
+.task-card-description {
+    grid-area: description;
+}
+
+.task-card-duedate {
+    grid-area: duedate;
+    margin-inline: .5rem;
+    padding: .25rem;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    border: 1px solid var(--color-on-secondary-container);
+    border-radius: 8px;
+
+}
+
+.task-card-priority {
+    grid-area: priority;
+    margin-inline: .5rem;
+    padding: .25rem;
+    border-radius: 8px;
+
+    .low {
+        background-color: var(--low-priority-bg);
+        color: var(--low-on-priority-bg);
+        border: 2px solid var(--low-on-priority-bg);
+    }
+
+}
+
+.task-card-editbtn {
+    grid-area: editbtn;
+    margin: auto;
+    padding: .5rem;
+    aspect-ratio: 1 / 1;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border-radius: 8px;
+    border: none;
+}

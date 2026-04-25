@@ -45,12 +45,9 @@
                 <div class="menu-items-container">
                     <button type="button" id="logoutBth" class="profile-menu-item">Logout</button>
                     <button type="button" id="resetDbBtn" class="profile-menu-item">Reset All Data</button>
+                    <button class="profile-menu-item" id="tempBtn">temp_item1</button>
                     <button class="profile-menu-item">temp_item2</button>
                     <button class="profile-menu-item">temp_item3</button>
-                    <button class="profile-menu-item">temp_item4</button>
-                    <button class="profile-menu-item">temp_item5</button>
-                    <button class="profile-menu-item">temp_item6</button>
-                    <button class="profile-menu-item">temp_item7</button>
                 </div>
             </div>
         </header>
@@ -59,16 +56,52 @@
                 <div class="app-logo-aside"></div>
                 <h1 class="app-text-aside">Smart Task Manager</h1>
             </header>
-            <p>sideBar</p>
+            <div class="sideBar-item-container">
+                <label class="item-contents" for="idleView">
+                    <input type="radio" name="viewRender" id="idleView" value="idle">
+                    <div>Home</div>
+                </label>
+                <label class="item-contents" for="createTask">
+                    <input type="radio" name="viewRender" id="createTask" value="create">
+                    <div>Create New Task</div>
+                </label>
+                <label class="item-contents" for="taskList">
+                    <input type="radio" name="viewRender" id="taskList" value="tasks">
+                    <div>Task List</div>
+                </label>
+                <label class="item-contents" for="temp2">
+                    <input type="radio" name="viewRender" id="temp2">
+                    <div>Temp2</div>
+                </label>
+                <label class="item-contents" for="temp3">
+                    <input type="radio" name="viewRender" id="temp3">
+                    <div>Temp3</div>
+                </label>
+            </div>
         </aside>
-        <main class="app-task-container">task-container</main>
+        <main class="app-task-container" id="appTaskContainer">
+            <section class="task-list-view" id="taskListView">
+                <div class="task-list-header">
+                    <h2>Task List</h2>
+                </div>
+                <div class="task-list-container">
+                    <div class="task-card">
+                        <h3 class="task-card-title">Task title</h3>
+                        <div class="task-card-description">Task description</div>
+                        <div class="task-card-duedate">01-01-1990</div>
+                        <div class="task-card-priority">Medium</div>
+                        <button type="button" class="task-card-editbtn">Edit</button>
+                    </div>
+                </div>
+            </section>
+        </main>
         <section class="userServiceFormContainer" id="userServiceFormContainer">
             <div class="userServiceTitleLogo">
                 <div class="userServicelogo"></div>
                 <h2 class="userServiceTitle">Smart Task Manager</h2>
             </div>
             <div class="userServiceHeadingArea">
-                <h3 class="userServiceHeading">Create your local profile</h3>
+                <h2 class="userServiceHeading">Create your local profile</h2>
                 <p class="userServiceSubHeading">Your data stays only on this device. nothing is sent to any server.
                     Perfect for private notes, todos, settings, or offline use.</p>
             </div>
@@ -76,7 +109,7 @@
                 <div class="field-wrapper">
                     <label for="displayName" class="displayNameLabel">Choose a username</label>
                     <input type="text" class="displayNameInput" name="displayName" id="displayName"
-                        placeholder="Abc_123" autocomplete="name" required autofocus>
+                        placeholder="Abc_123" autocomplete="name" required>
                 </div>
                 <div class="field-wrapper">
                     <label for="password" class="passwordLabel">Choose a password</label>

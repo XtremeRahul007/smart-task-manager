@@ -1,4 +1,7 @@
 import { activeState, closeState } from "../state/uiState.js";
+import { setView } from "../state/viewState.js";
+
+let closeSidebarRef: (() => void) | null = null;
 
 export function initSidebar() {
     const menuBtn = document.getElementById("asideMenuBtn");
@@ -23,6 +26,8 @@ export function initSidebar() {
         isOpen = false;
     }
 
+    closeSidebarRef = closeSidebar;
+
     const toggleSidebar = (e: MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
@@ -30,3 +35,15 @@ export function initSidebar() {
     }
     menuBtn.addEventListener("click", toggleSidebar);
 };
+
+export function viewMenuController() {
+    const radioBtns = document.querySelectorAll('[name="viewRender"]');
+
+    radioBtns.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+            const value: any = (e.target as HTMLInputElement).value;
+            setView(value);
+            closeSidebarRef?.();
+        });
+    });
+}

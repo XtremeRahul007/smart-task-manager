@@ -20,6 +20,42 @@
     display: none;
 }
 
+.sideBar-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-block: 1rem;
+    gap: 1rem;
+}
+
+.item-contents {
+    display: inline-block;
+    width: 90%;
+    cursor: pointer;
+
+    input[type="radio"] {
+        position: absolute;
+    }
+
+    div {
+        background-color: var(--color-primary);
+        color: var(--color-on-primary);
+        border: 1px solid var(--color-on-primary);
+        padding: .5rem 2rem .5rem 4rem;
+        border-radius: 0px 64px 64px 0px;
+        font-size: 1rem;
+        font-weight: 600;
+        width: 100%;
+        transform: translateX(-3rem);
+        transition: transform 150ms ease-in-out;
+    }
+}
+
+.item-contents input:checked+div {
+    transform: translateX(0rem);
+}
+
 @media screen and (max-width:480px) {
     .app-logo-text-aside {
         grid-area: logo-text;

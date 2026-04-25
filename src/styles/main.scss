@@ -17,3 +17,6 @@
 @use 'components/profile';
 @use 'components/overlay';
 @use 'components/toast';
+@use 'views/create-task';
+@use 'views/task-list';
+@use 'views/idle-task'

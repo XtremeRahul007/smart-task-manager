@@ -12,6 +12,10 @@ import { searchBarFocus } from "./components/searchBar.js";
 import { addClickAnimation } from "./animations/clickAnimation.js";
 import { initProfileIcon } from "./components/profileIcon.js";
 import { resetDatabase } from "./services/authGuard.js";
+import { initCreateTaskView } from "./views/createTaskView.js";
+import { viewMenuController } from "./components/sideBar.js";
+import { initLandingView } from "./state/viewState.js";
+import { initIdleView } from "./views/idleView.js";
 
 const modules: Array<() => void> = [
     initPopupMenu,
@@ -26,7 +30,11 @@ const modules: Array<() => void> = [
     searchBarFocus,
     addClickAnimation,
     initProfileIcon,
-    resetDatabase
+    resetDatabase,
+    initCreateTaskView,
+    viewMenuController,
+    initLandingView,
+    initIdleView
 ]
 
 function startApp() {

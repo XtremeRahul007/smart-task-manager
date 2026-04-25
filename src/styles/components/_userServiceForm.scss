@@ -1,22 +1,23 @@
 .userServiceFormContainer {
     position: fixed;
     inset: 0;
-    width: 800px;
-    height: 500px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-secondary-container);
-    border-radius: var(--radius-mid);
     margin: auto;
     z-index: 999;
+
+    width: 800px;
+    height: 500px;
+
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr 2fr;
     grid-template-areas:
         "title-logo heading-area"
         "title-logo form";
+
+    background-color: var(--color-secondary-container);
+    border-radius: var(--radius-mid);
     overflow: hidden;
+    
     pointer-events: none;
     opacity: 0;
     transform: scale(0);
