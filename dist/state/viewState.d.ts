@@ -1,4 +1,4 @@
-export type View = "tasks" | "create" | "edit" | "idle";
+export type View = "tasks" | "create" | "edit" | "idle" | "inspect";
 type ViewState = {
     current: View | null;
     previous: View | null;
