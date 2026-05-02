@@ -1,5 +1,4 @@
 import { getCurrentUser } from "./authForm.js";
-import { truncateText } from "../utils/formatText.js";
 let usernameRef = null;
 export function initProfileIcon(authUsername = null) {
     const userIcon = document.getElementById("profileMenuIcon");
@@ -17,7 +16,7 @@ function initProfileUserName() {
     const profileUserName = document.getElementById("userProfileName");
     if (!profileUserName || !usernameRef)
         return;
-    const username = truncateText(usernameRef);
+    const username = usernameRef;
     profileUserName.textContent = `Hello, ${username}`;
 }
 //# sourceMappingURL=profileIcon.js.map

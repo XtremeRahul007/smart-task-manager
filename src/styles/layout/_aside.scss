@@ -29,6 +29,10 @@
     gap: 1rem;
 }
 
+.sideBar-item-container li {
+    width: 100%;
+}
+
 .item-contents {
     display: inline-block;
     width: 90%;
@@ -41,7 +45,6 @@
     div {
         background-color: var(--color-primary);
         color: var(--color-on-primary);
-        border: 1px solid var(--color-on-primary);
         padding: .5rem 2rem .5rem 4rem;
         border-radius: 0px 64px 64px 0px;
         font-size: 1rem;

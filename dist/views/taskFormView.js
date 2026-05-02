@@ -38,8 +38,8 @@ export function createTask() {
                 <div id="descTextCounter" class="desc-text-counter"></div>
             </div>
             <div class="task-action-btn-container">
-                <button type="reset" id="cancelTaskBtn" class="action-btn">Cancel</button>
-                <button type="submit" id="saveTaskBtn" class="action-btn">Save Task</button>
+                <button type="reset" class="action-btn">Cancel</button>
+                <button type="submit" class="action-btn">Save Task</button>
             </div>
         </form>`);
 }
@@ -83,8 +83,8 @@ export function editTask() {
                 <div id="descTextCounter" class="desc-text-counter"></div>
             </div>
             <div class="task-action-btn-container">
-                <button type="reset" id="cancelTaskBtn" class="action-btn">Cancel Changes</button>
-                <button type="submit" id="saveTaskBtn" class="action-btn">Confirm Changes</button>
+                <button type="reset" class="action-btn">Cancel Changes</button>
+                <button type="submit" class="action-btn">Confirm Changes</button>
             </div>
         </form>`);
 }
@@ -92,16 +92,11 @@ export function taskList() {
     return (`<section class="task-list-view" id="taskListView">
             <div class="task-list-header">
                 <h2>Task List</h2>
+                <button class="task-list-create-task-btn" id="createTaskBtn" type="button">
+                    <div class="icon icon-plus icon-sm"></div>
+                </button>
             </div>
-            <div class="task-list-container">
-                <div class="task-card">
-                    <h3 class="task-card-title">Task title</h3>
-                    <div class="task-card-description">Task description 80 Character long</div>
-                    <div class="task-card-duedate">01-01-1990</div>
-                    <div class="task-card-priority">Medium</div>
-                    <button type="button" class="task-card-editbtn">Edit</button>
-                </div>
-            </div>
+            <ul class="task-list-container"></ul>
         </section>`);
 }
 export function idleView() {

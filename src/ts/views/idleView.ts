@@ -4,11 +4,14 @@ import { checkRadioBtn } from "../utils/checkRadio.js";
 export function initIdleView() {
     const createTaskBtn = document.getElementById("createTaskTrigger") as HTMLButtonElement;
     const taskListBtn = document.getElementById("taskListTrigger") as HTMLButtonElement;
-    const radioID = document.getElementById("createTask") as HTMLInputElement;
 
     createTaskBtn?.addEventListener("click", () => {
-        checkRadioBtn(radioID);
         setView("create");
+        checkRadioBtn("createTask");
     });
-    taskListBtn?.addEventListener("click", () => setView("tasks"));
+
+    taskListBtn?.addEventListener("click", () => {
+        setView("tasks")
+        checkRadioBtn("taskList");
+    });
 }

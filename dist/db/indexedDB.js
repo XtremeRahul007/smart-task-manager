@@ -10,6 +10,12 @@ export function openDB() {
                 const store = db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
                 store.createIndex("name", "name", { unique: true });
             }
+            if (!db.objectStoreNames.contains("tasks")) {
+                const store = db.createObjectStore("tasks", { keyPath: "id", autoIncrement: true });
+                store.createIndex("title", "title", { unique: false });
+                store.createIndex("priority", "priority", { unique: false });
+                store.createIndex("dueDate", "dueDate", { unique: false });
+            }
         };
         request.onsuccess = (event) => {
             resolve(request.result);

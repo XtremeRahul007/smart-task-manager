@@ -15,7 +15,9 @@ export function setView(newView) {
 }
 export function initLandingView() {
     const radioID = document.getElementById("idleView");
-    checkRadioBtn(radioID);
-    document.addEventListener("DOMContentLoaded", () => { setView("idle"); });
+    document.addEventListener("DOMContentLoaded", () => {
+        setView("idle");
+        checkRadioBtn("idleView");
+    });
 }
 //# sourceMappingURL=viewState.js.map

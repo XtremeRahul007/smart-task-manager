@@ -1,5 +1,4 @@
-export function truncateText(text: string, maxLength: number = 20, suffix: string = "...") {
+export function truncateText(text: string, maxLength: number) {
     if (!text) return;
-
-    return text.length > maxLength ? text.slice(0, maxLength) + suffix : text; 
+    return text.length > maxLength ? text.slice(0, maxLength) + "...": text; 
 }

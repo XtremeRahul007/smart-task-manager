@@ -1,6 +1,7 @@
-export function checkRadioBtn(radio) {
-    if (radio) {
-        radio.checked = true;
+export function checkRadioBtn(radioID) {
+    const ID = document.getElementById(radioID);
+    if (ID) {
+        ID.checked = true;
     }
 }
 //# sourceMappingURL=checkRadio.js.map

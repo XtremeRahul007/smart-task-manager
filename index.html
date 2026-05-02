@@ -35,64 +35,73 @@
                 <input class="search-bar" id="searchBar" type="search" placeholder="Search">
             </div>
         </nav>
-        <header class="app-user-profile">
+        <div class="app-user-profile">
             <button type="button" class="theme-toggle-btn" id="theme-toggle-btn">
                 <span class="theme-toggle-icon icon icon-sm theme-icon-switch" id="theme-toggle-icon"></span>
             </button>
             <button class="app-profile-icon" id="profileMenuIcon">?</button>
             <div class="app-profile-menu" id="profileMenu">
-                <div class="user-profile" id="userProfileName">username</div>
-                <div class="menu-items-container">
-                    <button type="button" id="logoutBth" class="profile-menu-item">Logout</button>
-                    <button type="button" id="resetDbBtn" class="profile-menu-item">Reset All Data</button>
-                    <button class="profile-menu-item" id="tempBtn">temp_item1</button>
-                    <button class="profile-menu-item">temp_item2</button>
-                    <button class="profile-menu-item">temp_item3</button>
+                <div class="user-profile">
+                    <p id="userProfileName">username</p>
                 </div>
+                <ul class="menu-items-container">
+                    <li><button type="button" id="logoutBth" class="profile-menu-item">Logout</button></li>
+                    <li><button type="button" id="resetDbBtn" class="profile-menu-item">Reset All Data</button></li>
+                    <li><button class="profile-menu-item" id="tempBtn">temp_item1</button></li>
+                    <li><button class="profile-menu-item">temp_item2</button></li>
+                    <li><button class="profile-menu-item">temp_item3</button></li>
+                </ul>
             </div>
-        </header>
+        </div>
         <aside id="sideBar" class="app-sidebar">
-            <header class="app-logo-text-aside">
+            <div class="app-logo-text-aside">
                 <div class="app-logo-aside"></div>
                 <h1 class="app-text-aside">Smart Task Manager</h1>
-            </header>
-            <div class="sideBar-item-container">
-                <label class="item-contents" for="idleView">
-                    <input type="radio" name="viewRender" id="idleView" value="idle">
-                    <div>Home</div>
-                </label>
-                <label class="item-contents" for="createTask">
-                    <input type="radio" name="viewRender" id="createTask" value="create">
-                    <div>Create New Task</div>
-                </label>
-                <label class="item-contents" for="taskList">
-                    <input type="radio" name="viewRender" id="taskList" value="tasks">
-                    <div>Task List</div>
-                </label>
-                <label class="item-contents" for="temp2">
-                    <input type="radio" name="viewRender" id="temp2">
-                    <div>Temp2</div>
-                </label>
-                <label class="item-contents" for="temp3">
-                    <input type="radio" name="viewRender" id="temp3">
-                    <div>Temp3</div>
-                </label>
             </div>
+            <nav>
+                <ul class="sideBar-item-container">
+                    <li>
+                        <label class="item-contents" for="idleView">
+                            <input type="radio" name="viewRender" id="idleView" value="idle">
+                            <div>Home</div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="item-contents" for="createTask">
+                            <input type="radio" name="viewRender" id="createTask" value="create">
+                            <div>Create New Task</div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="item-contents" for="taskList">
+                            <input type="radio" name="viewRender" id="taskList" value="tasks">
+                            <div>Task List</div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="item-contents" for="temp2">
+                            <input type="radio" name="viewRender" id="temp2">
+                            <div>Temp2</div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="item-contents" for="temp3">
+                            <input type="radio" name="viewRender" id="temp3">
+                            <div>Temp3</div>
+                        </label>
+                    </li>
+                </ul>
+            </nav>
         </aside>
         <main class="app-task-container" id="appTaskContainer">
             <section class="task-list-view" id="taskListView">
                 <div class="task-list-header">
                     <h2>Task List</h2>
+                    <button class="task-list-create-task-btn" id="createTaskBtn" type="button">
+                        <div class="icon icon-plus icon-sm"></div>
+                    </button>
                 </div>
-                <div class="task-list-container">
-                    <div class="task-card">
-                        <h3 class="task-card-title">Task title</h3>
-                        <div class="task-card-description">Task description</div>
-                        <div class="task-card-duedate">01-01-1990</div>
-                        <div class="task-card-priority">Medium</div>
-                        <button type="button" class="task-card-editbtn">Edit</button>
-                    </div>
-                </div>
+                <ul class="task-list-container"></ul>
             </section>
         </main>
         <section class="userServiceFormContainer" id="userServiceFormContainer">

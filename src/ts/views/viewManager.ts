@@ -1,7 +1,9 @@
 import { viewState } from "../state/viewState.js";
-import { initCreateTaskView, initTextareaCounter } from "./createTaskView.js";
+import { initCreateTaskView} from "./createTaskView.js";
+import { initEditTaskView } from "./editTaskView.js";
 import { initIdleView } from "./idleView.js";
 import { createTask, editTask, taskList, idleView } from "./taskFormView.js";
+import { initTaskList } from "./taskListView.js";
 
 
 export function renderView() {
@@ -13,15 +15,16 @@ export function renderView() {
         case "create":
             container.innerHTML = createTask();
             initCreateTaskView();
-            initTextareaCounter();
             break;
 
         case "edit":
             container.innerHTML = editTask();
+            initEditTaskView();
             break;
 
         case "tasks":
             container.innerHTML = taskList();
+            initTaskList();
             break;
 
         case "idle":

@@ -1,4 +1,4 @@
-$icons: search, menu, dark-mode, light-mode, visible, invisible, plus;
+$icons: search, menu, dark-mode, light-mode, visible, invisible, plus, edit, reload,recycle;
 
 @each $icon in $icons {
     .icon-#{$icon} {
@@ -8,6 +8,7 @@ $icons: search, menu, dark-mode, light-mode, visible, invisible, plus;
 }
 
 $icon-sizes: (
+    xsm: 1rem,
     sm: 1.5rem,
     md: 2.5rem,
     lg: 3rem

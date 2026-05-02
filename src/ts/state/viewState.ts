@@ -2,7 +2,7 @@ import { showToast } from "../services/toastService.js";
 import { checkRadioBtn } from "../utils/checkRadio.js";
 import { renderView } from "../views/viewManager.js";
 
-export type View = "tasks" | "create" | "edit" | "idle";
+export type View = "tasks" | "create" | "edit" | "idle" | "inspect";
 
 type ViewState = {
     current: View | null,
@@ -27,6 +27,9 @@ export function setView(newView: View) {
 
 export function initLandingView() {
     const radioID = document.getElementById("idleView") as HTMLInputElement;
-    checkRadioBtn(radioID);
-    document.addEventListener("DOMContentLoaded", () => { setView("idle"); });
+    document.addEventListener("DOMContentLoaded", () => {
+        setView("idle"); 
+        checkRadioBtn("idleView");
+    });
+
 }

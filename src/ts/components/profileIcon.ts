@@ -1,5 +1,4 @@
 import { getCurrentUser } from "./authForm.js";
-import { truncateText } from "../utils/formatText.js";
 
 let usernameRef: string | null = null;
 export function initProfileIcon(authUsername: string | null = null) {
@@ -17,7 +16,7 @@ export function initProfileIcon(authUsername: string | null = null) {
 function initProfileUserName() {
     const profileUserName = document.getElementById("userProfileName");
     if (!profileUserName || !usernameRef) return;
-    const username = truncateText(usernameRef);
+    const username = usernameRef;
 
     profileUserName.textContent = `Hello, ${username}`;
 }
