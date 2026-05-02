@@ -1,0 +1,23 @@
+.inspect-task-view {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 10px;
+    padding: .5rem;
+}
+
+.inspect-title-meta {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inspect-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.inspect-create-date {
+    font-size: 1rem;
+}

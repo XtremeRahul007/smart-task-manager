@@ -7,53 +7,53 @@
 }
 
 .icon-search {
-  mask-image: url("assets/icons/search.svg");
-  -webkit-mask-image: url("assets/icons/search.svg");
+  mask-image: url("../assets/svgs/search.svg");
+  -webkit-mask-image: url("../assets/svgs/search.svg");
 }
 
 .icon-menu {
-  mask-image: url("assets/icons/menu.svg");
-  -webkit-mask-image: url("assets/icons/menu.svg");
+  mask-image: url("../assets/svgs/menu.svg");
+  -webkit-mask-image: url("../assets/svgs/menu.svg");
 }
 
 .icon-dark-mode {
-  mask-image: url("assets/icons/dark-mode.svg");
-  -webkit-mask-image: url("assets/icons/dark-mode.svg");
+  mask-image: url("../assets/svgs/dark-mode.svg");
+  -webkit-mask-image: url("../assets/svgs/dark-mode.svg");
 }
 
 .icon-light-mode {
-  mask-image: url("assets/icons/light-mode.svg");
-  -webkit-mask-image: url("assets/icons/light-mode.svg");
+  mask-image: url("../assets/svgs/light-mode.svg");
+  -webkit-mask-image: url("../assets/svgs/light-mode.svg");
 }
 
 .icon-visible {
-  mask-image: url("assets/icons/visible.svg");
-  -webkit-mask-image: url("assets/icons/visible.svg");
+  mask-image: url("../assets/svgs/visible.svg");
+  -webkit-mask-image: url("../assets/svgs/visible.svg");
 }
 
 .icon-invisible {
-  mask-image: url("assets/icons/invisible.svg");
-  -webkit-mask-image: url("assets/icons/invisible.svg");
+  mask-image: url("../assets/svgs/invisible.svg");
+  -webkit-mask-image: url("../assets/svgs/invisible.svg");
 }
 
 .icon-plus {
-  mask-image: url("assets/icons/plus.svg");
-  -webkit-mask-image: url("assets/icons/plus.svg");
+  mask-image: url("../assets/svgs/plus.svg");
+  -webkit-mask-image: url("../assets/svgs/plus.svg");
 }
 
 .icon-edit {
-  mask-image: url("assets/icons/edit.svg");
-  -webkit-mask-image: url("assets/icons/edit.svg");
+  mask-image: url("../assets/svgs/edit.svg");
+  -webkit-mask-image: url("../assets/svgs/edit.svg");
 }
 
 .icon-reload {
-  mask-image: url("assets/icons/reload.svg");
-  -webkit-mask-image: url("assets/icons/reload.svg");
+  mask-image: url("../assets/svgs/reload.svg");
+  -webkit-mask-image: url("../assets/svgs/reload.svg");
 }
 
 .icon-recycle {
-  mask-image: url("assets/icons/recycle.svg");
-  -webkit-mask-image: url("assets/icons/recycle.svg");
+  mask-image: url("../assets/svgs/recycle.svg");
+  -webkit-mask-image: url("../assets/svgs/recycle.svg");
 }
 
 .icon-xsm {
@@ -87,12 +87,12 @@
 }
 
 [data-theme=dark] .theme-icon-switch {
-  mask-image: url("assets/icons/dark-mode.svg");
-  -webkit-mask-image: url("assets/icons/dark-mode.svg");
+  mask-image: url("../assets/svgs/dark-mode.svg");
+  -webkit-mask-image: url("../assets/svgs/dark-mode.svg");
 }
 [data-theme=light] .theme-icon-switch {
-  mask-image: url("assets/icons/light-mode.svg");
-  -webkit-mask-image: url("assets/icons/light-mode.svg");
+  mask-image: url("../assets/svgs/light-mode.svg");
+  -webkit-mask-image: url("../assets/svgs/light-mode.svg");
 }
 
 :root[data-theme=light] {
@@ -198,11 +198,22 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
   background-color: var(--color-secondary-container);
   overflow: hidden;
 }
 
+html,
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter.woff2") format("woff2"), url("../assets/fonts/inter.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 .userServiceFormContainer {
   position: fixed;
   inset: 0;
@@ -252,7 +263,7 @@ body {
 
 .userServicelogo {
   grid-area: logo;
-  background: url("assets/task-manager-light.ico") center/contain no-repeat;
+  background: url("../assets/icons/task-manager-light.ico") center/contain no-repeat;
   height: 5rem;
   width: 5rem;
   aspect-ratio: 1/1;
@@ -464,7 +475,7 @@ body {
 
 .app-logo-header {
   border-radius: var(--radius-round);
-  background-image: url("assets/task-manager-light.ico");
+  background-image: url("../assets/icons/task-manager-light.ico");
   background-size: 100% 100%;
   width: 2rem;
   height: 2rem;
@@ -506,7 +517,7 @@ body {
 
 .app-logo-aside {
   border-radius: var(--radius-round);
-  background-image: url("assets/task-manager-light.ico");
+  background-image: url("../assets/icons/task-manager-light.ico");
   background-size: 100% 100%;
   width: 2rem;
   height: 2rem;
@@ -1274,6 +1285,29 @@ textarea {
     height: 12rem;
     width: 12rem;
   }
+}
+.inspect-task-view {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.inspect-title-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inspect-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.inspect-create-date {
+  font-size: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */

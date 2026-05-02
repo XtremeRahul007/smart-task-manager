@@ -3,7 +3,20 @@ html {
 }
 
 body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--color-secondary-container);
     overflow: hidden;
+}
+
+html,
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/fonts/inter.woff2') format('woff2'),
+        url('../assets/fonts/inter.woff') format('woff');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }

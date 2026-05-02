@@ -110,4 +110,12 @@ export function idleView() {
             </div>
         </section>`);
 }
+export function inspectTask() {
+    return (`<section class="inspect-task-view">
+            <div class="inspect-title-meta">
+                <h3 class="inspect-title">*Title*</h3>
+                <div class="inspect-create-date">Created at: *date*</div>
+            </div>
+        </section>`);
+}
 //# sourceMappingURL=taskFormView.js.map
