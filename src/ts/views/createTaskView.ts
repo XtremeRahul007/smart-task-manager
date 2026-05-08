@@ -17,6 +17,7 @@ export function initCreateTaskView() {
             title: title.value.trim(),
             description: desc.value.trim(),
             dueDate: date.value,
+            currentDate: new Date().toISOString().split('T')[0],
             priority: getSelectedPriority() as "low" | "medium" | "high"
         }
 
@@ -24,6 +25,7 @@ export function initCreateTaskView() {
         showToast(`Task: ${task.title}, ${task.dueDate}, ${task.description}, ${task.priority}`, "info");
         setView("tasks");
         checkRadioBtn("taskList");
+        console.log(task);
     });
 
     form?.addEventListener("reset", () => {

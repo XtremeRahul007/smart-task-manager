@@ -3,7 +3,7 @@ import { initCreateTaskView } from "./createTaskView.js";
 import { initEditTaskView } from "./editTaskView.js";
 import { initIdleView } from "./idleView.js";
 import { createTask, editTask, taskList, idleView, inspectTask } from "./taskFormView.js";
-import { initTaskList } from "./taskListView.js";
+import { initTaskList, initTaskListEvents } from "./taskListView.js";
 export function renderView() {
     const container = document.getElementById("appTaskContainer");
     if (!container)
@@ -20,6 +20,7 @@ export function renderView() {
         case "tasks":
             container.innerHTML = taskList();
             initTaskList();
+            initTaskListEvents();
             break;
         case "idle":
             container.innerHTML = idleView();

@@ -26,7 +26,6 @@ export function setView(newView: View) {
 
 
 export function initLandingView() {
-    const radioID = document.getElementById("idleView") as HTMLInputElement;
     document.addEventListener("DOMContentLoaded", () => {
         setView("idle"); 
         checkRadioBtn("idleView");

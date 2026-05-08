@@ -4,6 +4,7 @@
 
 @use 'base/reset';
 @use 'base/base';
+@use 'layout/app-loader';
 @use 'components/userServiceForm';
 
 @use 'layout/app-grid';
@@ -17,6 +18,7 @@
 @use 'components/profile';
 @use 'components/overlay';
 @use 'components/toast';
+@use 'components/confirm-popup';
 @use 'views/create-task';
 @use 'views/task-list';
 @use 'views/idle-task';

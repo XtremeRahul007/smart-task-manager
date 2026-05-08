@@ -35,8 +35,7 @@
     align-items: center;
     padding: .25rem;
     border-radius: var(--radius-round);
-    width: 100%;
-    max-width: 800px;
+    flex: 1;
     background-color: var(--color-primary);
     color: var(--color-on-primary);
     transition: background-color .5s var(--custom-transition);
@@ -50,9 +49,10 @@
 
 @media screen and (max-width: 480px) {
     .search-container {
-        max-width: 15rem;
+        width: 15rem;
     }
 }
+
 .search-btn {
     height: 2.5rem;
     width: 2.5rem;

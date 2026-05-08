@@ -50,29 +50,14 @@
 
     &.low-priority-container {
         border-left: 4px solid var(--low-priority-border);
-
-        .task-data .task-meta-container .task-card-priority {
-            background-color: var(--low-priority-bg);
-            color: var(--low-priority-border);
-        }
     }
 
     &.medium-priority-container {
         border-left: 4px solid var(--medium-priority-border);
-
-        .task-data .task-meta-container .task-card-priority {
-            background-color: var(--medium-priority-bg);
-            color: var(--medium-priority-border);
-        }
     }
 
     &.high-priority-container {
         border-left: 4px solid var(--high-priority-border);
-
-        .task-data .task-meta-container .task-card-priority {
-            background-color: var(--high-priority-bg);
-            color: var(--high-priority-border);
-        }
     }
 }
 
@@ -104,18 +89,17 @@
     align-items: center;
     background-color: var(--color-primary);
     color: var(--color-on-primary);
-    border: 2px solid var(--color-on-primary);
+    border: none;
     aspect-ratio: 1 / 1;
     width: 2rem;
     height: 2rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 50ms ease-in-out, color 50ms ease-in-out, border 50ms ease-in-out;
+    transition: background-color 50ms ease-in-out, color 50ms ease-in-out;
 
     &:active {
         background-color: var(--color-on-primary);
         color: var(--color-primary);
-        border: 2px solid var(--color-primary);
     }
 }
 
@@ -132,6 +116,7 @@
 
 .task-meta-container {
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: 1rem;
 }
@@ -140,11 +125,37 @@
     background-color: var(--color-secondary-container);
     color: var(--color-on-secondary-container);
     border: 1px solid var(--color-on-secondary-container);
-    padding: .25rem .5rem;
+    padding: .35rem;
     border-radius: 8px;
+    text-align: center;
 }
 
 .task-card-priority {
-    padding: .25rem .5rem;
+    padding: .35rem;
     border-radius: 8px;
+
+    &.low-priority {
+        background-color: var(--low-priority-bg);
+        color: var(--low-priority-border);
+    }
+
+    &.medium-priority {
+        background-color: var(--medium-priority-bg);
+        color: var(--medium-priority-border);
+    }
+
+    &.high-priority {
+        background-color: var(--high-priority-bg);
+        color: var(--high-priority-border);
+    }
+}
+
+.empty-task {
+    text-align: center;
+    color: var(--color-on-secondary-container);
+    font-size: 1rem;
+}
+
+.delete-icon {
+    pointer-events: none;
 }

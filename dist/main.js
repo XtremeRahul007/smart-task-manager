@@ -12,12 +12,13 @@ import { initSidebar, viewMenuController } from "./components/sideBar.js";
 import { searchBarFocus } from "./components/searchBar.js";
 import { initProfileIcon } from "./components/profileIcon.js";
 import { addClickAnimation } from "./animations/clickAnimation.js";
+import { hideLoader } from "./services/loaderService.js";
 const criticalModules = [openDB, initAuthController];
 const semiCriticalModules = [overLayToggle, togglePasswordVisibility, initTheme, setupThemeToggle, initLogoutUser, resetDatabase];
-const renderingModulers = [viewMenuController, initLandingView, initCreateTaskView, initIdleView];
+const renderingModulers = [viewMenuController, initCreateTaskView, initIdleView];
 const uiModules = [initPopupMenu, initSidebar, searchBarFocus, initProfileIcon, addClickAnimation];
 async function runModules(modules, label) {
-    for await (const fn of modules) {
+    for (const fn of modules) {
         try {
             await fn();
             console.log(`[${label}] ${fn.name} initialized`);
@@ -42,34 +43,16 @@ async function startApp() {
             console.warn(`[UI] ${fn.name} failded`);
         }
     });
+    hideLoader();
 }
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", startApp);
+    document.addEventListener("DOMContentLoaded", () => {
+        startApp();
+        initLandingView();
+    });
 }
 else {
     startApp();
+    initLandingView();
 }
-/*
-async function startApp() {
-    const { openForm } = initUserServiceForm();
-    await initAuthGuard(openForm);
-
-    for await (const fn of modules) {
-        try {
-            await fn();
-            console.log(`${fn.name} initialized`);
-        }
-        catch (err) {
-            console.warn(`${fn.name} faild: ${err}`);
-        }
-    }
-}
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", startApp);
-}
-else {
-    startApp();
-}
-*/ 
 //# sourceMappingURL=main.js.map

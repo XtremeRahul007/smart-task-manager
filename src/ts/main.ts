@@ -12,21 +12,23 @@ import { initSidebar, viewMenuController } from "./components/sideBar.js";
 import { searchBarFocus } from "./components/searchBar.js";
 import { initProfileIcon } from "./components/profileIcon.js";
 import { addClickAnimation } from "./animations/clickAnimation.js";
+import { hideLoader } from "./services/loaderService.js";
 
 const criticalModules: Array<() => void> = [openDB, initAuthController];
 
 const semiCriticalModules: Array<() => void> = [overLayToggle, togglePasswordVisibility, initTheme, setupThemeToggle, initLogoutUser, resetDatabase];
 
-const renderingModulers: Array<() => void> = [viewMenuController, initLandingView, initCreateTaskView, initIdleView];
+const renderingModulers: Array<() => void> = [viewMenuController, initCreateTaskView, initIdleView];
 
 const uiModules: Array<() => void> = [initPopupMenu, initSidebar, searchBarFocus, initProfileIcon, addClickAnimation];
 
 async function runModules(modules: Array<() => any>, label: string) {
-    for await (const fn of modules) {
+    for (const fn of modules) {
         try {
             await fn();
             console.log(`[${label}] ${fn.name} initialized`);
         }
+
         catch (err) {
             console.warn(`[${label}] ${fn.name} failded, ${err}`);
         }
@@ -53,41 +55,18 @@ async function startApp() {
             console.warn(`[UI] ${fn.name} failded`)
         }
     });
+
+    hideLoader();
 }
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", startApp);
+    document.addEventListener("DOMContentLoaded", () => {
+        startApp();
+        initLandingView();
+    });
 }
 
 else {
     startApp();
+    initLandingView();
 }
-
-
-
-
-
-
-/*
-async function startApp() {
-    const { openForm } = initUserServiceForm();
-    await initAuthGuard(openForm);
-
-    for await (const fn of modules) {
-        try {
-            await fn();
-            console.log(`${fn.name} initialized`);
-        }
-        catch (err) {
-            console.warn(`${fn.name} faild: ${err}`);
-        }
-    }
-}
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", startApp);
-}
-else {
-    startApp();
-}
-*/

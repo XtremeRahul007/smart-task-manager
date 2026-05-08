@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter.woff2") format("woff2"), url("../assets/fonts/inter.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --radius-round: 999px;
   --radius-mid: 15px;
@@ -207,12 +214,52 @@ body {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("../assets/fonts/inter.woff2") format("woff2"), url("../assets/fonts/inter.woff") format("woff");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+.loader-container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  inset: 0;
+  background-color: var(--color-primary);
+  z-index: 9999;
+  transition: opacity 300ms ease-in-out;
+}
+.loader-container.fade-out {
+  opacity: 0;
+}
+
+.skeleton-ui-loader {
+  display: inline-block;
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #FFF;
+  position: relative;
+  pointer-events: none;
+}
+.skeleton-ui-loader::before {
+  content: "";
+  position: absolute;
+  left: 34px;
+  bottom: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  box-sizing: border-box;
+  animation: rotation 0.6s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .userServiceFormContainer {
   position: fixed;
@@ -492,11 +539,11 @@ body {
     height: 1.75rem;
     width: 1.75rem;
     background-color: var(--color-on-primary-container);
-    mask-image: url("assets/icons/menu.svg");
+    mask-image: url("../assets/svgs/menu.svg");
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
-    -webkit-mask-image: url("assets/icons/menu.svg");
+    -webkit-mask-image: url("../assets/svgs/menu.svg");
     -webkit-mask-position: center;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: contain;
@@ -646,8 +693,7 @@ body {
   align-items: center;
   padding: 0.25rem;
   border-radius: var(--radius-round);
-  width: 100%;
-  max-width: 800px;
+  flex: 1;
   background-color: var(--color-primary);
   color: var(--color-on-primary);
   transition: background-color 0.5s var(--custom-transition);
@@ -659,7 +705,7 @@ body {
 
 @media screen and (max-width: 480px) {
   .search-container {
-    max-width: 15rem;
+    width: 15rem;
   }
 }
 .search-btn {
@@ -900,6 +946,88 @@ body {
   height: 3px;
 }
 
+.confirm-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: var(--overlay-color);
+  transition: opacity 0.3s ease-in-out;
+}
+.confirm-popup.fade-out {
+  opacity: 0;
+}
+
+.confirm-popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+.confirm-popup-content h2 {
+  background-color: var(--color-primary);
+  color: var(--color-on-secondary-container);
+  font-size: 1.5rem;
+  padding-block: 0.25rem;
+  text-align: center;
+  width: 100%;
+}
+.confirm-popup-content p {
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+/*
+[data-theme="dark"] .confirm-popup-content {
+    background-color: var(--color-on-secondary-container);
+    color: var(--color-secondary-container);
+
+    h2 {
+        background-color: var(--color-secondary-container);
+        color: var(--color-on-secondary-container);
+    }
+}
+*/
+.confirm-popup-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0rem 1rem 0.5rem 1rem;
+}
+.confirm-popup-actions button {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+.confirm-popup-actions button:active {
+  background-color: var(--color-on-primary);
+  color: var(--color-primary);
+}
+
+/*
+[data-theme="dark"] .confirm-popup-actions {
+    button {
+        background-color: var(--color-secondary-container);
+        color: var(--color-on-secondary-container);
+
+        &:active {
+            background-color: var(--color-on-secondary-container);
+            color: var(--color-secondary-container);
+        }
+    }
+}
+*/
 .create-task-view {
   display: flex;
   flex-direction: column;
@@ -1123,23 +1251,11 @@ textarea {
 .task-card.low-priority-container {
   border-left: 4px solid var(--low-priority-border);
 }
-.task-card.low-priority-container .task-data .task-meta-container .task-card-priority {
-  background-color: var(--low-priority-bg);
-  color: var(--low-priority-border);
-}
 .task-card.medium-priority-container {
   border-left: 4px solid var(--medium-priority-border);
 }
-.task-card.medium-priority-container .task-data .task-meta-container .task-card-priority {
-  background-color: var(--medium-priority-bg);
-  color: var(--medium-priority-border);
-}
 .task-card.high-priority-container {
   border-left: 4px solid var(--high-priority-border);
-}
-.task-card.high-priority-container .task-data .task-meta-container .task-card-priority {
-  background-color: var(--high-priority-bg);
-  color: var(--high-priority-border);
 }
 
 .task-summary {
@@ -1170,18 +1286,17 @@ textarea {
   align-items: center;
   background-color: var(--color-primary);
   color: var(--color-on-primary);
-  border: 2px solid var(--color-on-primary);
+  border: none;
   aspect-ratio: 1/1;
   width: 2rem;
   height: 2rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 50ms ease-in-out, color 50ms ease-in-out, border 50ms ease-in-out;
+  transition: background-color 50ms ease-in-out, color 50ms ease-in-out;
 }
 .task-card-action-btns:active {
   background-color: var(--color-on-primary);
   color: var(--color-primary);
-  border: 2px solid var(--color-primary);
 }
 
 .edit-delete-btn-container {
@@ -1197,6 +1312,7 @@ textarea {
 
 .task-meta-container {
   display: flex;
+  align-items: center;
   flex-direction: row;
   gap: 1rem;
 }
@@ -1205,13 +1321,36 @@ textarea {
   background-color: var(--color-secondary-container);
   color: var(--color-on-secondary-container);
   border: 1px solid var(--color-on-secondary-container);
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem;
   border-radius: 8px;
+  text-align: center;
 }
 
 .task-card-priority {
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem;
   border-radius: 8px;
+}
+.task-card-priority.low-priority {
+  background-color: var(--low-priority-bg);
+  color: var(--low-priority-border);
+}
+.task-card-priority.medium-priority {
+  background-color: var(--medium-priority-bg);
+  color: var(--medium-priority-border);
+}
+.task-card-priority.high-priority {
+  background-color: var(--high-priority-bg);
+  color: var(--high-priority-border);
+}
+
+.empty-task {
+  text-align: center;
+  color: var(--color-on-secondary-container);
+  font-size: 1rem;
+}
+
+.delete-icon {
+  pointer-events: none;
 }
 
 .idle-task-view {
@@ -1287,27 +1426,81 @@ textarea {
   }
 }
 .inspect-task-view {
-  background-color: var(--color-secondary-container);
   color: var(--color-on-secondary-container);
   display: flex;
   flex-direction: column;
   height: 100%;
   border-radius: 10px;
-  padding: 0.5rem;
+  gap: 0.5rem;
 }
 
-.inspect-title-meta {
+.inspect-header,
+.inspect-body,
+.inspect-footer {
+  background-color: var(--color-secondary-container);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.inspect-header-meta {
   display: flex;
   justify-content: space-between;
 }
 
-.inspect-title {
+.inspect-body-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inspect-footer-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inspect-header-text,
+.inspect-desc-text {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.inspect-create-date {
+.inspect-create-date,
+.inspect-dueDate {
   font-size: 1rem;
+}
+
+.inspect-body,
+.inspect-description-content {
+  flex: 1;
+}
+
+.inspect-task-priority {
+  display: flex;
+  align-items: center;
+}
+
+.inspect-action-btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.inspect-action-btns {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 50ms ease-in-out, color 50ms ease-in-out;
+}
+.inspect-action-btns:active {
+  background-color: var(--color-on-primary);
+  color: var(--color-primary);
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -14,6 +14,7 @@ export function openDB() {
                 const store = db.createObjectStore("tasks", { keyPath: "id", autoIncrement: true });
                 store.createIndex("title", "title", { unique: false });
                 store.createIndex("priority", "priority", { unique: false });
+                store.createIndex("currentDate", "currentDate", { unique: false });
                 store.createIndex("dueDate", "dueDate", { unique: false });
             }
         };

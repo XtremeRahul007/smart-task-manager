@@ -14,7 +14,6 @@ export function setView(newView) {
     showToast(`Current: ${viewState.current} & Prevoius: ${viewState.previous}`, "info");
 }
 export function initLandingView() {
-    const radioID = document.getElementById("idleView");
     document.addEventListener("DOMContentLoaded", () => {
         setView("idle");
         checkRadioBtn("idleView");

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="dist/main.css">
     <link rel="icon" href="assets/icons/xtreme.ico" type="image/xtreme-icon">
-    <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
     <title>Smart Task Manager</title>
     <script>
         (function () {
@@ -94,15 +93,6 @@
             </nav>
         </aside>
         <main class="app-task-container" id="appTaskContainer">
-            <section class="task-list-view" id="taskListView">
-                <div class="task-list-header">
-                    <h2>Task List</h2>
-                    <button class="task-list-create-task-btn" id="createTaskBtn" type="button">
-                        <div class="icon icon-plus icon-sm"></div>
-                    </button>
-                </div>
-                <ul class="task-list-container"></ul>
-            </section>
         </main>
         <section class="userServiceFormContainer" id="userServiceFormContainer">
             <div class="userServiceTitleLogo">
@@ -140,6 +130,9 @@
         <footer class="app-footer"></footer>
         <div class="toast-container" id="toastContainer"></div>
         <div class="overLay" id="overLay"></div>
+        <div class="loader-container">
+            <div class="skeleton-ui-loader">L &nbsp; ading</div>
+        </div>
         <script type="module" src="./dist/main.js"></script>
     </section>
 </body>

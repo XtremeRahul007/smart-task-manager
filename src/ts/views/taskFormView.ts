@@ -96,7 +96,7 @@ export function editTask() {
 
 export function taskList() {
     return (
-       `<section class="task-list-view" id="taskListView">
+        `<section class="task-list-view" id="taskListView">
             <div class="task-list-header">
                 <h2>Task List</h2>
                 <button class="task-list-create-task-btn" id="createTaskBtn" type="button">
@@ -110,7 +110,7 @@ export function taskList() {
 
 export function idleView() {
     return (
-       `<section class="idle-task-view">
+        `<section class="idle-task-view">
             <div class="create-task-trigger" id="createTaskTrigger">
                 <div class="create-task-icon icon icon-plus icon-lg"></div>
             </div>
@@ -125,9 +125,32 @@ export function idleView() {
 export function inspectTask() {
     return (
         `<section class="inspect-task-view">
-            <div class="inspect-title-meta">
-                <h3 class="inspect-title">*Title*</h3>
-                <div class="inspect-create-date">Created at: *date*</div>
+            <div class="inspect-header">
+                <div class="inspect-header-meta">
+                    <h3 class="inspect-header-text">Title:</h3>
+                    <div class="inspect-create-date">Created at: *date*</div>
+                </div>
+                <div class="inspect-title-content" id="inspectTitle">title content</div>
+            </div>
+            <div class="inspect-body">
+                <div class="inspect-body-meta">
+                    <div class="inspect-desc-text">Description:</div>
+                    <div class="inspect-dueDate">Due date: *date*</div>
+                </div>
+                <div class="inspect-description-content" id="inspectDescription">description content</div>
+            </div>
+            <div class="inspect-footer">
+                <div class="inspect-footer-meta">
+                   <div class="inspect-task-priority">Priority: *priority*</div>
+                   <div class="inspect-action-btn-container">
+                        <button type="button" class="inspect-action-btns">
+                            <div class="icon icon-recycle icon-sm"></div>
+                        </button>
+                        <button type="button" class="inspect-action-btns">
+                            <div class="icon icon-edit icon-sm"></div>
+                        </button>
+                   </div>
+                </div>
             </div>
         </section>`
     );
