@@ -37,7 +37,7 @@ export function initCreateTaskView() {
     textCounter("taskTitle", "titleTextCounter", 200);
 }
 
-function getSelectedPriority(): string {
+export function getSelectedPriority(): string {
     const selectedPriority = document.querySelector('input[name="radioPriority"]:checked') as HTMLInputElement | null;
 
     if (selectedPriority) {

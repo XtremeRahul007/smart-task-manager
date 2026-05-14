@@ -23,16 +23,23 @@ export async function openConfirmPopup({ title, message, confirmText = "Confirm"
         const confirmBtn = popup.querySelector("#confirmAcceptBtn");
         const cancelBtn = popup.querySelector("#confirmCancelBtn");
 
-        confirmBtn?.addEventListener("click", () => {
+        function closePopup(result: boolean) {
             popup.classList.add("fade-out");
-            setTimeout(() => popup.remove(), 300);
-            resolve(true);
-        });
 
-        cancelBtn?.addEventListener("click", () => {
-            popup.classList.add("fade-out");
-            setTimeout(() => popup.remove(), 300);
-            resolve(false);
-        });
+            setTimeout(() => {
+                popup.remove();
+                resolve(result);
+            }, 300);
+        }
+
+        function handleKey(e: KeyboardEvent) {
+            if (e.key === "Enter") closePopup(true);
+            if (e.key === "Escape") closePopup(false);
+        }
+        confirmBtn?.addEventListener("click", () => closePopup(true));
+
+        cancelBtn?.addEventListener("click", () => closePopup(false));
+
+        document.addEventListener("keydown", handleKey);
     });
 }

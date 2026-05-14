@@ -1,10 +1,10 @@
-import { showToast } from "../services/toastService.js";
-
 const DB_NAME: string = "smartTaskManagerDB";
 const DB_VERSION: number = 1;
 
+let dbPromise: Promise<IDBDatabase> | null = null;
 
 export function openDB(): Promise<IDBDatabase> {
+    if (dbPromise) return dbPromise;
     return new Promise((resolve, reject) => {
         const request: IDBOpenDBRequest = indexedDB.open(DB_NAME, DB_VERSION);
 
@@ -33,6 +33,5 @@ export function openDB(): Promise<IDBDatabase> {
         request.onerror = (event: Event) => {
             reject(request.error);
         }
-        // showToast("Database running", "info");
     });
 };

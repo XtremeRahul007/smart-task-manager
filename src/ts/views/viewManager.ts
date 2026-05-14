@@ -1,6 +1,5 @@
 import { viewState } from "../state/viewState.js";
-import { initCreateTaskView} from "./createTaskView.js";
-import { initEditTaskView } from "./editTaskView.js";
+import { initCreateTaskView } from "./createTaskView.js";
 import { initIdleView } from "./idleView.js";
 import { createTask, editTask, taskList, idleView, inspectTask } from "./taskFormView.js";
 import { initTaskList, initTaskListEvents } from "./taskListView.js";
@@ -19,7 +18,6 @@ export function renderView() {
 
         case "edit":
             container.innerHTML = editTask();
-            initEditTaskView();
             break;
 
         case "tasks":
@@ -32,9 +30,9 @@ export function renderView() {
             container.innerHTML = idleView();
             initIdleView();
             break;
+
         case "inspect":
             container.innerHTML = inspectTask();
-         // initInspectTask();
             break;
     }
 }

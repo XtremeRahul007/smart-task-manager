@@ -43,7 +43,7 @@ export function renderTask(tasks) {
                                 <h3 class="task-card-title">${title}</h3>
                                 <div class="task-card-description">${description}</div>
                             </article>
-                            <button type="button" class="task-card-action-btns" id="inspectTaskBtn">
+                            <button type="button" class="task-card-action-btns inspect-task-btn" data-action="inspect">
                                 <div class="icon icon-visible icon-sm"></div>
                             </button>
                         </div>
@@ -53,11 +53,11 @@ export function renderTask(tasks) {
                                 <div class="task-card-priority ${priority}-priority">${priority}</div>
                             </div>
                             <div class="edit-delete-btn-container">
-                                <button type="button" class="task-card-action-btns" id="editTaskBtn">
+                                <button type="button" class="task-card-action-btns edit-task-btn" data-action="edit">
                                     <div class="icon icon-edit icon-sm"></div>
                                 </button>
-                                <button type="button" class="task-card-action-btns delete-task-btn">
-                                    <div class="icon icon-recycle icon-sm delete-icon"></div>
+                                <button type="button" class="task-card-action-btns delete-task-btn" data-action="delete">
+                                    <div class="icon icon-recycle icon-sm"></div>
                                 </button>
                             </div>
                         </div>`;

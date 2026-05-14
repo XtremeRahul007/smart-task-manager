@@ -63,6 +63,11 @@
   -webkit-mask-image: url("../assets/svgs/recycle.svg");
 }
 
+.icon-back {
+  mask-image: url("../assets/svgs/back.svg");
+  -webkit-mask-image: url("../assets/svgs/back.svg");
+}
+
 .icon-xsm {
   --icon-size: 1rem;
 }
@@ -1153,6 +1158,8 @@ body {
   border-radius: 8px;
   margin-bottom: 0.5rem;
   flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-on-primary);
 }
 
 textarea {
@@ -1294,6 +1301,9 @@ textarea {
   cursor: pointer;
   transition: background-color 50ms ease-in-out, color 50ms ease-in-out;
 }
+.task-card-action-btns div {
+  pointer-events: none;
+}
 .task-card-action-btns:active {
   background-color: var(--color-on-primary);
   color: var(--color-primary);
@@ -1347,10 +1357,6 @@ textarea {
   text-align: center;
   color: var(--color-on-secondary-container);
   font-size: 1rem;
-}
-
-.delete-icon {
-  pointer-events: none;
 }
 
 .idle-task-view {
@@ -1461,6 +1467,7 @@ textarea {
 .inspect-desc-text {
   font-size: 1.2rem;
   font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 .inspect-create-date,
@@ -1471,6 +1478,9 @@ textarea {
 .inspect-body,
 .inspect-description-content {
   flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-on-primary);
 }
 
 .inspect-task-priority {

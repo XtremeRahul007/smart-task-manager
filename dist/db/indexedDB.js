@@ -1,7 +1,9 @@
-import { showToast } from "../services/toastService.js";
 const DB_NAME = "smartTaskManagerDB";
 const DB_VERSION = 1;
+let dbPromise = null;
 export function openDB() {
+    if (dbPromise)
+        return dbPromise;
     return new Promise((resolve, reject) => {
         const request = indexedDB.open(DB_NAME, DB_VERSION);
         request.onupgradeneeded = (event) => {
@@ -24,7 +26,6 @@ export function openDB() {
         request.onerror = (event) => {
             reject(request.error);
         };
-        // showToast("Database running", "info");
     });
 }
 ;

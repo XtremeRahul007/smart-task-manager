@@ -30,7 +30,7 @@ export function initCreateTaskView() {
     textCounter("descriptionTextArea", "descTextCounter", 5000);
     textCounter("taskTitle", "titleTextCounter", 200);
 }
-function getSelectedPriority() {
+export function getSelectedPriority() {
     const selectedPriority = document.querySelector('input[name="radioPriority"]:checked');
     if (selectedPriority) {
         return selectedPriority.value;

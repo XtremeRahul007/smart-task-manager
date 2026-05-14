@@ -1,4 +1,4 @@
-$icons: search, menu, dark-mode, light-mode, visible, invisible, plus, edit, reload,recycle;
+$icons: search, menu, dark-mode, light-mode, visible, invisible, plus, edit, reload, recycle, back;
 
 @each $icon in $icons {
     .icon-#{$icon} {

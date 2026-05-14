@@ -3,6 +3,8 @@ import { openDB } from "../db/indexedDB.js";
 import { deleteTask, getAllTasks, renderEmptyState, renderTask } from "../db/tasks.js";
 import { setView } from "../state/viewState.js";
 import { checkRadioBtn } from "../utils/checkRadio.js";
+import { initEditTaskView } from "./editTaskView.js";
+import { initInspectTaskView } from "./inspectTaskView.js";
 
 export async function initTaskList() {
     const createTaskBtn = document.getElementById("createTaskBtn") as HTMLInputElement;
@@ -27,27 +29,54 @@ export function initTaskListEvents() {
     container?.addEventListener("click", async (e) => {
         const target = e.target as HTMLElement;
 
-        if (!target.classList.contains("delete-task-btn")) return;
-
         const card = target.closest(".task-card") as HTMLDivElement;
 
-        if (!card) return;
+        if (!card) return null;
 
         const taskID = Number(card.dataset.id);
 
-        const confirmed = await openConfirmPopup({
-            title: "Delete Task",
-            message: "This task will be permanently deleted.",
-            confirmText: "Delete"
-        });
+        const btn = target.closest('button');
 
-        if (!confirmed) return;
-        
-        await deleteTask(taskID);
+        if (!btn) return;
 
-        card.remove();
+        const action = btn.dataset.action;
+
+
+        switch (action) {
+            case "inspect":
+                inspectEvent(taskID);
+                break;
+
+            case "delete":
+                await deleteEvent(taskID);
+                card.remove();
+                break;
+
+            case "edit":
+                editEvent(taskID);
+        }
+
     })
 }
 
+export async function deleteEvent(ID: number) {
+    const confirmed = await openConfirmPopup({
+        title: "Delete Task",
+        message: "This task will be permanently deleted.",
+        confirmText: "Delete"
+    });
 
+    if (!confirmed) return;
 
+    await deleteTask(ID);
+}
+
+async function inspectEvent(ID: number) {
+    setView("inspect");
+    await initInspectTaskView(ID);
+}
+
+async function editEvent(ID: number) {
+    setView("edit");
+    await initEditTaskView(ID);
+}

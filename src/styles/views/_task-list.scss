@@ -97,6 +97,10 @@
     cursor: pointer;
     transition: background-color 50ms ease-in-out, color 50ms ease-in-out;
 
+    div {
+        pointer-events: none;
+    }
+
     &:active {
         background-color: var(--color-on-primary);
         color: var(--color-primary);
@@ -154,8 +158,4 @@
     text-align: center;
     color: var(--color-on-secondary-container);
     font-size: 1rem;
-}
-
-.delete-icon {
-    pointer-events: none;
 }
