@@ -493,7 +493,7 @@ body {
 */
 .app-task-manager {
   display: grid;
-  grid-template-columns: 17.5rem 1fr 12.5rem;
+  grid-template-columns: 17.5rem 1fr auto;
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "logo-text search profile" "sidebar task-main task-main" "footer footer footer";
   height: 100dvh;
@@ -678,8 +678,28 @@ body {
   color: var(--color-on-primary-container);
 }
 
+.search-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  border-radius: var(--radius-round);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  transition: background-color 0.5s var(--custom-transition);
+}
+.search-container:focus-within {
+  background-color: var(--color-on-primary);
+  color: var(--color-primary);
+}
+
+@media screen and (max-width: 480px) {
+  .search-container {
+    width: 100%;
+  }
+}
 .search-bar {
-  flex: 1;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -693,26 +713,6 @@ body {
   color: var(--color-primary);
 }
 
-.search-container {
-  display: flex;
-  align-items: center;
-  padding: 0.25rem;
-  border-radius: var(--radius-round);
-  flex: 1;
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  transition: background-color 0.5s var(--custom-transition);
-}
-.search-container:focus-within {
-  background-color: var(--color-on-primary);
-  color: var(--color-primary);
-}
-
-@media screen and (max-width: 480px) {
-  .search-container {
-    width: 15rem;
-  }
-}
 .search-btn {
   height: 2.5rem;
   width: 2.5rem;
@@ -974,6 +974,7 @@ body {
   overflow: hidden;
   background-color: var(--color-secondary-container);
   color: var(--color-on-secondary-container);
+  max-width: 300px;
 }
 .confirm-popup-content h2 {
   background-color: var(--color-primary);
@@ -988,17 +989,6 @@ body {
   padding: 1rem;
 }
 
-/*
-[data-theme="dark"] .confirm-popup-content {
-    background-color: var(--color-on-secondary-container);
-    color: var(--color-secondary-container);
-
-    h2 {
-        background-color: var(--color-secondary-container);
-        color: var(--color-on-secondary-container);
-    }
-}
-*/
 .confirm-popup-actions {
   display: flex;
   justify-content: space-between;
@@ -1020,19 +1010,6 @@ body {
   color: var(--color-primary);
 }
 
-/*
-[data-theme="dark"] .confirm-popup-actions {
-    button {
-        background-color: var(--color-secondary-container);
-        color: var(--color-on-secondary-container);
-
-        &:active {
-            background-color: var(--color-on-secondary-container);
-            color: var(--color-secondary-container);
-        }
-    }
-}
-*/
 .create-task-view {
   display: flex;
   flex-direction: column;

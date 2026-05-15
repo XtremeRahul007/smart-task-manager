@@ -1,6 +1,6 @@
 .app-task-manager {
     display: grid;
-    grid-template-columns: 17.5rem 1fr 12.5rem;
+    grid-template-columns: 17.5rem 1fr auto;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "logo-text search profile"

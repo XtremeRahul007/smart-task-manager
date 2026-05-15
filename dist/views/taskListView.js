@@ -5,6 +5,7 @@ import { setView } from "../state/viewState.js";
 import { checkRadioBtn } from "../utils/checkRadio.js";
 import { initEditTaskView } from "./editTaskView.js";
 import { initInspectTaskView } from "./inspectTaskView.js";
+let refCard;
 export async function initTaskList() {
     const createTaskBtn = document.getElementById("createTaskBtn");
     const editTaskBtn = document.getElementById("editTaskBtn");
@@ -26,6 +27,7 @@ export function initTaskListEvents() {
         const card = target.closest(".task-card");
         if (!card)
             return null;
+        refCard = card;
         const taskID = Number(card.dataset.id);
         const btn = target.closest('button');
         if (!btn)
@@ -37,7 +39,6 @@ export function initTaskListEvents() {
                 break;
             case "delete":
                 await deleteEvent(taskID);
-                card.remove();
                 break;
             case "edit":
                 editEvent(taskID);
@@ -53,12 +54,13 @@ export async function deleteEvent(ID) {
     if (!confirmed)
         return;
     await deleteTask(ID);
+    refCard?.remove();
 }
 async function inspectEvent(ID) {
     setView("inspect");
     await initInspectTaskView(ID);
 }
-async function editEvent(ID) {
+export async function editEvent(ID) {
     setView("edit");
     await initEditTaskView(ID);
 }

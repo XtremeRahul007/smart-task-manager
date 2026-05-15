@@ -1,6 +1,6 @@
 import { openDB } from "../db/indexedDB.js";
 import { setView } from "../state/viewState.js";
-import { deleteEvent } from "./taskListView.js";
+import { deleteEvent, editEvent } from "./taskListView.js";
 export async function initInspectTaskView(id) {
     const container = document.querySelector(".inspect-task-view");
     const task = await inspectTaskByID(id);
@@ -58,6 +58,8 @@ export async function initInspectTaskView(id) {
             case "delete":
                 await deleteEvent(taskID);
                 setView("tasks");
+            case "edit":
+                await editEvent(taskID);
         }
     });
 }

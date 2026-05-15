@@ -22,6 +22,7 @@
     overflow: hidden;
     background-color: var(--color-secondary-container);
     color: var(--color-on-secondary-container);
+    max-width: 300px;
 
     h2 {
         background-color: var(--color-primary);
@@ -37,17 +38,7 @@
         padding: 1rem;
     }
 }
-/*
-[data-theme="dark"] .confirm-popup-content {
-    background-color: var(--color-on-secondary-container);
-    color: var(--color-secondary-container);
 
-    h2 {
-        background-color: var(--color-secondary-container);
-        color: var(--color-on-secondary-container);
-    }
-}
-*/
 .confirm-popup-actions {
     display: flex;
     justify-content: space-between;
@@ -72,16 +63,3 @@
         }
     }
 }
-/*
-[data-theme="dark"] .confirm-popup-actions {
-    button {
-        background-color: var(--color-secondary-container);
-        color: var(--color-on-secondary-container);
-
-        &:active {
-            background-color: var(--color-on-secondary-container);
-            color: var(--color-secondary-container);
-        }
-    }
-}
-*/

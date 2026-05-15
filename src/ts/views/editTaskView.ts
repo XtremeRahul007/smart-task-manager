@@ -1,3 +1,4 @@
+import { openConfirmPopup } from "../components/confirmPopup.js";
 import { openDB } from "../db/indexedDB.js";
 import type { Task } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
@@ -14,12 +15,29 @@ export async function initEditTaskView(id: number) {
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
         const currentTask = getCurrentTasks(id);
+        const confirmed = await openConfirmPopup({
+            title: "Save changes?",
+            message: "Are you sure you want to save the changes you made?",
+            confirmText: "Save",
+            cancelText: "Cancel"
+        });
+        if (!confirmed) return;
+
         updateTask(currentTask);
         setView("tasks");
         checkRadioBtn("taskList");
     });
 
-    form?.addEventListener("reset", () => {
+    form?.addEventListener("reset", async (e) => {
+        e.preventDefault();
+        const confirmed = await openConfirmPopup({
+            title: "Unsaved Changes",
+            message: "Your unsaved changes will be lost if you leave this page.",
+            confirmText: "Leave anyway",
+            cancelText: "Stay"
+        })
+        if (!confirmed) return;
+
         setView("tasks");
         checkRadioBtn("taskList");
     });
