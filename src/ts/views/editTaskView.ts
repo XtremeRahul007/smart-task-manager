@@ -8,6 +8,7 @@ import { formatDateForInput } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
 import { getSelectedPriority } from "./createTaskView.js";
 
+
 export async function initEditTaskView(id: number) {
     const form = document.getElementById("editTaskView");
     const previousTask = await getTaskById(id);

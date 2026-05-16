@@ -20,4 +20,4 @@ export function formatDateForInput(timestamp) {
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
 }
-//# sourceMappingURL=datehandler.js.map
+//# sourceMappingURL=dateHandler.js.map

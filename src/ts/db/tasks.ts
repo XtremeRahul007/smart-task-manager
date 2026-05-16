@@ -1,5 +1,5 @@
 import { showToast } from "../services/toastService.js";
-import { formatDate } from "../utils/datehandler.js";
+import { formatDate } from "../utils/dateHandler.js";
 import { truncateText } from "../utils/formatText.js";
 import { openDB } from "./indexedDB.js";
 
