@@ -1,4 +1,5 @@
 import { showToast } from "../services/toastService.js";
+import { formatDate } from "../utils/datehandler.js";
 import { truncateText } from "../utils/formatText.js";
 import { openDB } from "./indexedDB.js";
 
@@ -6,8 +7,8 @@ export type Task = {
     id?: number;
     title: string;
     description: string;
-    dueDate: string;
-    currentDate: string | undefined;
+    dueDate: any;
+    currentDate: any;
     priority: "low" | "medium" | "high";
 };
 
@@ -51,7 +52,7 @@ export function renderTask(tasks: any[]) {
         const title = tasks.title;
         const id = tasks.id;
         const description = truncateText(tasks.description, 200);
-        const dueDate = tasks.dueDate;
+        const dueDate = formatDate(tasks.dueDate);
         const priority = tasks.priority;
 
         const div = document.createElement("div");

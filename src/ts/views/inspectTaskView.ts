@@ -1,17 +1,17 @@
 import { openDB } from "../db/indexedDB.js"
 import type { Task } from "../db/tasks.js";
 import { setView } from "../state/viewState.js";
+import { formatDate } from "../utils/dateHandler.js";
 import { deleteEvent, editEvent } from "./taskListView.js";
 
 export async function initInspectTaskView(id: number) {
     const container = document.querySelector(".inspect-task-view");
     const task = await inspectTaskByID(id);
-
     const taskID = task.id;
     const title = task.title;
     const description = task.description;
-    const dueDate = task.dueDate;
-    const currentDate = task.currentDate;
+    const dueDate = formatDate(task.dueDate);
+    const currentDate = formatDate(task.currentDate);
     const priority = task.priority;
 
     if (!container || !taskID) return;

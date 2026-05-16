@@ -2,6 +2,7 @@ import { createNewTask } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
 import { checkRadioBtn } from "../utils/checkRadio.js";
+import { getTimestamp } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
 
 export function initCreateTaskView() {
@@ -16,8 +17,8 @@ export function initCreateTaskView() {
         const task = {
             title: title.value.trim(),
             description: desc.value.trim(),
-            dueDate: date.value,
-            currentDate: new Date().toISOString().split('T')[0],
+            dueDate: getTimestamp(date.value),
+            currentDate: Date.now(),
             priority: getSelectedPriority() as "low" | "medium" | "high"
         }
 

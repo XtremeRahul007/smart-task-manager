@@ -4,6 +4,7 @@ import type { Task } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
 import { checkRadioBtn } from "../utils/checkRadio.js";
+import { formatDateForInput } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
 import { getSelectedPriority } from "./createTaskView.js";
 
@@ -60,7 +61,7 @@ async function getTaskById(id: number): Promise<Task> {
 
 function fillForm(tasks: Task) {
     (document.querySelector("#taskTitle") as HTMLInputElement).value = tasks.title;
-    (document.querySelector("#taskDueDate") as HTMLInputElement).value = tasks.dueDate;
+    (document.querySelector("#taskDueDate") as HTMLInputElement).value = formatDateForInput(tasks.dueDate);
     (document.querySelector("#descriptionTextArea") as HTMLTextAreaElement).value = tasks.description;
     const radios = document.querySelectorAll<HTMLInputElement>('input[name="radioPriority"]');
     radios.forEach(radio => {

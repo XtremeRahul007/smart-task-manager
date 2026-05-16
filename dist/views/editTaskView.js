@@ -3,6 +3,7 @@ import { openDB } from "../db/indexedDB.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
 import { checkRadioBtn } from "../utils/checkRadio.js";
+import { formatDateForInput } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
 import { getSelectedPriority } from "./createTaskView.js";
 export async function initEditTaskView(id) {
@@ -52,7 +53,7 @@ async function getTaskById(id) {
 }
 function fillForm(tasks) {
     document.querySelector("#taskTitle").value = tasks.title;
-    document.querySelector("#taskDueDate").value = tasks.dueDate;
+    document.querySelector("#taskDueDate").value = formatDateForInput(tasks.dueDate);
     document.querySelector("#descriptionTextArea").value = tasks.description;
     const radios = document.querySelectorAll('input[name="radioPriority"]');
     radios.forEach(radio => {

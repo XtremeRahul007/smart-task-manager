@@ -2,8 +2,8 @@ export type Task = {
     id?: number;
     title: string;
     description: string;
-    dueDate: string;
-    currentDate: string | undefined;
+    dueDate: any;
+    currentDate: any;
     priority: "low" | "medium" | "high";
 };
 export declare function createNewTask(task: Task): Promise<void>;
