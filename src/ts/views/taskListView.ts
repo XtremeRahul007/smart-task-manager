@@ -1,8 +1,9 @@
 import { openConfirmPopup } from "../components/confirmPopup.js";
 import { openDB } from "../db/indexedDB.js";
 import { deleteTask, getAllTasks, renderEmptyState, renderTask } from "../db/tasks.js";
+import { processTasks } from "../services/taskProcessor.js";
 import { setView } from "../state/viewState.js";
-import { checkRadioBtn } from "../utils/checkRadio.js";
+import { checkRadioBtn } from "../utils/radioBtnHandler.js";
 import { initEditTaskView } from "./editTaskView.js";
 import { initInspectTaskView } from "./inspectTaskView.js";
 
@@ -19,10 +20,14 @@ export async function initTaskList() {
         setView("edit");
     });
 
+    await refreshTasks();
+}
+
+export async function refreshTasks() {
     const db = await openDB();
     const tasks = await getAllTasks(db, "tasks");
 
-    tasks.length === 0 ? renderEmptyState() : renderTask(tasks);
+    tasks.length === 0 ? renderEmptyState() : processTasks(tasks);
 }
 
 export function initTaskListEvents() {
@@ -68,10 +73,10 @@ export async function deleteEvent(ID: number) {
         message: "This task will be permanently deleted.",
         confirmText: "Delete"
     });
-
     if (!confirmed) return;
-
     await deleteTask(ID);
+
+    if (!refCard) return;
     refCard?.remove();
 }
 

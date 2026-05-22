@@ -99,9 +99,56 @@ export function taskList() {
         `<section class="task-list-view" id="taskListView">
             <div class="task-list-header">
                 <h2>Task List</h2>
-                <button class="task-list-create-task-btn" id="createTaskBtn" type="button">
-                    <div class="icon icon-plus icon-sm"></div>
-                </button>
+                <div>
+                    <button class="task-list-create-task-btn" id="createTaskBtn" type="button">
+                        <div class="icon icon-plus icon-smd"></div>
+                    </button>
+                    <button class="task-list-filter-task-btn" id="filterTaskBtn" type="button">
+                        <div class="icon icon-filter icon-smd"></div>
+                    </button>
+                    <div class="filter-menu-container">
+                        <ul class="filter-sub-menu">
+                            <li>
+                                <label class="orderButton" for="AscBtn">
+                                    <input type="radio" name="orderButton" id="AscBtn" value="asc">
+                                    <div id="ascBtn">asc</div>
+                                </label>                  
+                            </li>
+                            <li>
+                                <label class="orderButton" for="DescBtn">
+                                    <input type="radio" name="orderButton" id="DescBtn" value="desc">
+                                    <div id="descBtn">desc</div>
+                                </label>
+                            </li>
+                        </ul>
+                        <ul class="filter-menu">
+                            <li>
+                                <label class="filterButton" for="sortByCurrentDate">
+                                    <input type="radio" name="tasksFilter" id="sortByCurrentDate" value="currentDate">
+                                    <div>Created</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filterButton" for="sortByDueDate">
+                                    <input type="radio" name="tasksFilter" id="sortByDueDate" value="dueDate">
+                                    <div>Due Date</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filterButton" for="sortByPriority">
+                                    <input type="radio" name="tasksFilter" id="sortByPriority" value="priority">
+                                    <div>Priority</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filterButton" for="sortByTitle">
+                                    <input type="radio" name="tasksFilter" id="sortByTitle" value="title">
+                                    <div>Title</div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <ul class="task-list-container"></ul>
         </section>`

@@ -3,14 +3,14 @@ import { formatDate } from "../utils/dateHandler.js";
 import { truncateText } from "../utils/formatText.js";
 import { openDB } from "./indexedDB.js";
 
-export type Task = {
+export interface Task {
     id?: number;
     title: string;
     description: string;
     dueDate: any;
     currentDate: any;
     priority: "low" | "medium" | "high";
-};
+}
 
 export async function createNewTask(task: Task): Promise<void> {
     const db = await openDB();
@@ -45,21 +45,35 @@ export async function getAllTasks(db: IDBDatabase, storeName: string): Promise<a
     });
 }
 
+export async function getTaskById(id: number): Promise<Task> {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction("tasks", "readonly");
+        const store = tx.objectStore("tasks");
+        const request = store.get(id);
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+    });
+}
+
 export function renderTask(tasks: any[]) {
     const container = document.querySelector(".task-list-container") as HTMLUListElement;
+    container.textContent = "";
 
-    tasks.forEach(tasks => {
-        const title = tasks.title;
-        const id = tasks.id;
-        const description = truncateText(tasks.description, 200);
-        const dueDate = formatDate(tasks.dueDate);
-        const priority = tasks.priority;
+    for (let index = 0; index < tasks.length; index++) {
+        let task = tasks[index];
+
+        const title = task.title;
+        const id = task.id;
+        const description = truncateText(task.description, 200);
+        const dueDate = formatDate(task.dueDate);
+        const priority = task.priority;
 
         const div = document.createElement("div");
         div.classList.add("task-card");
         div.classList.add(`${priority}-priority-container`);
         div.dataset.id = `${id}`;
-
         div.innerHTML = `<div class="task-summary">
                             <article class="task-info-section">
                                 <h3 class="task-card-title">${title}</h3>
@@ -86,7 +100,7 @@ export function renderTask(tasks: any[]) {
 
 
         container.appendChild(div);
-    });
+    }
 }
 
 export function renderEmptyState() {
@@ -100,7 +114,6 @@ export async function deleteTask(id: number): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         const tx = db.transaction("tasks", "readwrite");
         const store = tx.objectStore("tasks");
-
         const request = store.delete(id);
 
         request.onsuccess = () => {

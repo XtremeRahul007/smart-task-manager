@@ -15,9 +15,6 @@ export function initUserServiceForm() {
     const nameLabel = document.querySelector<HTMLLabelElement>(".displayNameLabel");
     const passLabel = document.querySelector<HTMLLabelElement>(".passwordLabel");
 
-
-    /*const btn = document.getElementById("test_trigger");*/
-
     if (!form) return {
         openForm: () => { }
     };
@@ -73,7 +70,6 @@ export function initUserServiceForm() {
     };
 
     modeSwitchBtn?.addEventListener("click", switchMode);
-    /*btn.addEventListener("click", toggleForm);*/
     return { openForm };
 }
 
@@ -98,7 +94,6 @@ export function initAuthController() {
 
     form!.addEventListener("submit", async (e) => {
         e.preventDefault();
-        // showToast("Form Submitted", "info")
         const name = (document.getElementById("displayName") as HTMLInputElement).value;
         const password = (document.getElementById("password") as HTMLInputElement).value;
 

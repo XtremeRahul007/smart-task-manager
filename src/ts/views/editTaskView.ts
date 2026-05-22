@@ -1,17 +1,18 @@
 import { openConfirmPopup } from "../components/confirmPopup.js";
 import { openDB } from "../db/indexedDB.js";
-import type { Task } from "../db/tasks.js";
+import { getTaskById, type Task } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
-import { checkRadioBtn } from "../utils/checkRadio.js";
-import { formatDateForInput } from "../utils/dateHandler.js";
+import { checkRadioBtn, getSelectedRadioBtn } from "../utils/radioBtnHandler.js";
+import { formatDateForInput, getTimestamp } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
-import { getSelectedPriority } from "./createTaskView.js";
 
+let refCurrentDate: number;
 export async function initEditTaskView(id: number) {
     const form = document.getElementById("editTaskView");
     const previousTask = await getTaskById(id);
     fillForm(previousTask);
+    refCurrentDate = previousTask.currentDate;
 
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -47,18 +48,6 @@ export async function initEditTaskView(id: number) {
     textCounter("taskTitle", "titleTextCounter", 200);
 }
 
-async function getTaskById(id: number): Promise<Task> {
-    const db = await openDB();
-    return new Promise((resolve, reject) => {
-        const tx = db.transaction("tasks", "readonly");
-        const store = tx.objectStore("tasks");
-        const request = store.get(id);
-
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-    })
-}
-
 function fillForm(tasks: Task) {
     (document.querySelector("#taskTitle") as HTMLInputElement).value = tasks.title;
     (document.querySelector("#taskDueDate") as HTMLInputElement).value = formatDateForInput(tasks.dueDate);
@@ -92,8 +81,8 @@ function getCurrentTasks(id: number): Task {
         id: id,
         title: (document.querySelector("#taskTitle") as HTMLInputElement).value,
         description: (document.querySelector("#descriptionTextArea") as HTMLTextAreaElement).value,
-        dueDate: (document.querySelector("#taskDueDate") as HTMLInputElement).value,
-        currentDate: new Date().toISOString().split('T')[0],
-        priority: getSelectedPriority() as "low" | "medium" | "high"
+        dueDate: getTimestamp((document.querySelector("#taskDueDate") as HTMLInputElement).value),
+        currentDate: refCurrentDate,
+        priority: getSelectedRadioBtn('input[name="radioPriority"]:checked', "low") as "low" | "medium" | "high"
     };
 }

@@ -1,15 +1,17 @@
 import { openConfirmPopup } from "../components/confirmPopup.js";
 import { openDB } from "../db/indexedDB.js";
+import { getTaskById } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
-import { checkRadioBtn } from "../utils/checkRadio.js";
-import { formatDateForInput } from "../utils/dateHandler.js";
+import { checkRadioBtn, getSelectedRadioBtn } from "../utils/radioBtnHandler.js";
+import { formatDateForInput, getTimestamp } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
-import { getSelectedPriority } from "./createTaskView.js";
+let refCurrentDate;
 export async function initEditTaskView(id) {
     const form = document.getElementById("editTaskView");
     const previousTask = await getTaskById(id);
     fillForm(previousTask);
+    refCurrentDate = previousTask.currentDate;
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
         const currentTask = getCurrentTasks(id);
@@ -41,16 +43,6 @@ export async function initEditTaskView(id) {
     textCounter("descriptionTextArea", "descTextCounter", 5000);
     textCounter("taskTitle", "titleTextCounter", 200);
 }
-async function getTaskById(id) {
-    const db = await openDB();
-    return new Promise((resolve, reject) => {
-        const tx = db.transaction("tasks", "readonly");
-        const store = tx.objectStore("tasks");
-        const request = store.get(id);
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-    });
-}
 function fillForm(tasks) {
     document.querySelector("#taskTitle").value = tasks.title;
     document.querySelector("#taskDueDate").value = formatDateForInput(tasks.dueDate);
@@ -80,9 +72,9 @@ function getCurrentTasks(id) {
         id: id,
         title: document.querySelector("#taskTitle").value,
         description: document.querySelector("#descriptionTextArea").value,
-        dueDate: document.querySelector("#taskDueDate").value,
-        currentDate: new Date().toISOString().split('T')[0],
-        priority: getSelectedPriority()
+        dueDate: getTimestamp(document.querySelector("#taskDueDate").value),
+        currentDate: refCurrentDate,
+        priority: getSelectedRadioBtn('input[name="radioPriority"]:checked', "low")
     };
 }
 //# sourceMappingURL=editTaskView.js.map

@@ -1,3 +1,4 @@
+import { initFilterMenu } from "../components/filterMenu.js";
 import { viewState } from "../state/viewState.js";
 import { initCreateTaskView } from "./createTaskView.js";
 import { initIdleView } from "./idleView.js";
@@ -19,6 +20,7 @@ export function renderView() {
             container.innerHTML = taskList();
             initTaskList();
             initTaskListEvents();
+            initFilterMenu();
             break;
         case "idle":
             container.innerHTML = idleView();
@@ -29,5 +31,4 @@ export function renderView() {
             break;
     }
 }
-// Have to add cancel button.
 //# sourceMappingURL=viewManager.js.map

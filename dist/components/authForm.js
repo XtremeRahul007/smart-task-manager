@@ -12,7 +12,6 @@ export function initUserServiceForm() {
     const modeSwitchBtn = document.getElementById("modeSwitchBtn");
     const nameLabel = document.querySelector(".displayNameLabel");
     const passLabel = document.querySelector(".passwordLabel");
-    /*const btn = document.getElementById("test_trigger");*/
     if (!form)
         return {
             openForm: () => { }
@@ -60,7 +59,6 @@ export function initUserServiceForm() {
         }
     };
     modeSwitchBtn?.addEventListener("click", switchMode);
-    /*btn.addEventListener("click", toggleForm);*/
     return { openForm };
 }
 function saveSession(user) {
@@ -80,7 +78,6 @@ export function initAuthController() {
         return;
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        // showToast("Form Submitted", "info")
         const name = document.getElementById("displayName").value;
         const password = document.getElementById("password").value;
         const user = { name, password };

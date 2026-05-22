@@ -1,5 +1,5 @@
 import { showToast } from "../services/toastService.js";
-import { checkRadioBtn } from "../utils/checkRadio.js";
+import { checkRadioBtn } from "../utils/radioBtnHandler.js";
 import { renderView } from "../views/viewManager.js";
 
 export type View = "tasks" | "create" | "edit" | "idle" | "inspect";

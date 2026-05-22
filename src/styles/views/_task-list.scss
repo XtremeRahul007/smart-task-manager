@@ -16,18 +16,117 @@
     width: 100%;
     padding: .5rem 1rem;
     border-radius: 10px 10px 0px 0px;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+    }
 }
 
-.task-list-create-task-btn {
+.task-list-create-task-btn,
+.task-list-filter-task-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--color-primary);
-    border: 2px solid var(--color-on-primary);
     color: var(--color-on-primary);
-    border-radius: 8px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    aspect-ratio: 1 / 1;
 }
+
+.task-list-filter-task-btn {
+    position: relative;
+    z-index: 101;
+}
+
+.filter-menu-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 8rem;
+    z-index: 200;
+    opacity: 0;
+    transform: translateX(0rem);
+    transition: opacity .5s var(--custom-transition),
+        transform .5s var(--custom-transition);
+    pointer-events: none;
+
+    &.open {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateX(-15rem);
+    }
+}
+
+.filter-sub-menu {
+    transform: translateX(1rem);
+    border-radius: 8px 0px 0px 8px;
+    opacity: 0;
+    transition: opacity .5s var(--custom-transition), transform .5s var(--custom-transition);
+    pointer-events: none;
+
+    &.open {
+        opacity: 1;
+        transform: translateX(.55rem);
+        pointer-events: auto;
+    }
+}
+
+.filter-menu {
+    border-radius: 8px;
+}
+
+
+.filter-sub-menu,
+.filter-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-tertiary-container);
+    height: auto;
+    width: 10rem;
+    padding: .75rem;
+    gap: .5rem;
+
+    li {
+        white-space: nowrap;
+        list-style-type: none;
+        width: 100%;
+    }
+
+
+}
+
+.filterButton,
+.orderButton {
+    div {
+        border: 2px solid var(--color-on-tertiary-container);
+        color: var(--color-on-tertiary-container);
+        padding: .25rem .5rem;
+        border-radius: 4px;
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.filterButton input:checked+div {
+    color: var(--color-tertiary-container);
+    background-color: var(--color-on-tertiary-container);
+}
+
+.orderButton input:checked+div {
+    color: var(--color-tertiary-container);
+    background-color: var(--color-on-tertiary-container);
+}
+
 
 .task-list-container {
     display: flex;

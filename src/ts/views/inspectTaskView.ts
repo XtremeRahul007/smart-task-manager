@@ -1,12 +1,11 @@
-import { openDB } from "../db/indexedDB.js"
-import type { Task } from "../db/tasks.js";
+import { getTaskById } from "../db/tasks.js";
 import { setView } from "../state/viewState.js";
 import { formatDate } from "../utils/dateHandler.js";
 import { deleteEvent, editEvent } from "./taskListView.js";
 
 export async function initInspectTaskView(id: number) {
     const container = document.querySelector(".inspect-task-view");
-    const task = await inspectTaskByID(id);
+    const task = await getTaskById(id);
     const taskID = task.id;
     const title = task.title;
     const description = task.description;
@@ -49,7 +48,6 @@ export async function initInspectTaskView(id: number) {
     const actionBtnContainer = document.querySelector(".inspect-action-btn-container");
     actionBtnContainer?.addEventListener("click", async (e) => {
         const target = e.target as HTMLElement;
-        console.log(target);
         const btn = target.closest('button');
 
         if (!btn) return;
@@ -65,25 +63,11 @@ export async function initInspectTaskView(id: number) {
             case "delete":
                 await deleteEvent(taskID);
                 setView("tasks");
+                break;
 
             case "edit":
                 await editEvent(taskID);
+                break;
         }
-    });
-}
-
-async function inspectTaskByID(id: number): Promise<Task> {
-    const db = await openDB();
-    return new Promise((resolve, reject) => {
-        const tx = db.transaction("tasks", "readonly");
-        const store = tx.objectStore("tasks");
-
-        const request = store.get(id);
-
-        request.onsuccess = () => {
-            resolve(request.result);
-        };
-        request.onerror = () => reject(request.error);
-        tx.oncomplete = () => db.close();
     });
 }

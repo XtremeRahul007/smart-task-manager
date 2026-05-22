@@ -1,8 +1,9 @@
 import { openConfirmPopup } from "../components/confirmPopup.js";
 import { openDB } from "../db/indexedDB.js";
 import { deleteTask, getAllTasks, renderEmptyState, renderTask } from "../db/tasks.js";
+import { processTasks } from "../services/taskProcessor.js";
 import { setView } from "../state/viewState.js";
-import { checkRadioBtn } from "../utils/checkRadio.js";
+import { checkRadioBtn } from "../utils/radioBtnHandler.js";
 import { initEditTaskView } from "./editTaskView.js";
 import { initInspectTaskView } from "./inspectTaskView.js";
 let refCard;
@@ -16,9 +17,12 @@ export async function initTaskList() {
     editTaskBtn?.addEventListener("click", () => {
         setView("edit");
     });
+    await refreshTasks();
+}
+export async function refreshTasks() {
     const db = await openDB();
     const tasks = await getAllTasks(db, "tasks");
-    tasks.length === 0 ? renderEmptyState() : renderTask(tasks);
+    tasks.length === 0 ? renderEmptyState() : processTasks(tasks);
 }
 export function initTaskListEvents() {
     const container = document.querySelector(".task-list-container");
@@ -54,6 +58,8 @@ export async function deleteEvent(ID) {
     if (!confirmed)
         return;
     await deleteTask(ID);
+    if (!refCard)
+        return;
     refCard?.remove();
 }
 async function inspectEvent(ID) {

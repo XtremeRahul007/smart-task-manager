@@ -27,14 +27,26 @@ export async function getAllTasks(db, storeName) {
         request.onerror = () => reject(request.error);
     });
 }
+export async function getTaskById(id) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction("tasks", "readonly");
+        const store = tx.objectStore("tasks");
+        const request = store.get(id);
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+    });
+}
 export function renderTask(tasks) {
     const container = document.querySelector(".task-list-container");
-    tasks.forEach(tasks => {
-        const title = tasks.title;
-        const id = tasks.id;
-        const description = truncateText(tasks.description, 200);
-        const dueDate = formatDate(tasks.dueDate);
-        const priority = tasks.priority;
+    container.textContent = "";
+    for (let index = 0; index < tasks.length; index++) {
+        let task = tasks[index];
+        const title = task.title;
+        const id = task.id;
+        const description = truncateText(task.description, 200);
+        const dueDate = formatDate(task.dueDate);
+        const priority = task.priority;
         const div = document.createElement("div");
         div.classList.add("task-card");
         div.classList.add(`${priority}-priority-container`);
@@ -63,7 +75,7 @@ export function renderTask(tasks) {
                             </div>
                         </div>`;
         container.appendChild(div);
-    });
+    }
 }
 export function renderEmptyState() {
     const container = document.querySelector(".task-list-container");

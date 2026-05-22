@@ -1,7 +1,7 @@
 import { createNewTask } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
-import { checkRadioBtn } from "../utils/checkRadio.js";
+import { checkRadioBtn, getSelectedRadioBtn } from "../utils/radioBtnHandler.js";
 import { getTimestamp } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
 
@@ -19,7 +19,7 @@ export function initCreateTaskView() {
             description: desc.value.trim(),
             dueDate: getTimestamp(date.value),
             currentDate: Date.now(),
-            priority: getSelectedPriority() as "low" | "medium" | "high"
+            priority: getSelectedRadioBtn('input[name="radioPriority"]:checked', "low") as "low" | "medium" | "high"
         }
 
         await createNewTask(task);
@@ -36,14 +36,4 @@ export function initCreateTaskView() {
 
     textCounter("descriptionTextArea", "descTextCounter", 5000);
     textCounter("taskTitle", "titleTextCounter", 200);
-}
-
-export function getSelectedPriority(): string {
-    const selectedPriority = document.querySelector('input[name="radioPriority"]:checked') as HTMLInputElement | null;
-
-    if (selectedPriority) {
-        return selectedPriority.value;
-    } else {
-        return "low";
-    }
 }

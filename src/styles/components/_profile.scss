@@ -30,10 +30,6 @@
     padding: var(--common-padding);
     font-weight: 600;
 
-    /*white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;*/
-
     p {
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -105,8 +101,6 @@
     z-index: 200;
     background-color: var(--color-on-primary-container);
     color: var(--color-primary-container);
-    //transition: box-shadow 1s var(--custom-transition);
-    //box-shadow: var(--box-shadow);
 
     &:active {
         background-color: var(--color-primary-container);
@@ -114,13 +108,6 @@
     }
 }
 
-/*
-@media screen and (min-width: 480px) {
-    .app-profile-icon:hover {
-        box-shadow: var(--box-shadow);
-    }
-}
-*/
 .theme-toggle-btn {
     display: flex;
     justify-content: center;
