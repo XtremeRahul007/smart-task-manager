@@ -2,10 +2,10 @@ import { createNewTask } from "../db/tasks.js";
 import { showToast } from "../services/toastService.js";
 import { setView } from "../state/viewState.js";
 import { checkRadioBtn, getSelectedRadioBtn } from "../utils/radioBtnHandler.js";
-import { getTimestamp } from "../utils/dateHandler.js";
+import { getTimestamp, invalidDateHandler } from "../utils/dateHandler.js";
 import { textCounter } from "../utils/textCounter.js";
 
-export function initCreateTaskView() {
+export async function initCreateTaskView() {
     const title = document.getElementById("taskTitle") as HTMLInputElement;
     const date = document.getElementById("taskDueDate") as HTMLInputElement;
     const desc = document.getElementById("descriptionTextArea") as HTMLTextAreaElement;
@@ -23,10 +23,10 @@ export function initCreateTaskView() {
         }
 
         await createNewTask(task);
-        showToast(`Task: ${task.title}, ${task.dueDate}, ${task.description}, ${task.priority}`, "info");
+        // showToast(`Task: ${task.title}, ${task.dueDate}, ${task.description}, ${task.priority}`, "info");
+        console.log(`Actual value got fetched: ${task.dueDate}`);
         setView("tasks");
         checkRadioBtn("taskList");
-        console.log(task);
     });
 
     form?.addEventListener("reset", () => {

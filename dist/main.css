@@ -1240,14 +1240,7 @@ textarea {
 .filter-sub-menu {
   transform: translateX(1rem);
   border-radius: 8px 0px 0px 8px;
-  opacity: 0;
   transition: opacity 0.5s var(--custom-transition), transform 0.5s var(--custom-transition);
-  pointer-events: none;
-}
-.filter-sub-menu.open {
-  opacity: 1;
-  transform: translateX(0.55rem);
-  pointer-events: auto;
 }
 
 .filter-menu {

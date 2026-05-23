@@ -1,6 +1,4 @@
-type radioIDs = "idleView" | "createTask" | "taskList";
-
-export function checkRadioBtn(radioID: radioIDs) {
+export function checkRadioBtn(radioID: string) {
     const ID = document.getElementById(radioID) as HTMLInputElement;
     if (ID) {
         ID.checked = true;

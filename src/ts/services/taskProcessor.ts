@@ -4,6 +4,10 @@ export type SortBy = "currentDate" | "dueDate" | "priority" | "title";
 
 export type Order = "asc" | "desc";
 
+type LocalStorageKey = "filterState";
+
+export let finalTaskList: Task[];
+
 interface TaskFilterState {
     search: string;
     sortBy: SortBy;
@@ -18,13 +22,26 @@ const filterState: TaskFilterState = {
 
 export function setFilterState(updates: Partial<TaskFilterState>) {
     Object.assign(filterState, updates);
-    console.log(filterState);
+    localStorage.setItem("filterState", JSON.stringify(filterState));
+}
+
+export function getLocalStateData(Key: LocalStorageKey): TaskFilterState {
+    const rawData = localStorage.getItem(Key);
+    try {
+        return rawData ? JSON.parse(rawData) as TaskFilterState : filterState as TaskFilterState;
+    } catch (err) {
+        console.warn(err);
+        return filterState as TaskFilterState;
+    }
 }
 
 export function processTasks(tasks: Task[]) {
-    const filteredTasks = tasksSearch(tasks, filterState.search);
-    const sortedTasks = tasksSorter(filteredTasks, filterState.sortBy, filterState.order);
+    const stateData = getLocalStateData("filterState");
+    const filteredTasks = tasksSearch(tasks, stateData.search);
+    const sortedTasks = tasksSorter(filteredTasks, stateData.sortBy, stateData.order);
+    finalTaskList = sortedTasks;
     renderTask(sortedTasks);
+
 }
 
 function tasksSearch(tasks: Task[], search: string): Task[] {

@@ -1,3 +1,5 @@
+import { showToast } from "../services/toastService.js";
+
 export function getTimestamp(date: string): number {
     const dateArr = date.split("-").map(Number);
     if (dateArr.length !== 3) {
@@ -24,4 +26,9 @@ export function formatDateForInput(timestamp: number): string {
     const year = date.getFullYear();
 
     return `${year}-${month}-${day}`;
+}
+
+export function invalidDateHandler() {
+    const dateInput = document.querySelector("#taskDueDate") as HTMLInputElement;
+    dateInput.min = `${formatDateForInput(Date.now())}`;
 }

@@ -105,7 +105,6 @@ export function renderTask(tasks: any[]) {
 
 export function renderEmptyState() {
     const container = document.querySelector(".task-list-container") as HTMLUListElement;
-    if (!container) return;
     container.innerHTML = `<div class ="empty-task">No task available</div>`;
 }
 

@@ -1,15 +1,14 @@
 import { filterSubMenu } from "../components/filterMenu.js";
+import { checkRadioBtn } from "../utils/radioBtnHandler.js";
 import { refreshTasks } from "../views/taskListView.js";
-import { setFilterState } from "./taskProcessor.js";
+import { getLocalStateData, setFilterState } from "./taskProcessor.js";
 export async function initTaskController() {
     const sortByRadioBtn = document.querySelectorAll('[name="tasksFilter"]');
     const orderRadioBtn = document.querySelectorAll('[name="orderButton"]');
-    const subMenu = document.querySelector(".filter-sub-menu");
     sortByRadioBtn.forEach((radio) => {
         radio.addEventListener("change", async (e) => {
             const value = e.target.value;
             filterSubMenu(value);
-            subMenu.classList.add("open");
             setFilterState({ sortBy: value });
             await refreshTasks();
         });
@@ -21,5 +20,23 @@ export async function initTaskController() {
             await refreshTasks();
         });
     });
+}
+/*export type SortBy = "currentDate" | "dueDate" | "priority" | "title";*/
+export function rehydrateFilterFields() {
+    const sortByID = {
+        currentDate: "sortByCurrentDate",
+        dueDate: "sortByDueDate",
+        priority: "sortByPriority",
+        title: "sortByTitle"
+    };
+    const orderID = {
+        asc: "AscBtn",
+        desc: "DescBtn"
+    };
+    const searchBarInput = document.getElementById("searchBar");
+    const stateData = getLocalStateData("filterState");
+    searchBarInput.value = stateData.search;
+    checkRadioBtn(sortByID[stateData.sortBy]);
+    checkRadioBtn(orderID[stateData.order]);
 }
 //# sourceMappingURL=taskController.js.map

@@ -1,5 +1,7 @@
 import { initFilterMenu } from "../components/filterMenu.js";
+import { rehydrateFilterFields } from "../services/taskController.js";
 import { viewState } from "../state/viewState.js";
+import { invalidDateHandler } from "../utils/dateHandler.js";
 import { initCreateTaskView } from "./createTaskView.js";
 import { initIdleView } from "./idleView.js";
 import { createTask, editTask, taskList, idleView, inspectTask } from "./taskFormView.js";
@@ -15,10 +17,12 @@ export function renderView() {
         case "create":
             container.innerHTML = createTask();
             initCreateTaskView();
+            invalidDateHandler();
             break;
 
         case "edit":
             container.innerHTML = editTask();
+            invalidDateHandler();
             break;
 
         case "tasks":
@@ -26,6 +30,7 @@ export function renderView() {
             initTaskList();
             initTaskListEvents();
             initFilterMenu();
+            rehydrateFilterFields();
             break;
 
         case "idle":

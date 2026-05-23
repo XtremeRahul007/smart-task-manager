@@ -1,2 +1,2 @@
-export declare function initCreateTaskView(): void;
+export declare function initCreateTaskView(): Promise<void>;
 //# sourceMappingURL=createTaskView.d.ts.map

@@ -79,8 +79,6 @@ export function renderTask(tasks) {
 }
 export function renderEmptyState() {
     const container = document.querySelector(".task-list-container");
-    if (!container)
-        return;
     container.innerHTML = `<div class ="empty-task">No task available</div>`;
 }
 export async function deleteTask(id) {

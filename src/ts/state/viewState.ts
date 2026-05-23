@@ -21,7 +21,7 @@ export function setView(newView: View) {
     viewState.current = newView;
 
     renderView();
-    showToast(`Current: ${viewState.current} & Prevoius: ${viewState.previous}`, "info");
+//showToast(`Current: ${viewState.current} & Prevoius: ${viewState.previous}`, "info");
 }
 
 

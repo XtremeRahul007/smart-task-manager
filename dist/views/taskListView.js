@@ -1,7 +1,7 @@
 import { openConfirmPopup } from "../components/confirmPopup.js";
 import { openDB } from "../db/indexedDB.js";
 import { deleteTask, getAllTasks, renderEmptyState, renderTask } from "../db/tasks.js";
-import { processTasks } from "../services/taskProcessor.js";
+import { finalTaskList, processTasks } from "../services/taskProcessor.js";
 import { setView } from "../state/viewState.js";
 import { checkRadioBtn } from "../utils/radioBtnHandler.js";
 import { initEditTaskView } from "./editTaskView.js";
@@ -23,6 +23,9 @@ export async function refreshTasks() {
     const db = await openDB();
     const tasks = await getAllTasks(db, "tasks");
     tasks.length === 0 ? renderEmptyState() : processTasks(tasks);
+    if (finalTaskList.length === 0) {
+        renderEmptyState();
+    }
 }
 export function initTaskListEvents() {
     const container = document.querySelector(".task-list-container");

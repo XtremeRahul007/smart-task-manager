@@ -7,7 +7,6 @@ export let refCloseFilterMenu: (() => void) | null = null;
 export function initFilterMenu() {
     const menuBtn = document.querySelector("#filterTaskBtn") as HTMLButtonElement;
     const filterMenu = document.querySelector(".filter-menu-container") as HTMLUListElement;
-    const subMenu = document.querySelector(".filter-sub-menu") as HTMLUListElement;
 
     if (!menuBtn || !filterMenu) return;
     let isOpen = false;
@@ -21,7 +20,6 @@ export function initFilterMenu() {
     }
 
     const closeFilterMenu = () => {
-        subMenu.classList.remove("open");
         filterMenu.classList.remove("open");
         closeState("filterMenu");
         isOpen = false;

@@ -1,4 +1,5 @@
 import { renderTask } from "../db/tasks.js";
+export let finalTaskList;
 const filterState = {
     search: "",
     sortBy: "currentDate",
@@ -6,11 +7,23 @@ const filterState = {
 };
 export function setFilterState(updates) {
     Object.assign(filterState, updates);
-    console.log(filterState);
+    localStorage.setItem("filterState", JSON.stringify(filterState));
+}
+export function getLocalStateData(Key) {
+    const rawData = localStorage.getItem(Key);
+    try {
+        return rawData ? JSON.parse(rawData) : filterState;
+    }
+    catch (err) {
+        console.warn(err);
+        return filterState;
+    }
 }
 export function processTasks(tasks) {
-    const filteredTasks = tasksSearch(tasks, filterState.search);
-    const sortedTasks = tasksSorter(filteredTasks, filterState.sortBy, filterState.order);
+    const stateData = getLocalStateData("filterState");
+    const filteredTasks = tasksSearch(tasks, stateData.search);
+    const sortedTasks = tasksSorter(filteredTasks, stateData.sortBy, stateData.order);
+    finalTaskList = sortedTasks;
     renderTask(sortedTasks);
 }
 function tasksSearch(tasks, search) {

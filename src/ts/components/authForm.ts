@@ -107,19 +107,15 @@ export function initAuthController() {
                 message = await signUpUser(user);
                 showToast(message, "success");
                 closeFormRef?.();
-                console.log("closeFormRef:", closeFormRef);
                 saveSession(user)
                 initProfileIcon(user.name as string | null);
             } else {
                 message = await loginUser(user);
                 showToast(message, "success");
                 closeFormRef?.();
-                console.log("closeFormRef:", closeFormRef);
                 saveSession(user);
                 initProfileIcon(user.name as string | null);
             }
-
-            console.log(message);
         }
         catch (err) {
             showToast(err as string, "error");

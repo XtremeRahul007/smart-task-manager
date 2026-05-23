@@ -11,7 +11,7 @@ export function setView(newView) {
     viewState.previous = viewState.current;
     viewState.current = newView;
     renderView();
-    showToast(`Current: ${viewState.current} & Prevoius: ${viewState.previous}`, "info");
+    //showToast(`Current: ${viewState.current} & Prevoius: ${viewState.previous}`, "info");
 }
 export function initLandingView() {
     document.addEventListener("DOMContentLoaded", () => {

@@ -87,7 +87,6 @@ export function initAuthController() {
                 message = await signUpUser(user);
                 showToast(message, "success");
                 closeFormRef?.();
-                console.log("closeFormRef:", closeFormRef);
                 saveSession(user);
                 initProfileIcon(user.name);
             }
@@ -95,11 +94,9 @@ export function initAuthController() {
                 message = await loginUser(user);
                 showToast(message, "success");
                 closeFormRef?.();
-                console.log("closeFormRef:", closeFormRef);
                 saveSession(user);
                 initProfileIcon(user.name);
             }
-            console.log(message);
         }
         catch (err) {
             showToast(err, "error");
