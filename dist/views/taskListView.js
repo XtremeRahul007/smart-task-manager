@@ -23,7 +23,10 @@ export async function refreshTasks() {
     const db = await openDB();
     const tasks = await getAllTasks(db, "tasks");
     tasks.length === 0 ? renderEmptyState() : processTasks(tasks);
-    if (finalTaskList.length === 0) {
+    if (!finalTaskList) {
+        return;
+    }
+    else if (finalTaskList.length === 0) {
         renderEmptyState();
     }
 }
