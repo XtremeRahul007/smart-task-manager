@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="/smart-task-manager/icons/xtreme.ico" type="image/xtreme-icon">
+    <title>Smart Task Manager</title>
+    <script>
+        (function () {
+            savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.dataset.theme = savedTheme;
+                return;
+            }
+            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.dataset.theme = systemTheme ? "dark" : "light";
+        })();
+    </script>
+  <script type="module" crossorigin src="/smart-task-manager/assets/index-DDO_OA_o.js"></script>
+  <link rel="stylesheet" crossorigin href="/smart-task-manager/assets/index-BXRPHuUY.css">
+<link rel="manifest" href="/smart-task-manager/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/smart-task-manager/registerSW.js"></script></head>
+
+<body>
+    <section class="app-task-manager">
+        <header class="app-logo-text-header">
+            <button class="app-logo-header" id="asideMenuBtn"></button>
+            <h1 class="app-text-header">Smart Task Manager</h1>
+        </header>
+        <nav class="app-search-bar">
+            <div class="search-container">
+                <button class="search-btn">
+                    <div class="search-icon icon icon-search icon-sm" id="searchBth"></div>
+                </button>
+                <input class="search-bar" id="searchBar" type="search" placeholder="Search">
+            </div>
+        </nav>
+        <div class="app-user-profile">
+            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn">
+                <span class="theme-toggle-icon icon icon-sm theme-icon-switch" id="theme-toggle-icon"></span>
+            </button>
+            <button class="app-profile-icon" id="profileMenuIcon">?</button>
+            <div class="app-profile-menu" id="profileMenu">
+                <div class="user-profile">
+                    <p id="userProfileName">username</p>
+                </div>
+                <ul class="menu-items-container">
+                    <li><button type="button" id="logoutBth" class="profile-menu-item">Logout</button></li>
+                    <li><button type="button" id="resetDbBtn" class="profile-menu-item">Reset All Data</button></li>
+                    <li><button class="profile-menu-item" id="tempBtn">Download App</button></li>
+                </ul>
+            </div>
+        </div>
+        <aside id="sideBar" class="app-sidebar">
+            <div class="app-logo-text-aside">
+                <div class="app-logo-aside"></div>
+                <h1 class="app-text-aside">Smart Task Manager</h1>
+            </div>
+            <nav>
+                <ul class="sideBar-item-container">
+                    <li>
+                        <label class="item-contents" for="idleView">
+                            <input type="radio" name="viewRender" id="idleView" value="idle">
+                            <div>Home</div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="item-contents" for="createTask">
+                            <input type="radio" name="viewRender" id="createTask" value="create">
+                            <div>Create New Task</div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="item-contents" for="taskList">
+                            <input type="radio" name="viewRender" id="taskList" value="tasks">
+                            <div>Task List</div>
+                        </label>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="app-task-container" id="appTaskContainer">
+        </main>
+        <section class="userServiceFormContainer" id="userServiceFormContainer">
+            <div class="userServiceTitleLogo">
+                <div class="userServicelogo"></div>
+                <h2 class="userServiceTitle">Smart Task Manager</h2>
+            </div>
+            <div class="userServiceHeadingArea">
+                <h2 class="userServiceHeading">Create your local profile</h2>
+                <p class="userServiceSubHeading">Your data stays only on this device. nothing is sent to any server.
+                    Perfect for private notes, todos, settings, or offline use.</p>
+            </div>
+            <form class="userServiceForm" id="userServiceForm" autocomplete="on">
+                <div class="field-wrapper">
+                    <label for="displayName" class="displayNameLabel">Choose a username</label>
+                    <input type="text" class="displayNameInput" name="displayName" id="displayName"
+                        placeholder="Abc_123" autocomplete="name" required>
+                </div>
+                <div class="field-wrapper">
+                    <label for="password" class="passwordLabel">Choose a password</label>
+                    <div class="password-container">
+                        <input type="password" class="passwordInput" name="password" id="password" placeholder="******"
+                            autocomplete="new-password" required minlength="6">
+                        <button type="button" id="toggleVisibility" class="icon icon-visible icon-sm toggle-visibility"
+                            aria-label="Toggle password visibility"></button>
+                    </div>
+                </div>
+                <div class="modeSwitchContainer">
+                    <p class="modeSwitchText">Already have an account?</p>
+                    <button type="button" class="toggle-mode" id="modeSwitchBtn">Sign in</button>
+                </div>
+                <button type="submit" class="submitBtn">Create an account</button>
+            </form>
+        </section>
+        <footer class="app-footer"></footer>
+        <div class="toast-container" id="toastContainer"></div>
+        <div class="overLay" id="overLay"></div>
+        <div class="loader-container">
+            <div class="skeleton-ui-loader">L &nbsp; ading</div>
+        </div>
+    </section>
+</body>
+
+</html>
