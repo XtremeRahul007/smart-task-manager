@@ -151,14 +151,130 @@ npm run preview
 ## Project Structure
 
 ```txt
-public/
-src/
-├── styles/
-├── ts/
-index.html
-package.json
-tsconfig.json
-vite.config.ts
+.
+│   .gitignore
+│   folder_structure.txt
+│   index.html
+│   package-lock.json
+│   package.json
+│   README.md
+│   tsconfig.json
+│   vite.config.ts
+│   
+├───public
+│   ├───fonts
+│   │       inter.woff
+│   │       inter.woff2
+│   │       
+│   ├───icons
+│   │       pwa-192.png
+│   │       pwa-512.png
+│   │       task-manager-light.ico
+│   │       xtreme.ico
+│   │       
+│   └───svgs
+│           back.svg
+│           dark-mode.svg
+│           edit.svg
+│           filter.svg
+│           invisible.svg
+│           light-mode.svg
+│           menu.svg
+│           plus.svg
+│           recycle.svg
+│           reload.svg
+│           search.svg
+│           visible.svg
+│           
+└───src
+    │   main.ts
+    │   
+    ├───styles
+    │   │   main.scss
+    │   │   
+    │   ├───abstracts
+    │   │       _variables.scss
+    │   │       
+    │   ├───base
+    │   │       _base.scss
+    │   │       _reset.scss
+    │   │       
+    │   ├───components
+    │   │       _confirm-popup.scss
+    │   │       _overlay.scss
+    │   │       _profile.scss
+    │   │       _search.scss
+    │   │       _sidebar.scss
+    │   │       _toast.scss
+    │   │       _userServiceForm.scss
+    │   │       
+    │   ├───layout
+    │   │       _app-grid.scss
+    │   │       _app-loader.scss
+    │   │       _aside.scss
+    │   │       _footer.scss
+    │   │       _header.scss
+    │   │       _task-container.scss
+    │   │       
+    │   ├───themes
+    │   │       _icon.scss
+    │   │       _theme.scss
+    │   │       
+    │   └───views
+    │           _create-task.scss
+    │           _idle-task.scss
+    │           _inspect-task.scss
+    │           _task-list.scss
+    │           
+    └───ts
+        ├───animations
+        │       clickAnimation.ts
+        │       
+        ├───components
+        │       authForm.ts
+        │       confirmPopup.ts
+        │       filterMenu.ts
+        │       overLay.ts
+        │       popupMenu.ts
+        │       profileIcon.ts
+        │       searchBar.ts
+        │       sideBar.ts
+        │       
+        ├───db
+        │       dbUtils.ts
+        │       indexedDB.ts
+        │       tasks.ts
+        │       
+        ├───services
+        │       authGuard.ts
+        │       authService.ts
+        │       loaderService.ts
+        │       taskController.ts
+        │       taskProcessor.ts
+        │       toastService.ts
+        │       
+        ├───state
+        │       uiState.ts
+        │       viewState.ts
+        │       
+        ├───theme
+        │       themeManager.ts
+        │       themeToggle.ts
+        │       
+        ├───utils
+        │       dateHandler.ts
+        │       formatText.ts
+        │       radioBtnHandler.ts
+        │       textCounter.ts
+        │       
+        └───views
+                createTaskView.ts
+                editTaskView.ts
+                idleView.ts
+                inspectTaskView.ts
+                taskFormView.ts
+                taskListView.ts
+                viewManager.ts
 ```
 
 ---
