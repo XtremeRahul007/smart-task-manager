@@ -1,0 +1,65 @@
+.confirm-popup {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: var(--overlay-color);
+    transition: opacity 0.3s ease-in-out;
+
+    &.fade-out {
+        opacity: 0;
+    }
+}
+
+.confirm-popup-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    max-width: 300px;
+
+    h2 {
+        background-color: var(--color-primary);
+        color: var(--color-on-secondary-container);
+        font-size: 1.5rem;
+        padding-block: .25rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
+.confirm-popup-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0rem 1rem .5rem 1rem;
+
+    button {
+        background-color: var(--color-primary);
+        color: var(--color-on-primary);
+        font-size: 1rem;
+        padding: .35rem .75rem;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition:
+            background-color .1s ease,
+            color .1s ease;
+
+        &:active {
+            background-color: var(--color-on-primary);
+            color: var(--color-primary);
+        }
+    }
+}
