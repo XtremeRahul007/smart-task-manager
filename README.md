@@ -1,367 +1,202 @@
 # Smart Task Manager
 
-A modern, offline-first smart task manager built using pure web technologies with a strong focus on scalable frontend architecture, modular TypeScript design, performance optimization, and maintainability.
+A modern offline-first task management application built with TypeScript, SCSS, IndexedDB, Vite, and Progressive Web App (PWA) technologies.
 
-This project is designed as both a productivity application and a deep architectural learning project that explores real-world frontend engineering patterns without relying on frameworks.
-
----
-
-# Vision
-
-The purpose of this project is to build more than a simple task manager.
-
-It aims to create a production-style frontend architecture using:
-
-- Modular TypeScript
-- Structured SCSS architecture
-- IndexedDB-based offline storage
-- Scalable view/state separation
-- Component-driven UI systems
-- Service-oriented frontend logic
-
-The project emphasizes long-term scalability, maintainability, and clean engineering practices from the beginning.
+The project was created as both a productivity tool and a deep frontend engineering exercise focused on scalable architecture, maintainable code organization, browser-native APIs, and framework-independent application design.
 
 ---
 
-# Core Features
+## Live Demo
 
-## Task Management
-- Create tasks
-- Edit existing tasks
-- Inspect task details
-- Idle/empty task states
-- Task rendering system
-- Planned filtering and sorting system
-- Planned favourite/relevance system
+https://xtremerahul007.github.io/smart-task-manager/
 
-## Offline-First Storage
-- IndexedDB as primary database
-- LocalStorage for lightweight preferences
+---
+
+## Features
+
+### Task Management
+- Create, edit, inspect, and manage tasks
+- Dedicated task creation and editing workflows
+- Task detail inspection view
+- Empty-state handling
+- Modular rendering architecture
+
+### Offline-First Architecture
+- IndexedDB-powered persistent storage
 - No backend dependency
-- Persistent offline task management
+- Fully functional without an internet connection
+- LocalStorage-powered user preferences
 
-## Authentication Layer
-- User authentication flow
-- Authentication guard system
-- Logout handling
-- Password visibility toggle
-- Database reset support
+### Progressive Web App
+- Installable on desktop and mobile devices
+- Offline caching via Service Worker
+- Native app-like experience
+- Fast startup and loading times
 
-## Theme System
-- Light/Dark theme support
-- Dynamic theme manager
-- Theme toggle controller
-- SVG-based icon theming
+### Theme System
+- Light and Dark mode support
+- Persistent theme preferences
+- Dynamic icon and UI theming
 
-## UI/UX System
-- Fully responsive layout
-- SCSS architecture with separated layers
-- Overlay and popup systems
+### User Experience
+- Responsive layout
 - Sidebar navigation
-- Search UI
-- Toast notification system
-- Profile interaction system
+- Toast notifications
+- Popup and overlay systems
+- Search interface
 - Click interaction animations
-- Loader system
+- Loading state management
 
 ---
 
-# Current Architecture
+## Technology Stack
 
-The project follows a highly modular architecture where each system is separated by responsibility.
+### Frontend
+- HTML5
+- TypeScript
+- SCSS
+- Vite
 
-## Architectural Layers
+### Storage
+- IndexedDB
+- LocalStorage
+
+### PWA
+- vite-plugin-pwa
+- Service Workers
+- Web App Manifest
+
+### Architecture
+- Component-driven design
+- View-state separation
+- Service-oriented frontend logic
+- Modular rendering systems
+
+---
+
+## Architecture Overview
+
+The application follows a layered architecture:
 
 ### Components
-Reusable UI interaction modules:
-- Sidebar
-- Search bar
-- Popup menus
-- Confirm popup
-- Overlay controller
-- Authentication form
-- Profile interaction
+Reusable UI modules and interaction systems.
 
 ### Views
-Dedicated rendering logic for application screens:
-- Create task view
-- Edit task view
-- Inspect task view
-- Task list view
-- Idle state view
-- View manager system
+Dedicated rendering logic for each application screen.
 
 ### Services
-Business logic and application controllers:
-- Authentication services
-- Task controller
-- Task processor
-- Toast notification service
-- Loader service
+Business logic, controllers, and application workflows.
 
 ### State Management
-Centralized UI and view state handling:
-- UI state management
-- View state initialization
-- Landing view controller
+Centralized UI and view state handling.
 
 ### Database Layer
-Structured IndexedDB abstraction:
-- Database initialization
-- Database utilities
-- Task storage handling
+IndexedDB abstraction and persistence utilities.
 
-### Utility Layer
-Reusable helper systems:
-- Date formatting
-- Text formatting
-- Radio button handling
-- Text counter utilities
+### Utilities
+Reusable helper functions and formatting systems.
+
+This separation of concerns allows the application to remain maintainable as new features are introduced.
 
 ---
 
-# Project Structure
+## Development Philosophy
 
-```txt
-├── assets/
-│   ├── fonts/
-│   │   ├── inter.woff
-│   │   └── inter.woff2
-│   ├── icons/
-│   │   ├── task-manager-light.ico
-│   │   └── xtreme.ico
-│   └── svgs/
-│       ├── back.svg
-│       ├── dark-mode.svg
-│       ├── edit.svg
-│       ├── filter.svg
-│       ├── invisible.svg
-│       ├── light-mode.svg
-│       ├── menu.svg
-│       ├── plus.svg
-│       ├── recycle.svg
-│       ├── reload.svg
-│       ├── search.svg
-│       └── visible.svg
-├── src/
-│   ├── styles/
-│   │   ├── abstracts/
-│   │   │   └── _variables.scss
-│   │   ├── base/
-│   │   │   ├── _base.scss
-│   │   │   └── _reset.scss
-│   │   ├── components/
-│   │   │   ├── _confirm-popup.scss
-│   │   │   ├── _overlay.scss
-│   │   │   ├── _profile.scss
-│   │   │   ├── _search.scss
-│   │   │   ├── _sidebar.scss
-│   │   │   ├── _toast.scss
-│   │   │   └── _userServiceForm.scss
-│   │   ├── layout/
-│   │   │   ├── _app-grid.scss
-│   │   │   ├── _app-loader.scss
-│   │   │   ├── _aside.scss
-│   │   │   ├── _footer.scss
-│   │   │   ├── _header.scss
-│   │   │   └── _task-container.scss
-│   │   ├── themes/
-│   │   │   ├── _icon.scss
-│   │   │   └── _theme.scss
-│   │   ├── views/
-│   │   │   ├── _create-task.scss
-│   │   │   ├── _idle-task.scss
-│   │   │   ├── _inspect-task.scss
-│   │   │   └── _task-list.scss
-│   │   └── main.scss
-│   └── ts/
-│       ├── animations/
-│       │   └── clickAnimation.ts
-│       ├── components/
-│       │   ├── authForm.ts
-│       │   ├── confirmPopup.ts
-│       │   ├── filterMenu.ts
-│       │   ├── overLay.ts
-│       │   ├── popupMenu.ts
-│       │   ├── profileIcon.ts
-│       │   ├── searchBar.ts
-│       │   └── sideBar.ts
-│       ├── db/
-│       │   ├── dbUtils.ts
-│       │   ├── indexedDB.ts
-│       │   └── tasks.ts
-│       ├── services/
-│       │   ├── authGuard.ts
-│       │   ├── authService.ts
-│       │   ├── loaderService.ts
-│       │   ├── taskController.ts
-│       │   ├── taskProcessor.ts
-│       │   └── toastService.ts
-│       ├── state/
-│       │   ├── uiState.ts
-│       │   └── viewState.ts
-│       ├── theme/
-│       │   ├── themeManager.ts
-│       │   └── themeToggle.ts
-│       ├── utils/
-│       │   ├── dateHandler.ts
-│       │   ├── formatText.ts
-│       │   ├── radioBtnHandler.ts
-│       │   └── textCounter.ts
-│       ├── views/
-│       │   ├── createTaskView.ts
-│       │   ├── editTaskView.ts
-│       │   ├── idleView.ts
-│       │   ├── inspectTaskView.ts
-│       │   ├── taskFormView.ts
-│       │   ├── taskListView.ts
-│       │   └── viewManager.ts
-│       └── main.ts
-├── index.html
-├── package-lock.json
-├── package.json
-├── README.md
-└── tsconfig.json
+This project intentionally avoids frontend frameworks in order to explore:
+
+- Browser-native APIs
+- Scalable TypeScript architecture
+- Modular design principles
+- Long-term maintainability
+- Performance-conscious development
+
+The goal is to understand how modern frontend applications work beneath framework abstractions.
+
+---
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/XtremeRahul007/smart-task-manager.git
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+### Create a production build
+
+```bash
+npm run build
+```
+
+### Preview the production build
+
+```bash
+npm run preview
 ```
 
 ---
 
-# Application Initialization System
+## Project Structure
 
-The application uses a staged initialization architecture inside `main.ts`.
-
-Modules are grouped into multiple execution layers:
-
-## Critical Modules
-Loaded first before application startup:
-- IndexedDB initialization
-- Authentication controller
-
-## Semi-Critical Modules
-Secondary systems:
-- Overlay system
-- Theme initialization
-- Logout system
-- Password visibility
-- Database reset system
-
-## Rendering Modules
-Responsible for view rendering:
-- View menu controller
-- Create task rendering
-- Idle view rendering
-
-## UI Modules
-Non-blocking interaction systems:
-- Sidebar
-- Popup menus
-- Search focus
-- Profile interactions
-- Click animations
-
-This layered startup architecture improves:
-- Stability
-- Debugging
-- Scalability
-- Controlled dependency loading
+```txt
+public/
+src/
+├── styles/
+├── ts/
+index.html
+package.json
+tsconfig.json
+vite.config.ts
+```
 
 ---
 
-# Tech Stack
+## Future Roadmap
 
-## Core Technologies
-- HTML5
-- TypeScript
-- SCSS
-- IndexedDB
-- LocalStorage
-
-## Styling Architecture
-- SCSS Modules
-- CSS Variables
-- Flexbox
-- CSS Grid
-- Responsive Design Principles
-
-## Development Philosophy
-- No frontend frameworks
-- Pure browser APIs
-- Architecture-first development
-- Modular scalability
-
----
-
-# Styling Architecture
-
-The SCSS structure is separated into multiple layers:
-
-## Abstracts
-Global variables and reusable tokens.
-
-## Base
-Reset styles and base styling rules.
-
-## Components
-Independent reusable UI components.
-
-## Layout
-Application-wide structural layout systems.
-
-## Themes
-Theme management and icon styling.
-
-## Views
-Page/view-specific styling modules.
-
-This structure keeps styling scalable and maintainable as the application grows.
-
----
-
-# Performance Goals
-
-- Fast startup initialization
-- Minimal runtime overhead
-- Efficient IndexedDB handling
-- Responsive rendering system
-- Modular lazy-style architecture
-- Mobile-first optimization
-
----
-
-# Future Plans
-
-## Task System Expansion
-- Smart prioritization
-- Favourite task engine
+### Task System
 - Advanced filtering
-- Search indexing
 - Task categorization
+- Smart prioritization
+- Search indexing
 
-## UX Improvements
-- Drag and drop
+### User Experience
+- Drag-and-drop interactions
 - Keyboard shortcuts
-- Improved animations
 - Accessibility improvements
+- Enhanced animations
 
-## Platform Features
-- Progressive Web App (PWA)
+### Platform Features
 - Cloud synchronization
 - Optional backend integration
-- Cross-device sync
+- Cross-device syncing
+- Push notifications
 
 ---
 
-# Purpose
+## Learning Goals
 
 This project serves as:
 
 - A real-world productivity application
 - A frontend architecture learning project
-- A modular TypeScript engineering experiment
+- A TypeScript engineering exercise
+- A Progressive Web App implementation
 - A demonstration of scalable browser-based application design
 
 ---
 
-# Author
+## Author
 
-Built as part of a deep learning journey into professional frontend engineering, scalable architecture design, and full-stack development principles using pure web technologies.
+Built as part of a long-term journey toward professional software engineering, full-stack development, and scalable application architecture using modern web technologies.

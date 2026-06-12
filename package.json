@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/XtremeRahul007/smart-task-manager#readme",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.97.3",
     "typescript": "^6.0.2",
     "vite": "^8.0.16",
