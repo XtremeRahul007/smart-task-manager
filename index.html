@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="dist/main.css">
-    <link rel="icon" href="assets/icons/xtreme.ico" type="image/xtreme-icon">
+    <link rel="icon" href="/icons/xtreme.ico" type="image/xtreme-icon">
     <title>Smart Task Manager</title>
     <script>
         (function () {
@@ -46,9 +45,7 @@
                 <ul class="menu-items-container">
                     <li><button type="button" id="logoutBth" class="profile-menu-item">Logout</button></li>
                     <li><button type="button" id="resetDbBtn" class="profile-menu-item">Reset All Data</button></li>
-                    <li><button class="profile-menu-item" id="tempBtn">temp_item1</button></li>
-                    <li><button class="profile-menu-item">temp_item2</button></li>
-                    <li><button class="profile-menu-item">temp_item3</button></li>
+                    <li><button class="profile-menu-item" id="tempBtn">Download App</button></li>
                 </ul>
             </div>
         </div>
@@ -75,18 +72,6 @@
                         <label class="item-contents" for="taskList">
                             <input type="radio" name="viewRender" id="taskList" value="tasks">
                             <div>Task List</div>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="item-contents" for="temp1">
-                            <input type="radio" name="viewRender" id="temp1">
-                            <div>Temp1</div>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="item-contents" for="temp2">
-                            <input type="radio" name="viewRender" id="temp2">
-                            <div>Temp2</div>
                         </label>
                     </li>
                 </ul>
@@ -132,7 +117,7 @@
         <div class="loader-container">
             <div class="skeleton-ui-loader">L &nbsp; ading</div>
         </div>
-        <script type="module" src="./dist/main.js"></script>
+        <script type="module" src="/src/main.ts"></script>
     </section>
 </body>
 

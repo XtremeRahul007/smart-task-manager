@@ -2,8 +2,8 @@ $icons: search, menu, dark-mode, light-mode, visible, invisible, plus, edit, rel
 
 @each $icon in $icons {
     .icon-#{$icon} {
-        mask-image: url("../assets/svgs/#{$icon}.svg");
-        -webkit-mask-image: url("../assets/svgs/#{$icon}.svg");
+        mask-image: url("/svgs/#{$icon}.svg");
+        -webkit-mask-image: url("/svgs/#{$icon}.svg");
     }
 }
 
@@ -37,12 +37,12 @@ $icon-sizes: (
 
 .theme-icon-switch {
     [data-theme="dark"] & {
-        mask-image: url("../assets/svgs/dark-mode.svg");
-        -webkit-mask-image: url("../assets/svgs/dark-mode.svg");
+        mask-image: url("/svgs/dark-mode.svg");
+        -webkit-mask-image: url("/svgs/dark-mode.svg");
     }
 
     [data-theme="light"] & {
-        mask-image: url("../assets/svgs/light-mode.svg");
-        -webkit-mask-image: url("../assets/svgs/light-mode.svg");
+        mask-image: url("/svgs/light-mode.svg");
+        -webkit-mask-image: url("/svgs/light-mode.svg");
     }
 }
